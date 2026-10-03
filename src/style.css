@@ -83,6 +83,10 @@ main {
   margin: 0.35rem 0;
 }
 
+#unsaved-repositories-notice {
+  margin-top: 0;
+}
+
 #custom-readme-form input,
 #custom-readme-form textarea {
   box-sizing: border-box;

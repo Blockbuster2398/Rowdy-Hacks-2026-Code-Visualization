@@ -40,6 +40,13 @@ let userRepositories = [];
 let displayedRepositoryNodes = [];
 let graph;
 
+window.addEventListener('beforeunload', (event) => {
+  if (userRepositories.length > 0) {
+    event.preventDefault();
+    event.returnValue = '';
+  }
+});
+
 function canonicalId(fullName) {
   return fullName.toLocaleLowerCase('en-US');
 }
