@@ -6,6 +6,8 @@ const settingsForm = document.getElementById('graph-settings-form');
 const nodeLimitInput = document.getElementById('node-limit');
 const nodeLimitValue = document.getElementById('node-limit-value');
 const neighborLimitInput = document.getElementById('neighbor-limit');
+const linkOpacityInput = document.getElementById('link-opacity');
+const linkOpacityValue = document.getElementById('link-opacity-value');
 const settingsStatus = document.getElementById('settings-status');
 const neighborhoodHighlightingInput = document.getElementById('neighborhood-highlighting');
 const searchForm = document.getElementById('repo-search-form');
@@ -82,7 +84,7 @@ function prepareNode(node, dimensions) {
 }
 
 function getNodeFontSize(globalScale) {
-  return Math.max(4, 9 / globalScale);
+  return Math.max(5, 8 / globalScale);
 }
 
 function clearRepositoryLinks() {
@@ -393,24 +395,33 @@ async function initializeGraph() {
     .nodeCanvasObject((node, context, globalScale) => {
       const fontSize = getNodeFontSize(globalScale);
       const isSelected = node.id === selectedNode?.id;
-      const fillStyle = node.isUserProvided
-        ? '#8e24aa'
-        : neighborhoodHighlightingEnabled && node.id === hoveredNodeId
-          ? '#2e7d32'
-          : neighborhoodHighlightingEnabled && firstOrderNeighborIds.has(node.id)
-            ? '#e6a700'
-            : neighborhoodHighlightingEnabled && secondOrderNeighborIds.has(node.id)
-              ? '#d32f2f'
-              : isSelected
-                ? '#d1495b'
-                : '#222';
-
+      const isHovered = node.id === hoveredNodeId;
+      const isFirstOrderNeighbor = firstOrderNeighborIds.has(node.id);
+      const isSecondOrderNeighbor = secondOrderNeighborIds.has(node.id);
+      const fillStyle = isSelected
+        ? '#f2f7ff'
+        : isHovered
+          ? '#78e5c0'
+          : isFirstOrderNeighbor
+            ? '#ffd080'
+            : isSecondOrderNeighbor
+              ? '#c3a5ff'
+              : node.isUserProvided
+                ? '#f28fb9'
+                : '#91a4bf';
       context.save();
-      context.font = `${isSelected || node.id === hoveredNodeId ? 'bold ' : ''}${fontSize}px sans-serif`;
-      context.textAlign = 'center';
+      context.beginPath();
+      context.arc(node.x, node.y, isSelected || isHovered ? 3.8 : 2.4, 0, 2 * Math.PI);
+      context.fillStyle = fillStyle;
+      context.fill();
+
+      context.font = `${isSelected || isHovered ? '600 ' : ''}${fontSize}px ui-sans-serif, system-ui, sans-serif`;
+      context.textAlign = 'left';
       context.textBaseline = 'middle';
       context.fillStyle = fillStyle;
-      context.fillText(node.name, node.x, node.y);
+      context.globalAlpha =
+        isSelected || isHovered || isFirstOrderNeighbor || isSecondOrderNeighbor ? 1 : 0.82;
+      context.fillText(node.name, node.x + 6 / globalScale, node.y);
       context.restore();
     })
     .nodePointerAreaPaint((node, color, context, globalScale) => {
@@ -418,18 +429,20 @@ async function initializeGraph() {
       const padding = 8 / globalScale;
 
       context.font = `${fontSize}px sans-serif`;
-      context.textAlign = 'center';
+      context.textAlign = 'left';
       context.textBaseline = 'middle';
       context.fillStyle = color;
       const textWidth = context.measureText(node.name).width;
       context.fillRect(
-        node.x - textWidth / 2 - padding,
+        node.x - padding,
         node.y - fontSize / 2 - padding,
-        textWidth + padding * 2,
+        textWidth + padding * 2 + 6 / globalScale,
         fontSize + padding * 2
       );
     })
-    .linkWidth((link) => Math.max(0.5, 0.5 + 1.5 * link.similarity))
+    .backgroundColor('#0a1120')
+    .linkColor(() => `rgba(82, 101, 130, ${Number(linkOpacityInput.value) / 100})`)
+    .linkWidth((link) => Math.max(0.35, 0.35 + 1.15 * link.similarity))
     .onNodeHover((node) => {
       hoveredNodeId = node?.id;
       firstOrderNeighborIds = node
@@ -457,6 +470,12 @@ async function initializeGraph() {
 
   neighborhoodHighlightingInput.addEventListener('change', () => {
     neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
+    graph.zoom(graph.zoom());
+  });
+
+  linkOpacityValue.value = `${linkOpacityInput.value}%`;
+  linkOpacityInput.addEventListener('input', () => {
+    linkOpacityValue.value = `${linkOpacityInput.value}%`;
     graph.zoom(graph.zoom());
   });
 
