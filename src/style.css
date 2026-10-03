@@ -1,0 +1,13 @@
+body {
+  margin: 2rem;
+  font-family: sans-serif;
+}
+
+input {
+  margin: 0.5rem;
+}
+
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

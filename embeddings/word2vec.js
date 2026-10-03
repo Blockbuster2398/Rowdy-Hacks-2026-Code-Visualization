@@ -2,11 +2,22 @@
 
 import { pipeline } from '@huggingface/transformers';
 
-const extractor = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2');
+let extractorPromise;
+
+function getExtractor() {
+  if (!extractorPromise) {
+    extractorPromise = pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2')
+      .catch((error) => {
+        extractorPromise = undefined;
+        throw error;
+      });
+  }
+
+  return extractorPromise;
+}
 
 export async function embedText(text) {
-  const output = await extractor(text, { pooling: 'mean', normalize: true, dtype: "float16" });
+  const extractor = await getExtractor();
+  const output = await extractor(text, { pooling: 'mean', normalize: true });
   return output.tolist()[0];
 }
-//Test
-//console.log(await(embedText("fjkejjwelkfe")))
