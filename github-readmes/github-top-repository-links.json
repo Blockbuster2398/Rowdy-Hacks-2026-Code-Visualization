@@ -1,0 +1,5295 @@
+{
+  "nodes": [
+    {
+      "id": "codecrafters-io/build-your-own-x",
+      "name": "build-your-own-x",
+      "fullName": "codecrafters-io/build-your-own-x",
+      "url": "https://github.com/codecrafters-io/build-your-own-x"
+    },
+    {
+      "id": "sindresorhus/awesome",
+      "name": "awesome",
+      "fullName": "sindresorhus/awesome",
+      "url": "https://github.com/sindresorhus/awesome"
+    },
+    {
+      "id": "public-apis/public-apis",
+      "name": "public-apis",
+      "fullName": "public-apis/public-apis",
+      "url": "https://github.com/public-apis/public-apis"
+    },
+    {
+      "id": "freeCodeCamp/freeCodeCamp",
+      "name": "freeCodeCamp",
+      "fullName": "freeCodeCamp/freeCodeCamp",
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+    },
+    {
+      "id": "EbookFoundation/free-programming-books",
+      "name": "free-programming-books",
+      "fullName": "EbookFoundation/free-programming-books",
+      "url": "https://github.com/EbookFoundation/free-programming-books"
+    },
+    {
+      "id": "openclaw/openclaw",
+      "name": "openclaw",
+      "fullName": "openclaw/openclaw",
+      "url": "https://github.com/openclaw/openclaw"
+    },
+    {
+      "id": "donnemartin/system-design-primer",
+      "name": "system-design-primer",
+      "fullName": "donnemartin/system-design-primer",
+      "url": "https://github.com/donnemartin/system-design-primer"
+    },
+    {
+      "id": "nilbuild/developer-roadmap",
+      "name": "developer-roadmap",
+      "fullName": "nilbuild/developer-roadmap",
+      "url": "https://github.com/nilbuild/developer-roadmap"
+    },
+    {
+      "id": "jwasham/coding-interview-university",
+      "name": "coding-interview-university",
+      "fullName": "jwasham/coding-interview-university",
+      "url": "https://github.com/jwasham/coding-interview-university"
+    },
+    {
+      "id": "vinta/awesome-python",
+      "name": "awesome-python",
+      "fullName": "vinta/awesome-python",
+      "url": "https://github.com/vinta/awesome-python"
+    },
+    {
+      "id": "awesome-selfhosted/awesome-selfhosted",
+      "name": "awesome-selfhosted",
+      "fullName": "awesome-selfhosted/awesome-selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted"
+    },
+    {
+      "id": "obra/superpowers",
+      "name": "superpowers",
+      "fullName": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers"
+    },
+    {
+      "id": "practical-tutorials/project-based-learning",
+      "name": "project-based-learning",
+      "fullName": "practical-tutorials/project-based-learning",
+      "url": "https://github.com/practical-tutorials/project-based-learning"
+    },
+    {
+      "id": "996icu/996.ICU",
+      "name": "996.ICU",
+      "fullName": "996icu/996.ICU",
+      "url": "https://github.com/996icu/996.ICU"
+    },
+    {
+      "id": "mattpocock/skills",
+      "name": "skills",
+      "fullName": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills"
+    },
+    {
+      "id": "affaan-m/ECC",
+      "name": "ECC",
+      "fullName": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC"
+    },
+    {
+      "id": "NousResearch/hermes-agent",
+      "name": "hermes-agent",
+      "fullName": "NousResearch/hermes-agent",
+      "url": "https://github.com/NousResearch/hermes-agent"
+    },
+    {
+      "id": "torvalds/linux",
+      "name": "linux",
+      "fullName": "torvalds/linux",
+      "url": "https://github.com/torvalds/linux"
+    },
+    {
+      "id": "react/react",
+      "name": "react",
+      "fullName": "react/react",
+      "url": "https://github.com/react/react"
+    },
+    {
+      "id": "trimstray/the-book-of-secret-knowledge",
+      "name": "the-book-of-secret-knowledge",
+      "fullName": "trimstray/the-book-of-secret-knowledge",
+      "url": "https://github.com/trimstray/the-book-of-secret-knowledge"
+    },
+    {
+      "id": "deepseek-ai/deepseek-harness",
+      "name": "deepseek-harness",
+      "fullName": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness"
+    },
+    {
+      "id": "TheAlgorithms/Python",
+      "name": "Python",
+      "fullName": "TheAlgorithms/Python",
+      "url": "https://github.com/TheAlgorithms/Python"
+    },
+    {
+      "id": "multica-ai/andrej-karpathy-skills",
+      "name": "andrej-karpathy-skills",
+      "fullName": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills"
+    },
+    {
+      "id": "vuejs/vue",
+      "name": "vue",
+      "fullName": "vuejs/vue",
+      "url": "https://github.com/vuejs/vue"
+    },
+    {
+      "id": "anomalyco/opencode",
+      "name": "opencode",
+      "fullName": "anomalyco/opencode",
+      "url": "https://github.com/anomalyco/opencode"
+    },
+    {
+      "id": "ossu/computer-science",
+      "name": "computer-science",
+      "fullName": "ossu/computer-science",
+      "url": "https://github.com/ossu/computer-science"
+    },
+    {
+      "id": "n8n-io/n8n",
+      "name": "n8n",
+      "fullName": "n8n-io/n8n",
+      "url": "https://github.com/n8n-io/n8n"
+    },
+    {
+      "id": "DigitalPlatDev/FreeDomain",
+      "name": "FreeDomain",
+      "fullName": "DigitalPlatDev/FreeDomain",
+      "url": "https://github.com/DigitalPlatDev/FreeDomain"
+    },
+    {
+      "id": "tensorflow/tensorflow",
+      "name": "tensorflow",
+      "fullName": "tensorflow/tensorflow",
+      "url": "https://github.com/tensorflow/tensorflow"
+    },
+    {
+      "id": "trekhleb/javascript-algorithms",
+      "name": "javascript-algorithms",
+      "fullName": "trekhleb/javascript-algorithms",
+      "url": "https://github.com/trekhleb/javascript-algorithms"
+    },
+    {
+      "id": "yt-dlp/yt-dlp",
+      "name": "yt-dlp",
+      "fullName": "yt-dlp/yt-dlp",
+      "url": "https://github.com/yt-dlp/yt-dlp"
+    },
+    {
+      "id": "ultraworkers/claw-code",
+      "name": "claw-code",
+      "fullName": "ultraworkers/claw-code",
+      "url": "https://github.com/ultraworkers/claw-code"
+    },
+    {
+      "id": "microsoft/vscode",
+      "name": "vscode",
+      "fullName": "microsoft/vscode",
+      "url": "https://github.com/microsoft/vscode"
+    },
+    {
+      "id": "massgravel/Microsoft-Activation-Scripts",
+      "name": "Microsoft-Activation-Scripts",
+      "fullName": "massgravel/Microsoft-Activation-Scripts",
+      "url": "https://github.com/massgravel/Microsoft-Activation-Scripts"
+    },
+    {
+      "id": "ohmyzsh/ohmyzsh",
+      "name": "ohmyzsh",
+      "fullName": "ohmyzsh/ohmyzsh",
+      "url": "https://github.com/ohmyzsh/ohmyzsh"
+    },
+    {
+      "id": "firecrawl/firecrawl",
+      "name": "firecrawl",
+      "fullName": "firecrawl/firecrawl",
+      "url": "https://github.com/firecrawl/firecrawl"
+    },
+    {
+      "id": "microsoft/markitdown",
+      "name": "markitdown",
+      "fullName": "microsoft/markitdown",
+      "url": "https://github.com/microsoft/markitdown"
+    },
+    {
+      "id": "Significant-Gravitas/AutoGPT",
+      "name": "AutoGPT",
+      "fullName": "Significant-Gravitas/AutoGPT",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT"
+    },
+    {
+      "id": "jackfrued/Python-100-Days",
+      "name": "Python-100-Days",
+      "fullName": "jackfrued/Python-100-Days",
+      "url": "https://github.com/jackfrued/Python-100-Days"
+    },
+    {
+      "id": "avelino/awesome-go",
+      "name": "awesome-go",
+      "fullName": "avelino/awesome-go",
+      "url": "https://github.com/avelino/awesome-go"
+    },
+    {
+      "id": "CyC2018/CS-Notes",
+      "name": "CS-Notes",
+      "fullName": "CyC2018/CS-Notes",
+      "url": "https://github.com/CyC2018/CS-Notes"
+    },
+    {
+      "id": "getify/You-Dont-Know-JS",
+      "name": "You-Dont-Know-JS",
+      "fullName": "getify/You-Dont-Know-JS",
+      "url": "https://github.com/getify/You-Dont-Know-JS"
+    },
+    {
+      "id": "ollama/ollama",
+      "name": "ollama",
+      "fullName": "ollama/ollama",
+      "url": "https://github.com/ollama/ollama"
+    },
+    {
+      "id": "521xueweihan/HelloGitHub",
+      "name": "HelloGitHub",
+      "fullName": "521xueweihan/HelloGitHub",
+      "url": "https://github.com/521xueweihan/HelloGitHub"
+    },
+    {
+      "id": "anthropics/skills",
+      "name": "skills",
+      "fullName": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills"
+    },
+    {
+      "id": "flutter/flutter",
+      "name": "flutter",
+      "fullName": "flutter/flutter",
+      "url": "https://github.com/flutter/flutter"
+    },
+    {
+      "id": "github/gitignore",
+      "name": "gitignore",
+      "fullName": "github/gitignore",
+      "url": "https://github.com/github/gitignore"
+    },
+    {
+      "id": "twbs/bootstrap",
+      "name": "bootstrap",
+      "fullName": "twbs/bootstrap",
+      "url": "https://github.com/twbs/bootstrap"
+    },
+    {
+      "id": "f/prompts.chat",
+      "name": "prompts.chat",
+      "fullName": "f/prompts.chat",
+      "url": "https://github.com/f/prompts.chat"
+    },
+    {
+      "id": "huggingface/transformers",
+      "name": "transformers",
+      "fullName": "huggingface/transformers",
+      "url": "https://github.com/huggingface/transformers"
+    },
+    {
+      "id": "AUTOMATIC1111/stable-diffusion-webui",
+      "name": "stable-diffusion-webui",
+      "fullName": "AUTOMATIC1111/stable-diffusion-webui",
+      "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+    },
+    {
+      "id": "jlevy/the-art-of-command-line",
+      "name": "the-art-of-command-line",
+      "fullName": "jlevy/the-art-of-command-line",
+      "url": "https://github.com/jlevy/the-art-of-command-line"
+    },
+    {
+      "id": "Snailclimb/JavaGuide",
+      "name": "JavaGuide",
+      "fullName": "Snailclimb/JavaGuide",
+      "url": "https://github.com/Snailclimb/JavaGuide"
+    },
+    {
+      "id": "langgenius/dify",
+      "name": "dify",
+      "fullName": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify"
+    },
+    {
+      "id": "msitarzewski/agency-agents",
+      "name": "agency-agents",
+      "fullName": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents"
+    },
+    {
+      "id": "langflow-ai/langflow",
+      "name": "langflow",
+      "fullName": "langflow-ai/langflow",
+      "url": "https://github.com/langflow-ai/langflow"
+    },
+    {
+      "id": "open-webui/open-webui",
+      "name": "open-webui",
+      "fullName": "open-webui/open-webui",
+      "url": "https://github.com/open-webui/open-webui"
+    },
+    {
+      "id": "DietrichGebert/ponytail",
+      "name": "ponytail",
+      "fullName": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail"
+    },
+    {
+      "id": "Genymobile/scrcpy",
+      "name": "scrcpy",
+      "fullName": "Genymobile/scrcpy",
+      "url": "https://github.com/Genymobile/scrcpy"
+    },
+    {
+      "id": "anthropics/claude-code",
+      "name": "claude-code",
+      "fullName": "anthropics/claude-code",
+      "url": "https://github.com/anthropics/claude-code"
+    },
+    {
+      "id": "clash-verge-rev/clash-verge-rev",
+      "name": "clash-verge-rev",
+      "fullName": "clash-verge-rev/clash-verge-rev",
+      "url": "https://github.com/clash-verge-rev/clash-verge-rev"
+    },
+    {
+      "id": "airbnb/javascript",
+      "name": "javascript",
+      "fullName": "airbnb/javascript",
+      "url": "https://github.com/airbnb/javascript"
+    },
+    {
+      "id": "langchain-ai/langchain",
+      "name": "langchain",
+      "fullName": "langchain-ai/langchain",
+      "url": "https://github.com/langchain-ai/langchain"
+    },
+    {
+      "id": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "name": "system-prompts-and-models-of-ai-tools",
+      "fullName": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools"
+    },
+    {
+      "id": "yangshun/tech-interview-handbook",
+      "name": "tech-interview-handbook",
+      "fullName": "yangshun/tech-interview-handbook",
+      "url": "https://github.com/yangshun/tech-interview-handbook"
+    },
+    {
+      "id": "vercel/next.js",
+      "name": "next.js",
+      "fullName": "vercel/next.js",
+      "url": "https://github.com/vercel/next.js"
+    },
+    {
+      "id": "ytdl-org/youtube-dl",
+      "name": "youtube-dl",
+      "fullName": "ytdl-org/youtube-dl",
+      "url": "https://github.com/ytdl-org/youtube-dl"
+    },
+    {
+      "id": "Shubhamsaboo/awesome-llm-apps",
+      "name": "awesome-llm-apps",
+      "fullName": "Shubhamsaboo/awesome-llm-apps",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps"
+    },
+    {
+      "id": "iptv-org/iptv",
+      "name": "iptv",
+      "fullName": "iptv-org/iptv",
+      "url": "https://github.com/iptv-org/iptv"
+    },
+    {
+      "id": "github/spec-kit",
+      "name": "spec-kit",
+      "fullName": "github/spec-kit",
+      "url": "https://github.com/github/spec-kit"
+    },
+    {
+      "id": "farion1231/cc-switch",
+      "name": "cc-switch",
+      "fullName": "farion1231/cc-switch",
+      "url": "https://github.com/farion1231/cc-switch"
+    },
+    {
+      "id": "microsoft/PowerToys",
+      "name": "PowerToys",
+      "fullName": "microsoft/PowerToys",
+      "url": "https://github.com/microsoft/PowerToys"
+    },
+    {
+      "id": "golang/go",
+      "name": "go",
+      "fullName": "golang/go",
+      "url": "https://github.com/golang/go"
+    },
+    {
+      "id": "ripienaar/free-for-dev",
+      "name": "free-for-dev",
+      "fullName": "ripienaar/free-for-dev",
+      "url": "https://github.com/ripienaar/free-for-dev"
+    },
+    {
+      "id": "labuladong/fucking-algorithm",
+      "name": "fucking-algorithm",
+      "fullName": "labuladong/fucking-algorithm",
+      "url": "https://github.com/labuladong/fucking-algorithm"
+    },
+    {
+      "id": "Comfy-Org/ComfyUI",
+      "name": "ComfyUI",
+      "fullName": "Comfy-Org/ComfyUI",
+      "url": "https://github.com/Comfy-Org/ComfyUI"
+    },
+    {
+      "id": "garrytan/gstack",
+      "name": "gstack",
+      "fullName": "garrytan/gstack",
+      "url": "https://github.com/garrytan/gstack"
+    },
+    {
+      "id": "excalidraw/excalidraw",
+      "name": "excalidraw",
+      "fullName": "excalidraw/excalidraw",
+      "url": "https://github.com/excalidraw/excalidraw"
+    },
+    {
+      "id": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "name": "ui-ux-pro-max-skill",
+      "fullName": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+    },
+    {
+      "id": "krahets/hello-algo",
+      "name": "hello-algo",
+      "fullName": "krahets/hello-algo",
+      "url": "https://github.com/krahets/hello-algo"
+    },
+    {
+      "id": "ggml-org/llama.cpp",
+      "name": "llama.cpp",
+      "fullName": "ggml-org/llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp"
+    },
+    {
+      "id": "Chalarangelo/30-seconds-of-code",
+      "name": "30-seconds-of-code",
+      "fullName": "Chalarangelo/30-seconds-of-code",
+      "url": "https://github.com/Chalarangelo/30-seconds-of-code"
+    },
+    {
+      "id": "harry0703/MoneyPrinterTurbo",
+      "name": "MoneyPrinterTurbo",
+      "fullName": "harry0703/MoneyPrinterTurbo",
+      "url": "https://github.com/harry0703/MoneyPrinterTurbo"
+    },
+    {
+      "id": "kubernetes/kubernetes",
+      "name": "kubernetes",
+      "fullName": "kubernetes/kubernetes",
+      "url": "https://github.com/kubernetes/kubernetes"
+    },
+    {
+      "id": "openai/codex",
+      "name": "codex",
+      "fullName": "openai/codex",
+      "url": "https://github.com/openai/codex"
+    },
+    {
+      "id": "react/react-native",
+      "name": "react-native",
+      "fullName": "react/react-native",
+      "url": "https://github.com/react/react-native"
+    },
+    {
+      "id": "rustdesk/rustdesk",
+      "name": "rustdesk",
+      "fullName": "rustdesk/rustdesk",
+      "url": "https://github.com/rustdesk/rustdesk"
+    },
+    {
+      "id": "shadcn-ui/ui",
+      "name": "ui",
+      "fullName": "shadcn-ui/ui",
+      "url": "https://github.com/shadcn-ui/ui"
+    },
+    {
+      "id": "Graphify-Labs/graphify",
+      "name": "graphify",
+      "fullName": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify"
+    },
+    {
+      "id": "electron/electron",
+      "name": "electron",
+      "fullName": "electron/electron",
+      "url": "https://github.com/electron/electron"
+    },
+    {
+      "id": "nodejs/node",
+      "name": "node",
+      "fullName": "nodejs/node",
+      "url": "https://github.com/nodejs/node"
+    },
+    {
+      "id": "Hack-with-Github/Awesome-Hacking",
+      "name": "Awesome-Hacking",
+      "fullName": "Hack-with-Github/Awesome-Hacking",
+      "url": "https://github.com/Hack-with-Github/Awesome-Hacking"
+    },
+    {
+      "id": "microsoft/generative-ai-for-beginners",
+      "name": "generative-ai-for-beginners",
+      "fullName": "microsoft/generative-ai-for-beginners",
+      "url": "https://github.com/microsoft/generative-ai-for-beginners"
+    },
+    {
+      "id": "rust-lang/rust",
+      "name": "rust",
+      "fullName": "rust-lang/rust",
+      "url": "https://github.com/rust-lang/rust"
+    },
+    {
+      "id": "VoltAgent/awesome-design-md",
+      "name": "awesome-design-md",
+      "fullName": "VoltAgent/awesome-design-md",
+      "url": "https://github.com/VoltAgent/awesome-design-md"
+    },
+    {
+      "id": "justjavac/free-programming-books-zh_CN",
+      "name": "free-programming-books-zh_CN",
+      "fullName": "justjavac/free-programming-books-zh_CN",
+      "url": "https://github.com/justjavac/free-programming-books-zh_CN"
+    },
+    {
+      "id": "godotengine/godot",
+      "name": "godot",
+      "fullName": "godotengine/godot",
+      "url": "https://github.com/godotengine/godot"
+    },
+    {
+      "id": "2dust/v2rayN",
+      "name": "v2rayN",
+      "fullName": "2dust/v2rayN",
+      "url": "https://github.com/2dust/v2rayN"
+    },
+    {
+      "id": "browser-use/browser-use",
+      "name": "browser-use",
+      "fullName": "browser-use/browser-use",
+      "url": "https://github.com/browser-use/browser-use"
+    },
+    {
+      "id": "mrdoob/three.js",
+      "name": "three.js",
+      "fullName": "mrdoob/three.js",
+      "url": "https://github.com/mrdoob/three.js"
+    },
+    {
+      "id": "immich-app/immich",
+      "name": "immich",
+      "fullName": "immich-app/immich",
+      "url": "https://github.com/immich-app/immich"
+    },
+    {
+      "id": "jaywcjlove/awesome-mac",
+      "name": "awesome-mac",
+      "fullName": "jaywcjlove/awesome-mac",
+      "url": "https://github.com/jaywcjlove/awesome-mac"
+    },
+    {
+      "id": "d3/d3",
+      "name": "d3",
+      "fullName": "d3/d3",
+      "url": "https://github.com/d3/d3"
+    },
+    {
+      "id": "earendil-works/pi",
+      "name": "pi",
+      "fullName": "earendil-works/pi",
+      "url": "https://github.com/earendil-works/pi"
+    },
+    {
+      "id": "tauri-apps/tauri",
+      "name": "tauri",
+      "fullName": "tauri-apps/tauri",
+      "url": "https://github.com/tauri-apps/tauri"
+    },
+    {
+      "id": "microsoft/TypeScript",
+      "name": "TypeScript",
+      "fullName": "microsoft/TypeScript",
+      "url": "https://github.com/microsoft/TypeScript"
+    },
+    {
+      "id": "supabase/supabase",
+      "name": "supabase",
+      "fullName": "supabase/supabase",
+      "url": "https://github.com/supabase/supabase"
+    },
+    {
+      "id": "papers-we-love/papers-we-love",
+      "name": "papers-we-love",
+      "fullName": "papers-we-love/papers-we-love",
+      "url": "https://github.com/papers-we-love/papers-we-love"
+    },
+    {
+      "id": "openai/whisper",
+      "name": "whisper",
+      "fullName": "openai/whisper",
+      "url": "https://github.com/openai/whisper"
+    },
+    {
+      "id": "fatedier/frp",
+      "name": "frp",
+      "fullName": "fatedier/frp",
+      "url": "https://github.com/fatedier/frp"
+    },
+    {
+      "id": "TauricResearch/TradingAgents",
+      "name": "TradingAgents",
+      "fullName": "TauricResearch/TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents"
+    },
+    {
+      "id": "JuliusBrussee/caveman",
+      "name": "caveman",
+      "fullName": "JuliusBrussee/caveman",
+      "url": "https://github.com/JuliusBrussee/caveman"
+    },
+    {
+      "id": "axios/axios",
+      "name": "axios",
+      "fullName": "axios/axios",
+      "url": "https://github.com/axios/axios"
+    },
+    {
+      "id": "denoland/deno",
+      "name": "deno",
+      "fullName": "denoland/deno",
+      "url": "https://github.com/denoland/deno"
+    },
+    {
+      "id": "google-gemini/gemini-cli",
+      "name": "gemini-cli",
+      "fullName": "google-gemini/gemini-cli",
+      "url": "https://github.com/google-gemini/gemini-cli"
+    },
+    {
+      "id": "rasbt/LLMs-from-scratch",
+      "name": "LLMs-from-scratch",
+      "fullName": "rasbt/LLMs-from-scratch",
+      "url": "https://github.com/rasbt/LLMs-from-scratch"
+    },
+    {
+      "id": "goldbergyoni/nodebestpractices",
+      "name": "nodebestpractices",
+      "fullName": "goldbergyoni/nodebestpractices",
+      "url": "https://github.com/goldbergyoni/nodebestpractices"
+    },
+    {
+      "id": "ruanyf/weekly",
+      "name": "weekly",
+      "fullName": "ruanyf/weekly",
+      "url": "https://github.com/ruanyf/weekly"
+    },
+    {
+      "id": "microsoft/terminal",
+      "name": "terminal",
+      "fullName": "microsoft/terminal",
+      "url": "https://github.com/microsoft/terminal"
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-V3",
+      "name": "DeepSeek-V3",
+      "fullName": "deepseek-ai/DeepSeek-V3",
+      "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+    },
+    {
+      "id": "pytorch/pytorch",
+      "name": "pytorch",
+      "fullName": "pytorch/pytorch",
+      "url": "https://github.com/pytorch/pytorch"
+    },
+    {
+      "id": "react/create-react-app",
+      "name": "create-react-app",
+      "fullName": "react/create-react-app",
+      "url": "https://github.com/react/create-react-app"
+    },
+    {
+      "id": "fastapi/fastapi",
+      "name": "fastapi",
+      "fullName": "fastapi/fastapi",
+      "url": "https://github.com/fastapi/fastapi"
+    },
+    {
+      "id": "neovim/neovim",
+      "name": "neovim",
+      "fullName": "neovim/neovim",
+      "url": "https://github.com/neovim/neovim"
+    },
+    {
+      "id": "Anduin2017/HowToCook",
+      "name": "HowToCook",
+      "fullName": "Anduin2017/HowToCook",
+      "url": "https://github.com/Anduin2017/HowToCook"
+    },
+    {
+      "id": "angular/angular",
+      "name": "angular",
+      "fullName": "angular/angular",
+      "url": "https://github.com/angular/angular"
+    },
+    {
+      "id": "addyosmani/agent-skills",
+      "name": "agent-skills",
+      "fullName": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills"
+    },
+    {
+      "id": "mtdvio/every-programmer-should-know",
+      "name": "every-programmer-should-know",
+      "fullName": "mtdvio/every-programmer-should-know",
+      "url": "https://github.com/mtdvio/every-programmer-should-know"
+    },
+    {
+      "id": "ant-design/ant-design",
+      "name": "ant-design",
+      "fullName": "ant-design/ant-design",
+      "url": "https://github.com/ant-design/ant-design"
+    },
+    {
+      "id": "nexu-io/open-design",
+      "name": "open-design",
+      "fullName": "nexu-io/open-design",
+      "url": "https://github.com/nexu-io/open-design"
+    },
+    {
+      "id": "mui/material-ui",
+      "name": "material-ui",
+      "fullName": "mui/material-ui",
+      "url": "https://github.com/mui/material-ui"
+    },
+    {
+      "id": "florinpop17/app-ideas",
+      "name": "app-ideas",
+      "fullName": "florinpop17/app-ideas",
+      "url": "https://github.com/florinpop17/app-ideas"
+    },
+    {
+      "id": "nvbn/thefuck",
+      "name": "thefuck",
+      "fullName": "nvbn/thefuck",
+      "url": "https://github.com/nvbn/thefuck"
+    },
+    {
+      "id": "tailwindlabs/tailwindcss",
+      "name": "tailwindcss",
+      "fullName": "tailwindlabs/tailwindcss",
+      "url": "https://github.com/tailwindlabs/tailwindcss"
+    },
+    {
+      "id": "karpathy/autoresearch",
+      "name": "autoresearch",
+      "fullName": "karpathy/autoresearch",
+      "url": "https://github.com/karpathy/autoresearch"
+    },
+    {
+      "id": "microsoft/playwright",
+      "name": "playwright",
+      "fullName": "microsoft/playwright",
+      "url": "https://github.com/microsoft/playwright"
+    },
+    {
+      "id": "hacksider/Deep-Live-Cam",
+      "name": "Deep-Live-Cam",
+      "fullName": "hacksider/Deep-Live-Cam",
+      "url": "https://github.com/hacksider/Deep-Live-Cam"
+    },
+    {
+      "id": "microsoft/Web-Dev-For-Beginners",
+      "name": "Web-Dev-For-Beginners",
+      "fullName": "microsoft/Web-Dev-For-Beginners",
+      "url": "https://github.com/microsoft/Web-Dev-For-Beginners"
+    },
+    {
+      "id": "paperclipai/paperclip",
+      "name": "paperclip",
+      "fullName": "paperclipai/paperclip",
+      "url": "https://github.com/paperclipai/paperclip"
+    },
+    {
+      "id": "oven-sh/bun",
+      "name": "bun",
+      "fullName": "oven-sh/bun",
+      "url": "https://github.com/oven-sh/bun"
+    },
+    {
+      "id": "ruvnet/RuView",
+      "name": "RuView",
+      "fullName": "ruvnet/RuView",
+      "url": "https://github.com/ruvnet/RuView"
+    },
+    {
+      "id": "puppeteer/puppeteer",
+      "name": "puppeteer",
+      "fullName": "puppeteer/puppeteer",
+      "url": "https://github.com/puppeteer/puppeteer"
+    },
+    {
+      "id": "thedotmack/claude-mem",
+      "name": "claude-mem",
+      "fullName": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem"
+    },
+    {
+      "id": "nvm-sh/nvm",
+      "name": "nvm",
+      "fullName": "nvm-sh/nvm",
+      "url": "https://github.com/nvm-sh/nvm"
+    },
+    {
+      "id": "ryanmcdermott/clean-code-javascript",
+      "name": "clean-code-javascript",
+      "fullName": "ryanmcdermott/clean-code-javascript",
+      "url": "https://github.com/ryanmcdermott/clean-code-javascript"
+    },
+    {
+      "id": "iluwatar/java-design-patterns",
+      "name": "java-design-patterns",
+      "fullName": "iluwatar/java-design-patterns",
+      "url": "https://github.com/iluwatar/java-design-patterns"
+    },
+    {
+      "id": "3b1b/manim",
+      "name": "manim",
+      "fullName": "3b1b/manim",
+      "url": "https://github.com/3b1b/manim"
+    },
+    {
+      "id": "Stirling-Tools/Stirling-PDF",
+      "name": "Stirling-PDF",
+      "fullName": "Stirling-Tools/Stirling-PDF",
+      "url": "https://github.com/Stirling-Tools/Stirling-PDF"
+    },
+    {
+      "id": "localsend/localsend",
+      "name": "localsend",
+      "fullName": "localsend/localsend",
+      "url": "https://github.com/localsend/localsend"
+    },
+    {
+      "id": "sherlock-project/sherlock",
+      "name": "sherlock",
+      "fullName": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock"
+    },
+    {
+      "id": "vllm-project/vllm",
+      "name": "vllm",
+      "fullName": "vllm-project/vllm",
+      "url": "https://github.com/vllm-project/vllm"
+    },
+    {
+      "id": "Leonxlnx/taste-skill",
+      "name": "taste-skill",
+      "fullName": "Leonxlnx/taste-skill",
+      "url": "https://github.com/Leonxlnx/taste-skill"
+    },
+    {
+      "id": "louislam/uptime-kuma",
+      "name": "uptime-kuma",
+      "fullName": "louislam/uptime-kuma",
+      "url": "https://github.com/louislam/uptime-kuma"
+    },
+    {
+      "id": "deepseek-ai/DeepSeek-R1",
+      "name": "DeepSeek-R1",
+      "fullName": "deepseek-ai/DeepSeek-R1",
+      "url": "https://github.com/deepseek-ai/DeepSeek-R1"
+    },
+    {
+      "id": "infiniflow/ragflow",
+      "name": "ragflow",
+      "fullName": "infiniflow/ragflow",
+      "url": "https://github.com/infiniflow/ragflow"
+    },
+    {
+      "id": "OpenCut-app/OpenCut",
+      "name": "OpenCut",
+      "fullName": "OpenCut-app/OpenCut",
+      "url": "https://github.com/OpenCut-app/OpenCut"
+    },
+    {
+      "id": "zed-industries/zed",
+      "name": "zed",
+      "fullName": "zed-industries/zed",
+      "url": "https://github.com/zed-industries/zed"
+    },
+    {
+      "id": "django/django",
+      "name": "django",
+      "fullName": "django/django",
+      "url": "https://github.com/django/django"
+    },
+    {
+      "id": "home-assistant/core",
+      "name": "core",
+      "fullName": "home-assistant/core",
+      "url": "https://github.com/home-assistant/core"
+    },
+    {
+      "id": "microsoft/ML-For-Beginners",
+      "name": "ML-For-Beginners",
+      "fullName": "microsoft/ML-For-Beginners",
+      "url": "https://github.com/microsoft/ML-For-Beginners"
+    },
+    {
+      "id": "storybookjs/storybook",
+      "name": "storybook",
+      "fullName": "storybookjs/storybook",
+      "url": "https://github.com/storybookjs/storybook"
+    },
+    {
+      "id": "opencv/opencv",
+      "name": "opencv",
+      "fullName": "opencv/opencv",
+      "url": "https://github.com/opencv/opencv"
+    },
+    {
+      "id": "modelcontextprotocol/servers",
+      "name": "servers",
+      "fullName": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers"
+    },
+    {
+      "id": "PaddlePaddle/PaddleOCR",
+      "name": "PaddleOCR",
+      "fullName": "PaddlePaddle/PaddleOCR",
+      "url": "https://github.com/PaddlePaddle/PaddleOCR"
+    },
+    {
+      "id": "mermaid-js/mermaid",
+      "name": "mermaid",
+      "fullName": "mermaid-js/mermaid",
+      "url": "https://github.com/mermaid-js/mermaid"
+    },
+    {
+      "id": "astral-sh/uv",
+      "name": "uv",
+      "fullName": "astral-sh/uv",
+      "url": "https://github.com/astral-sh/uv"
+    },
+    {
+      "id": "bitcoin/bitcoin",
+      "name": "bitcoin",
+      "fullName": "bitcoin/bitcoin",
+      "url": "https://github.com/bitcoin/bitcoin"
+    },
+    {
+      "id": "ByteByteGoHq/system-design-101",
+      "name": "system-design-101",
+      "fullName": "ByteByteGoHq/system-design-101",
+      "url": "https://github.com/ByteByteGoHq/system-design-101"
+    },
+    {
+      "id": "PanJiaChen/vue-element-admin",
+      "name": "vue-element-admin",
+      "fullName": "PanJiaChen/vue-element-admin",
+      "url": "https://github.com/PanJiaChen/vue-element-admin"
+    },
+    {
+      "id": "gohugoio/hugo",
+      "name": "hugo",
+      "fullName": "gohugoio/hugo",
+      "url": "https://github.com/gohugoio/hugo"
+    },
+    {
+      "id": "OpenHands/OpenHands",
+      "name": "OpenHands",
+      "fullName": "OpenHands/OpenHands",
+      "url": "https://github.com/OpenHands/OpenHands"
+    },
+    {
+      "id": "MunGell/awesome-for-beginners",
+      "name": "awesome-for-beginners",
+      "fullName": "MunGell/awesome-for-beginners",
+      "url": "https://github.com/MunGell/awesome-for-beginners"
+    },
+    {
+      "id": "Panniantong/Agent-Reach",
+      "name": "Agent-Reach",
+      "fullName": "Panniantong/Agent-Reach",
+      "url": "https://github.com/Panniantong/Agent-Reach"
+    },
+    {
+      "id": "gin-gonic/gin",
+      "name": "gin",
+      "fullName": "gin-gonic/gin",
+      "url": "https://github.com/gin-gonic/gin"
+    },
+    {
+      "id": "syncthing/syncthing",
+      "name": "syncthing",
+      "fullName": "syncthing/syncthing",
+      "url": "https://github.com/syncthing/syncthing"
+    },
+    {
+      "id": "odysseus-dev/odysseus",
+      "name": "odysseus",
+      "fullName": "odysseus-dev/odysseus",
+      "url": "https://github.com/odysseus-dev/odysseus"
+    },
+    {
+      "id": "ChatGPTNextWeb/NextChat",
+      "name": "NextChat",
+      "fullName": "ChatGPTNextWeb/NextChat",
+      "url": "https://github.com/ChatGPTNextWeb/NextChat"
+    },
+    {
+      "id": "sveltejs/svelte",
+      "name": "svelte",
+      "fullName": "sveltejs/svelte",
+      "url": "https://github.com/sveltejs/svelte"
+    },
+    {
+      "id": "koala73/worldmonitor",
+      "name": "worldmonitor",
+      "fullName": "koala73/worldmonitor",
+      "url": "https://github.com/koala73/worldmonitor"
+    },
+    {
+      "id": "D4Vinci/Scrapling",
+      "name": "Scrapling",
+      "fullName": "D4Vinci/Scrapling",
+      "url": "https://github.com/D4Vinci/Scrapling"
+    },
+    {
+      "id": "Egonex-AI/Understand-Anything",
+      "name": "Understand-Anything",
+      "fullName": "Egonex-AI/Understand-Anything",
+      "url": "https://github.com/Egonex-AI/Understand-Anything"
+    },
+    {
+      "id": "laravel/laravel",
+      "name": "laravel",
+      "fullName": "laravel/laravel",
+      "url": "https://github.com/laravel/laravel"
+    },
+    {
+      "id": "macrozheng/mall",
+      "name": "mall",
+      "fullName": "macrozheng/mall",
+      "url": "https://github.com/macrozheng/mall"
+    },
+    {
+      "id": "DopplerHQ/awesome-interview-questions",
+      "name": "awesome-interview-questions",
+      "fullName": "DopplerHQ/awesome-interview-questions",
+      "url": "https://github.com/DopplerHQ/awesome-interview-questions"
+    },
+    {
+      "id": "bregman-arie/devops-exercises",
+      "name": "devops-exercises",
+      "fullName": "bregman-arie/devops-exercises",
+      "url": "https://github.com/bregman-arie/devops-exercises"
+    },
+    {
+      "id": "unclecode/crawl4ai",
+      "name": "crawl4ai",
+      "fullName": "unclecode/crawl4ai",
+      "url": "https://github.com/unclecode/crawl4ai"
+    },
+    {
+      "id": "stablyai/orca",
+      "name": "orca",
+      "fullName": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca"
+    },
+    {
+      "id": "realworld-apps/realworld",
+      "name": "realworld",
+      "fullName": "realworld-apps/realworld",
+      "url": "https://github.com/realworld-apps/realworld"
+    },
+    {
+      "id": "fighting41love/funNLP",
+      "name": "funNLP",
+      "fullName": "fighting41love/funNLP",
+      "url": "https://github.com/fighting41love/funNLP"
+    },
+    {
+      "id": "Developer-Y/cs-video-courses",
+      "name": "cs-video-courses",
+      "fullName": "Developer-Y/cs-video-courses",
+      "url": "https://github.com/Developer-Y/cs-video-courses"
+    },
+    {
+      "id": "junegunn/fzf",
+      "name": "fzf",
+      "fullName": "junegunn/fzf",
+      "url": "https://github.com/junegunn/fzf"
+    },
+    {
+      "id": "bytedance/deer-flow",
+      "name": "deer-flow",
+      "fullName": "bytedance/deer-flow",
+      "url": "https://github.com/bytedance/deer-flow"
+    },
+    {
+      "id": "mlabonne/llm-course",
+      "name": "llm-course",
+      "fullName": "mlabonne/llm-course",
+      "url": "https://github.com/mlabonne/llm-course"
+    },
+    {
+      "id": "vitejs/vite",
+      "name": "vite",
+      "fullName": "vitejs/vite",
+      "url": "https://github.com/vitejs/vite"
+    },
+    {
+      "id": "lobehub/lobehub",
+      "name": "lobehub",
+      "fullName": "lobehub/lobehub",
+      "url": "https://github.com/lobehub/lobehub"
+    },
+    {
+      "id": "jesseduffield/lazygit",
+      "name": "lazygit",
+      "fullName": "jesseduffield/lazygit",
+      "url": "https://github.com/jesseduffield/lazygit"
+    },
+    {
+      "id": "animate-css/animate.css",
+      "name": "animate.css",
+      "fullName": "animate-css/animate.css",
+      "url": "https://github.com/animate-css/animate.css"
+    },
+    {
+      "id": "TapXWorld/ChinaTextbook",
+      "name": "ChinaTextbook",
+      "fullName": "TapXWorld/ChinaTextbook",
+      "url": "https://github.com/TapXWorld/ChinaTextbook"
+    },
+    {
+      "id": "rtk-ai/rtk",
+      "name": "rtk",
+      "fullName": "rtk-ai/rtk",
+      "url": "https://github.com/rtk-ai/rtk"
+    }
+  ],
+  "links": [
+    {
+      "source": "Panniantong/Agent-Reach",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.9072505360690065
+    },
+    {
+      "source": "yt-dlp/yt-dlp",
+      "target": "ytdl-org/youtube-dl",
+      "similarity": 0.9051221487884069
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.8933641816975807
+    },
+    {
+      "source": "microsoft/ML-For-Beginners",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.8835171446761392
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "mattpocock/skills",
+      "similarity": 0.8828851889157402
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.8827471692675043
+    },
+    {
+      "source": "fighting41love/funNLP",
+      "target": "justjavac/free-programming-books-zh_CN",
+      "similarity": 0.8720954817392754
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.8712067489326182
+    },
+    {
+      "source": "fighting41love/funNLP",
+      "target": "jackfrued/Python-100-Days",
+      "similarity": 0.8693223857816471
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.8668193648088024
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-R1",
+      "target": "deepseek-ai/DeepSeek-V3",
+      "similarity": 0.8610332022262174
+    },
+    {
+      "source": "airbnb/javascript",
+      "target": "ryanmcdermott/clean-code-javascript",
+      "similarity": 0.855278147014008
+    },
+    {
+      "source": "iluwatar/java-design-patterns",
+      "target": "openclaw/openclaw",
+      "similarity": 0.8551583718003727
+    },
+    {
+      "source": "Panniantong/Agent-Reach",
+      "target": "fighting41love/funNLP",
+      "similarity": 0.8539274345457838
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "awesome-selfhosted/awesome-selfhosted",
+      "similarity": 0.8490998101806359
+    },
+    {
+      "source": "jackfrued/Python-100-Days",
+      "target": "ruanyf/weekly",
+      "similarity": 0.8459522761605428
+    },
+    {
+      "source": "521xueweihan/HelloGitHub",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.8441075582270746
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "msitarzewski/agency-agents",
+      "similarity": 0.8395521030297373
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.8393839548215896
+    },
+    {
+      "source": "fighting41love/funNLP",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.8388534935904322
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "vuejs/vue",
+      "similarity": 0.8362013520491858
+    },
+    {
+      "source": "justjavac/free-programming-books-zh_CN",
+      "target": "labuladong/fucking-algorithm",
+      "similarity": 0.8345269208988755
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "awesome-selfhosted/awesome-selfhosted",
+      "similarity": 0.8333777518068608
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "vinta/awesome-python",
+      "similarity": 0.8322042085118999
+    },
+    {
+      "source": "microsoft/ML-For-Beginners",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.8294890187085345
+    },
+    {
+      "source": "521xueweihan/HelloGitHub",
+      "target": "CyC2018/CS-Notes",
+      "similarity": 0.8291429875001767
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "msitarzewski/agency-agents",
+      "similarity": 0.8287353174724489
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "lobehub/lobehub",
+      "similarity": 0.8287166202965863
+    },
+    {
+      "source": "microsoft/Web-Dev-For-Beginners",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.8271812989547429
+    },
+    {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "target": "nexu-io/open-design",
+      "similarity": 0.826267417713345
+    },
+    {
+      "source": "fighting41love/funNLP",
+      "target": "labuladong/fucking-algorithm",
+      "similarity": 0.8254723929882801
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.8238322644160555
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "krahets/hello-algo",
+      "similarity": 0.8236331781870484
+    },
+    {
+      "source": "ollama/ollama",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.8222019162517452
+    },
+    {
+      "source": "bregman-arie/devops-exercises",
+      "target": "donnemartin/system-design-primer",
+      "similarity": 0.8219125698963269
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "vinta/awesome-python",
+      "similarity": 0.8195960687888547
+    },
+    {
+      "source": "harry0703/MoneyPrinterTurbo",
+      "target": "macrozheng/mall",
+      "similarity": 0.8187438483364147
+    },
+    {
+      "source": "fighting41love/funNLP",
+      "target": "macrozheng/mall",
+      "similarity": 0.8186956188156823
+    },
+    {
+      "source": "jwasham/coding-interview-university",
+      "target": "trekhleb/javascript-algorithms",
+      "similarity": 0.8184944629076063
+    },
+    {
+      "source": "sindresorhus/awesome",
+      "target": "vinta/awesome-python",
+      "similarity": 0.8168700362204736
+    },
+    {
+      "source": "mtdvio/every-programmer-should-know",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.81522094981391
+    },
+    {
+      "source": "Panniantong/Agent-Reach",
+      "target": "macrozheng/mall",
+      "similarity": 0.8131724081314424
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "donnemartin/system-design-primer",
+      "similarity": 0.8129119597727126
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "nexu-io/open-design",
+      "similarity": 0.8123323630251064
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.8123058125255794
+    },
+    {
+      "source": "react/react",
+      "target": "react/react-native",
+      "similarity": 0.8116241523135097
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.8103999652790869
+    },
+    {
+      "source": "firecrawl/firecrawl",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.8103783234651024
+    },
+    {
+      "source": "Panniantong/Agent-Reach",
+      "target": "clash-verge-rev/clash-verge-rev",
+      "similarity": 0.8099379873008785
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.8099257181957514
+    },
+    {
+      "source": "ollama/ollama",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.8082374071449281
+    },
+    {
+      "source": "jwasham/coding-interview-university",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.8080241434187297
+    },
+    {
+      "source": "harry0703/MoneyPrinterTurbo",
+      "target": "krahets/hello-algo",
+      "similarity": 0.8075996758180999
+    },
+    {
+      "source": "justjavac/free-programming-books-zh_CN",
+      "target": "macrozheng/mall",
+      "similarity": 0.8072166341062973
+    },
+    {
+      "source": "Panniantong/Agent-Reach",
+      "target": "jackfrued/Python-100-Days",
+      "similarity": 0.8039156001053521
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "Panniantong/Agent-Reach",
+      "similarity": 0.8037994692638579
+    },
+    {
+      "source": "521xueweihan/HelloGitHub",
+      "target": "krahets/hello-algo",
+      "similarity": 0.8036153652010575
+    },
+    {
+      "source": "mtdvio/every-programmer-should-know",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.8007393792159095
+    },
+    {
+      "source": "DopplerHQ/awesome-interview-questions",
+      "target": "yangshun/tech-interview-handbook",
+      "similarity": 0.7999676350984359
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "iluwatar/java-design-patterns",
+      "similarity": 0.7999126368475753
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.7992328218244851
+    },
+    {
+      "source": "clash-verge-rev/clash-verge-rev",
+      "target": "macrozheng/mall",
+      "similarity": 0.7991721197694318
+    },
+    {
+      "source": "Developer-Y/cs-video-courses",
+      "target": "jwasham/coding-interview-university",
+      "similarity": 0.798880348316125
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "fighting41love/funNLP",
+      "similarity": 0.7986187580482231
+    },
+    {
+      "source": "mlabonne/llm-course",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7972949827420713
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7965256023070499
+    },
+    {
+      "source": "react/create-react-app",
+      "target": "react/react",
+      "similarity": 0.7964353671485411
+    },
+    {
+      "source": "clash-verge-rev/clash-verge-rev",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.7959142711946438
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7955175562586304
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "stablyai/orca",
+      "similarity": 0.7952380023449425
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "avelino/awesome-go",
+      "similarity": 0.7934780516525475
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "ollama/ollama",
+      "similarity": 0.7931084445146465
+    },
+    {
+      "source": "jackfrued/Python-100-Days",
+      "target": "labuladong/fucking-algorithm",
+      "similarity": 0.7930844142318223
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "github/spec-kit",
+      "similarity": 0.7928955716854349
+    },
+    {
+      "source": "harry0703/MoneyPrinterTurbo",
+      "target": "jackfrued/Python-100-Days",
+      "similarity": 0.7918454764973214
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "ant-design/ant-design",
+      "similarity": 0.7918167941394507
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7910989658405972
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "codecrafters-io/build-your-own-x",
+      "similarity": 0.7901527094656872
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7900563555349898
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7898135304588061
+    },
+    {
+      "source": "langgenius/dify",
+      "target": "mui/material-ui",
+      "similarity": 0.7884216773477505
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.7884177125711904
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "affaan-m/ECC",
+      "similarity": 0.7882487237783279
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.7872300770840536
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "f/prompts.chat",
+      "similarity": 0.7871193695570321
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "github/spec-kit",
+      "similarity": 0.7863492016339124
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "vinta/awesome-python",
+      "similarity": 0.7853673843278132
+    },
+    {
+      "source": "langgenius/dify",
+      "target": "lobehub/lobehub",
+      "similarity": 0.7850084030248079
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "anthropics/skills",
+      "similarity": 0.7841459775632964
+    },
+    {
+      "source": "jesseduffield/lazygit",
+      "target": "openclaw/openclaw",
+      "similarity": 0.7833792211870042
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "odysseus-dev/odysseus",
+      "similarity": 0.7824362844756618
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "langgenius/dify",
+      "similarity": 0.7824296862750909
+    },
+    {
+      "source": "Anduin2017/HowToCook",
+      "target": "jackfrued/Python-100-Days",
+      "similarity": 0.7822447493773593
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "Shubhamsaboo/awesome-llm-apps",
+      "similarity": 0.7820553321077452
+    },
+    {
+      "source": "mattpocock/skills",
+      "target": "multica-ai/andrej-karpathy-skills",
+      "similarity": 0.7815584650590993
+    },
+    {
+      "source": "521xueweihan/HelloGitHub",
+      "target": "Panniantong/Agent-Reach",
+      "similarity": 0.7812602678728241
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.7809596083046596
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.7798893830024163
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "affaan-m/ECC",
+      "similarity": 0.7792064931955223
+    },
+    {
+      "source": "jackfrued/Python-100-Days",
+      "target": "justjavac/free-programming-books-zh_CN",
+      "similarity": 0.7784985620234325
+    },
+    {
+      "source": "f/prompts.chat",
+      "target": "langgenius/dify",
+      "similarity": 0.7769129973368504
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7769056254207394
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7755991135024846
+    },
+    {
+      "source": "iluwatar/java-design-patterns",
+      "target": "krahets/hello-algo",
+      "similarity": 0.7755045285648403
+    },
+    {
+      "source": "jesseduffield/lazygit",
+      "target": "stablyai/orca",
+      "similarity": 0.7754412800946894
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "gin-gonic/gin",
+      "similarity": 0.7740093747539103
+    },
+    {
+      "source": "rustdesk/rustdesk",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.7735911387902007
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "openclaw/openclaw",
+      "similarity": 0.7734928543353669
+    },
+    {
+      "source": "clash-verge-rev/clash-verge-rev",
+      "target": "fighting41love/funNLP",
+      "similarity": 0.7731521432225992
+    },
+    {
+      "source": "msitarzewski/agency-agents",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.773097115476447
+    },
+    {
+      "source": "Snailclimb/JavaGuide",
+      "target": "labuladong/fucking-algorithm",
+      "similarity": 0.7723494849641879
+    },
+    {
+      "source": "ant-design/ant-design",
+      "target": "mui/material-ui",
+      "similarity": 0.7715701920342299
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "lobehub/lobehub",
+      "similarity": 0.7710426630651833
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "ollama/ollama",
+      "similarity": 0.7699134644518953
+    },
+    {
+      "source": "mattpocock/skills",
+      "target": "msitarzewski/agency-agents",
+      "similarity": 0.7691852183156512
+    },
+    {
+      "source": "f/prompts.chat",
+      "target": "iluwatar/java-design-patterns",
+      "similarity": 0.7690912644711771
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "justjavac/free-programming-books-zh_CN",
+      "similarity": 0.7688454255877164
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "bregman-arie/devops-exercises",
+      "similarity": 0.7676422883129315
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "openclaw/openclaw",
+      "similarity": 0.7674048063703994
+    },
+    {
+      "source": "TheAlgorithms/Python",
+      "target": "f/prompts.chat",
+      "similarity": 0.7673854559893967
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "clash-verge-rev/clash-verge-rev",
+      "similarity": 0.7666946807653187
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.7661776487071691
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "vinta/awesome-python",
+      "similarity": 0.7657608468580798
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7652840764493684
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "iluwatar/java-design-patterns",
+      "similarity": 0.7646973585419243
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "firecrawl/firecrawl",
+      "similarity": 0.7645757062505222
+    },
+    {
+      "source": "TheAlgorithms/Python",
+      "target": "openclaw/openclaw",
+      "similarity": 0.7643780406746866
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "ollama/ollama",
+      "similarity": 0.7640541868033618
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "mui/material-ui",
+      "similarity": 0.7629873082769885
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "mattpocock/skills",
+      "similarity": 0.7618798291744197
+    },
+    {
+      "source": "Snailclimb/JavaGuide",
+      "target": "macrozheng/mall",
+      "similarity": 0.7609550479510978
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.7608756327014129
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "github/spec-kit",
+      "similarity": 0.7607299956576705
+    },
+    {
+      "source": "react/create-react-app",
+      "target": "react/react-native",
+      "similarity": 0.7606789837031385
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "lobehub/lobehub",
+      "similarity": 0.7597319091710472
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "TheAlgorithms/Python",
+      "similarity": 0.7597302647256245
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7594814448610372
+    },
+    {
+      "source": "langgenius/dify",
+      "target": "stablyai/orca",
+      "similarity": 0.7593611215187522
+    },
+    {
+      "source": "f/prompts.chat",
+      "target": "stablyai/orca",
+      "similarity": 0.7593290611457468
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7590325752659765
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.7588892536744376
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.7586667761553263
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "stablyai/orca",
+      "similarity": 0.7582771316088461
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7581897402608665
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "Graphify-Labs/graphify",
+      "similarity": 0.7565108268277129
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.7564526437185716
+    },
+    {
+      "source": "krahets/hello-algo",
+      "target": "openclaw/openclaw",
+      "similarity": 0.7561815325066475
+    },
+    {
+      "source": "msitarzewski/agency-agents",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7561432461179258
+    },
+    {
+      "source": "Snailclimb/JavaGuide",
+      "target": "jackfrued/Python-100-Days",
+      "similarity": 0.7560549631321942
+    },
+    {
+      "source": "pytorch/pytorch",
+      "target": "tensorflow/tensorflow",
+      "similarity": 0.7553384953348078
+    },
+    {
+      "source": "labuladong/fucking-algorithm",
+      "target": "macrozheng/mall",
+      "similarity": 0.7544614663498267
+    },
+    {
+      "source": "fighting41love/funNLP",
+      "target": "ruanyf/weekly",
+      "similarity": 0.7540488857417738
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "jaywcjlove/awesome-mac",
+      "similarity": 0.7536855758998295
+    },
+    {
+      "source": "VoltAgent/awesome-design-md",
+      "target": "nexu-io/open-design",
+      "similarity": 0.752725346259689
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "jesseduffield/lazygit",
+      "similarity": 0.7520746035198955
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "mui/material-ui",
+      "similarity": 0.7519803184569503
+    },
+    {
+      "source": "jesseduffield/lazygit",
+      "target": "langgenius/dify",
+      "similarity": 0.7519047726471875
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7515799790886352
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.7510791393788789
+    },
+    {
+      "source": "DietrichGebert/ponytail",
+      "target": "affaan-m/ECC",
+      "similarity": 0.7501214973688151
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "affaan-m/ECC",
+      "similarity": 0.7500927469332694
+    },
+    {
+      "source": "oven-sh/bun",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7496068543574336
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "langgenius/dify",
+      "similarity": 0.7494299774243871
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "goldbergyoni/nodebestpractices",
+      "similarity": 0.7489208874115227
+    },
+    {
+      "source": "Anduin2017/HowToCook",
+      "target": "fighting41love/funNLP",
+      "similarity": 0.7487808293519855
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.7487099510431502
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.7483226963604835
+    },
+    {
+      "source": "ant-design/ant-design",
+      "target": "lobehub/lobehub",
+      "similarity": 0.7480958174588109
+    },
+    {
+      "source": "jesseduffield/lazygit",
+      "target": "lobehub/lobehub",
+      "similarity": 0.7473172972323888
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7470869273958753
+    },
+    {
+      "source": "Anduin2017/HowToCook",
+      "target": "Panniantong/Agent-Reach",
+      "similarity": 0.7468586083428708
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7466009341369286
+    },
+    {
+      "source": "jwasham/coding-interview-university",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7463952072862293
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7462690658233321
+    },
+    {
+      "source": "TheAlgorithms/Python",
+      "target": "langgenius/dify",
+      "similarity": 0.7458368812252009
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.7451471225664001
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.744778281527053
+    },
+    {
+      "source": "excalidraw/excalidraw",
+      "target": "mui/material-ui",
+      "similarity": 0.7443176424239769
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "mattpocock/skills",
+      "similarity": 0.7441591818902843
+    },
+    {
+      "source": "Snailclimb/JavaGuide",
+      "target": "justjavac/free-programming-books-zh_CN",
+      "similarity": 0.7438463708007029
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "langgenius/dify",
+      "similarity": 0.7436685032299362
+    },
+    {
+      "source": "jwasham/coding-interview-university",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.743292458698338
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "justjavac/free-programming-books-zh_CN",
+      "similarity": 0.7429745807788387
+    },
+    {
+      "source": "anthropics/skills",
+      "target": "mattpocock/skills",
+      "similarity": 0.7429479938158424
+    },
+    {
+      "source": "AUTOMATIC1111/stable-diffusion-webui",
+      "target": "Comfy-Org/ComfyUI",
+      "similarity": 0.7423488419444491
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7418771369785696
+    },
+    {
+      "source": "jaywcjlove/awesome-mac",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.7416903526153507
+    },
+    {
+      "source": "521xueweihan/HelloGitHub",
+      "target": "iluwatar/java-design-patterns",
+      "similarity": 0.7415805488589381
+    },
+    {
+      "source": "Snailclimb/JavaGuide",
+      "target": "ruanyf/weekly",
+      "similarity": 0.7414689438873703
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "mui/material-ui",
+      "similarity": 0.740895066826786
+    },
+    {
+      "source": "nilbuild/developer-roadmap",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7408551507395695
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "gin-gonic/gin",
+      "similarity": 0.7395500093083731
+    },
+    {
+      "source": "Developer-Y/cs-video-courses",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7390331130244043
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "JuliusBrussee/caveman",
+      "similarity": 0.7390173568186968
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "obra/superpowers",
+      "similarity": 0.7381153492035455
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "jesseduffield/lazygit",
+      "similarity": 0.738008762255062
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "stablyai/orca",
+      "similarity": 0.7377897780508118
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7375468302108535
+    },
+    {
+      "source": "VoltAgent/awesome-design-md",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.7372320509125845
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7370622446891341
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.736733758556414
+    },
+    {
+      "source": "ant-design/ant-design",
+      "target": "storybookjs/storybook",
+      "similarity": 0.7365262212837056
+    },
+    {
+      "source": "microsoft/generative-ai-for-beginners",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7360568638015328
+    },
+    {
+      "source": "TheAlgorithms/Python",
+      "target": "jesseduffield/lazygit",
+      "similarity": 0.7358266576263139
+    },
+    {
+      "source": "ripienaar/free-for-dev",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.7355880065075059
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "oven-sh/bun",
+      "similarity": 0.7352836413679628
+    },
+    {
+      "source": "microsoft/generative-ai-for-beginners",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7350734401301338
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-R1",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7347963602164719
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "garrytan/gstack",
+      "similarity": 0.7346517624229785
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.7333097443839462
+    },
+    {
+      "source": "Panniantong/Agent-Reach",
+      "target": "ruanyf/weekly",
+      "similarity": 0.7320101845600376
+    },
+    {
+      "source": "DietrichGebert/ponytail",
+      "target": "Egonex-AI/Understand-Anything",
+      "similarity": 0.7317263374171566
+    },
+    {
+      "source": "ant-design/ant-design",
+      "target": "stablyai/orca",
+      "similarity": 0.7315561265893137
+    },
+    {
+      "source": "DietrichGebert/ponytail",
+      "target": "JuliusBrussee/caveman",
+      "similarity": 0.731245470291718
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "public-apis/public-apis",
+      "similarity": 0.731198546244459
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.7301227386914471
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "Shubhamsaboo/awesome-llm-apps",
+      "similarity": 0.7299908474491748
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "awesome-selfhosted/awesome-selfhosted",
+      "similarity": 0.7295221475897848
+    },
+    {
+      "source": "addyosmani/agent-skills",
+      "target": "multica-ai/andrej-karpathy-skills",
+      "similarity": 0.729465027767212
+    },
+    {
+      "source": "DietrichGebert/ponytail",
+      "target": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "similarity": 0.7294298927528307
+    },
+    {
+      "source": "excalidraw/excalidraw",
+      "target": "stablyai/orca",
+      "similarity": 0.7284341462402202
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "earendil-works/pi",
+      "similarity": 0.7281811807130523
+    },
+    {
+      "source": "florinpop17/app-ideas",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.728071841386434
+    },
+    {
+      "source": "garrytan/gstack",
+      "target": "obra/superpowers",
+      "similarity": 0.7273816017079335
+    },
+    {
+      "source": "Anduin2017/HowToCook",
+      "target": "ruanyf/weekly",
+      "similarity": 0.7269309817382641
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "VoltAgent/awesome-design-md",
+      "similarity": 0.7254093040576929
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-V3",
+      "target": "mlabonne/llm-course",
+      "similarity": 0.7243729679445395
+    },
+    {
+      "source": "mtdvio/every-programmer-should-know",
+      "target": "ossu/computer-science",
+      "similarity": 0.7243415150115489
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.7241348931993987
+    },
+    {
+      "source": "public-apis/public-apis",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.7238854838586425
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "storybookjs/storybook",
+      "similarity": 0.7238633862759479
+    },
+    {
+      "source": "garrytan/gstack",
+      "target": "mattpocock/skills",
+      "similarity": 0.7238286412251502
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7234509948654676
+    },
+    {
+      "source": "immich-app/immich",
+      "target": "stablyai/orca",
+      "similarity": 0.7232241163081079
+    },
+    {
+      "source": "OpenHands/OpenHands",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7231319275833573
+    },
+    {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "target": "obra/superpowers",
+      "similarity": 0.7231136246321306
+    },
+    {
+      "source": "microsoft/Web-Dev-For-Beginners",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7222683353799003
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "oven-sh/bun",
+      "similarity": 0.7217661843419168
+    },
+    {
+      "source": "mui/material-ui",
+      "target": "storybookjs/storybook",
+      "similarity": 0.7214694876265434
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "garrytan/gstack",
+      "similarity": 0.7213930033915755
+    },
+    {
+      "source": "browser-use/browser-use",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7211403493317795
+    },
+    {
+      "source": "mlabonne/llm-course",
+      "target": "vllm-project/vllm",
+      "similarity": 0.7206905388782765
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "NousResearch/hermes-agent",
+      "similarity": 0.7190962473940663
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "garrytan/gstack",
+      "similarity": 0.7178449969951962
+    },
+    {
+      "source": "mattpocock/skills",
+      "target": "obra/superpowers",
+      "similarity": 0.7177067912658598
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "obra/superpowers",
+      "similarity": 0.717425522014295
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7171486734192719
+    },
+    {
+      "source": "nilbuild/developer-roadmap",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7170449991044153
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "oven-sh/bun",
+      "similarity": 0.7169361244762807
+    },
+    {
+      "source": "microsoft/ML-For-Beginners",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.7164439584859202
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "vitejs/vite",
+      "similarity": 0.7163625590241085
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.7161496891761058
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "anthropics/claude-code",
+      "similarity": 0.7157767296354053
+    },
+    {
+      "source": "mlabonne/llm-course",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.715728076529926
+    },
+    {
+      "source": "Anduin2017/HowToCook",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.7155263638424164
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.7151450320599664
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.7151188302416646
+    },
+    {
+      "source": "huggingface/transformers",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.7138619995250383
+    },
+    {
+      "source": "trimstray/the-book-of-secret-knowledge",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7137608968992205
+    },
+    {
+      "source": "microsoft/ML-For-Beginners",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7137135706351889
+    },
+    {
+      "source": "langchain-ai/langchain",
+      "target": "langflow-ai/langflow",
+      "similarity": 0.7134776622641169
+    },
+    {
+      "source": "VoltAgent/awesome-design-md",
+      "target": "mui/material-ui",
+      "similarity": 0.7133934169154231
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "open-webui/open-webui",
+      "similarity": 0.713366633724119
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "odysseus-dev/odysseus",
+      "similarity": 0.7131270571028677
+    },
+    {
+      "source": "jwasham/coding-interview-university",
+      "target": "ossu/computer-science",
+      "similarity": 0.7125993962727202
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "NousResearch/hermes-agent",
+      "similarity": 0.712483522541951
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "langchain-ai/langchain",
+      "similarity": 0.7123310898431502
+    },
+    {
+      "source": "anomalyco/opencode",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7121664595514597
+    },
+    {
+      "source": "excalidraw/excalidraw",
+      "target": "langgenius/dify",
+      "similarity": 0.7121633753494335
+    },
+    {
+      "source": "mtdvio/every-programmer-should-know",
+      "target": "yangshun/tech-interview-handbook",
+      "similarity": 0.7115829373697932
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7114303165206348
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.7107746452016138
+    },
+    {
+      "source": "excalidraw/excalidraw",
+      "target": "storybookjs/storybook",
+      "similarity": 0.7103304968511995
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "OpenCut-app/OpenCut",
+      "similarity": 0.7100212244852222
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-R1",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.709611882462662
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "google-gemini/gemini-cli",
+      "similarity": 0.7094222689521286
+    },
+    {
+      "source": "excalidraw/excalidraw",
+      "target": "openclaw/openclaw",
+      "similarity": 0.7092217591944177
+    },
+    {
+      "source": "farion1231/cc-switch",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.70892103669204
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-V3",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.7088856400969966
+    },
+    {
+      "source": "sherlock-project/sherlock",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7084984850664914
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "browser-use/browser-use",
+      "similarity": 0.7084345717132207
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "public-apis/public-apis",
+      "similarity": 0.708104785032322
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.7080129566862826
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "krahets/hello-algo",
+      "similarity": 0.707509380300871
+    },
+    {
+      "source": "DietrichGebert/ponytail",
+      "target": "nexu-io/open-design",
+      "similarity": 0.7073422151911739
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "gin-gonic/gin",
+      "similarity": 0.7068411706809284
+    },
+    {
+      "source": "mlabonne/llm-course",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7064115639619213
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.7058725646705929
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-R1",
+      "target": "mlabonne/llm-course",
+      "similarity": 0.705801640812479
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "farion1231/cc-switch",
+      "similarity": 0.7050604143797499
+    },
+    {
+      "source": "OpenHands/OpenHands",
+      "target": "earendil-works/pi",
+      "similarity": 0.7049384626398654
+    },
+    {
+      "source": "langchain-ai/langchain",
+      "target": "vinta/awesome-python",
+      "similarity": 0.7049222386335569
+    },
+    {
+      "source": "gin-gonic/gin",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.7047813670257178
+    },
+    {
+      "source": "nilbuild/developer-roadmap",
+      "target": "twbs/bootstrap",
+      "similarity": 0.7047244889889612
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "MunGell/awesome-for-beginners",
+      "similarity": 0.7045607075990336
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "florinpop17/app-ideas",
+      "similarity": 0.7036944741694017
+    },
+    {
+      "source": "Significant-Gravitas/AutoGPT",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.7028850740739229
+    },
+    {
+      "source": "browser-use/browser-use",
+      "target": "firecrawl/firecrawl",
+      "similarity": 0.7028217831495202
+    },
+    {
+      "source": "Comfy-Org/ComfyUI",
+      "target": "pytorch/pytorch",
+      "similarity": 0.70281194533864
+    },
+    {
+      "source": "huggingface/transformers",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7026830447412817
+    },
+    {
+      "source": "fastapi/fastapi",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7024309837072127
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "ggml-org/llama.cpp",
+      "similarity": 0.7023534751529191
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.7019576752419276
+    },
+    {
+      "source": "public-apis/public-apis",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.7016443937758766
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.7008882746575387
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "public-apis/public-apis",
+      "similarity": 0.7007820000726852
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "odysseus-dev/odysseus",
+      "similarity": 0.7006990422780494
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "jaywcjlove/awesome-mac",
+      "similarity": 0.7006949083479641
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "microsoft/ML-For-Beginners",
+      "similarity": 0.700693309175641
+    },
+    {
+      "source": "mui/material-ui",
+      "target": "twbs/bootstrap",
+      "similarity": 0.7005882302727219
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "fastapi/fastapi",
+      "similarity": 0.7005649472102293
+    },
+    {
+      "source": "vitejs/vite",
+      "target": "vuejs/vue",
+      "similarity": 0.7004091628355726
+    },
+    {
+      "source": "ggml-org/llama.cpp",
+      "target": "ollama/ollama",
+      "similarity": 0.7002876237103083
+    },
+    {
+      "source": "Developer-Y/cs-video-courses",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.7002764095938286
+    },
+    {
+      "source": "getify/You-Dont-Know-JS",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.7000276457870277
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.6997668668379097
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "oven-sh/bun",
+      "similarity": 0.6997068003977016
+    },
+    {
+      "source": "Developer-Y/cs-video-courses",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.6994141425933424
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "earendil-works/pi",
+      "similarity": 0.6992318131274435
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.6988154919603109
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "ant-design/ant-design",
+      "similarity": 0.6983180526192142
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "bytedance/deer-flow",
+      "similarity": 0.6977696947425052
+    },
+    {
+      "source": "bytedance/deer-flow",
+      "target": "garrytan/gstack",
+      "similarity": 0.6977586810031836
+    },
+    {
+      "source": "ollama/ollama",
+      "target": "open-webui/open-webui",
+      "similarity": 0.6974179657712247
+    },
+    {
+      "source": "Comfy-Org/ComfyUI",
+      "target": "hacksider/Deep-Live-Cam",
+      "similarity": 0.6968130446680152
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "deepseek-ai/DeepSeek-R1",
+      "similarity": 0.6964598905339735
+    },
+    {
+      "source": "jlevy/the-art-of-command-line",
+      "target": "nvbn/thefuck",
+      "similarity": 0.6964252495358207
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "Significant-Gravitas/AutoGPT",
+      "similarity": 0.6954845577733533
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "infiniflow/ragflow",
+      "similarity": 0.6954671286973353
+    },
+    {
+      "source": "openclaw/openclaw",
+      "target": "storybookjs/storybook",
+      "similarity": 0.695298920764859
+    },
+    {
+      "source": "langchain-ai/langchain",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.6946700256627142
+    },
+    {
+      "source": "immich-app/immich",
+      "target": "langgenius/dify",
+      "similarity": 0.6942399805862687
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "browser-use/browser-use",
+      "similarity": 0.6940813894921087
+    },
+    {
+      "source": "ggml-org/llama.cpp",
+      "target": "nexu-io/open-design",
+      "similarity": 0.6939055983965626
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-R1",
+      "target": "huggingface/transformers",
+      "similarity": 0.6936003554534466
+    },
+    {
+      "source": "farion1231/cc-switch",
+      "target": "ollama/ollama",
+      "similarity": 0.6933941893840415
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "ggml-org/llama.cpp",
+      "similarity": 0.6932636719430625
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "farion1231/cc-switch",
+      "similarity": 0.6931534376888634
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.6928886724276448
+    },
+    {
+      "source": "jaywcjlove/awesome-mac",
+      "target": "ollama/ollama",
+      "similarity": 0.6928498139498015
+    },
+    {
+      "source": "browser-use/browser-use",
+      "target": "fastapi/fastapi",
+      "similarity": 0.6926682017281488
+    },
+    {
+      "source": "florinpop17/app-ideas",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.6923236751138796
+    },
+    {
+      "source": "anthropics/claude-code",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.6923171872801679
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "Significant-Gravitas/AutoGPT",
+      "similarity": 0.6920576957658642
+    },
+    {
+      "source": "sherlock-project/sherlock",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.6915694572106981
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "lobehub/lobehub",
+      "similarity": 0.6914385967672002
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "open-webui/open-webui",
+      "similarity": 0.6902728662803561
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "odysseus-dev/odysseus",
+      "similarity": 0.6902079047760605
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-V3",
+      "target": "vllm-project/vllm",
+      "similarity": 0.6891027187752241
+    },
+    {
+      "source": "anomalyco/opencode",
+      "target": "openai/codex",
+      "similarity": 0.6887029733697257
+    },
+    {
+      "source": "farion1231/cc-switch",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.6884431746132472
+    },
+    {
+      "source": "ggml-org/llama.cpp",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.6883910227193252
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "gohugoio/hugo",
+      "similarity": 0.6877290859983665
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "odysseus-dev/odysseus",
+      "similarity": 0.6876250862538167
+    },
+    {
+      "source": "CyC2018/CS-Notes",
+      "target": "TapXWorld/ChinaTextbook",
+      "similarity": 0.6875978381406874
+    },
+    {
+      "source": "OpenHands/OpenHands",
+      "target": "browser-use/browser-use",
+      "similarity": 0.6875636606207833
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "gohugoio/hugo",
+      "similarity": 0.687254714313047
+    },
+    {
+      "source": "langchain-ai/langchain",
+      "target": "ollama/ollama",
+      "similarity": 0.6865562252966376
+    },
+    {
+      "source": "stablyai/orca",
+      "target": "supabase/supabase",
+      "similarity": 0.6864145092668659
+    },
+    {
+      "source": "Developer-Y/cs-video-courses",
+      "target": "ossu/computer-science",
+      "similarity": 0.6852984780314673
+    },
+    {
+      "source": "donnemartin/system-design-primer",
+      "target": "jwasham/coding-interview-university",
+      "similarity": 0.6848641902442835
+    },
+    {
+      "source": "VoltAgent/awesome-design-md",
+      "target": "ant-design/ant-design",
+      "similarity": 0.6847315609372212
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.6843525274594336
+    },
+    {
+      "source": "mui/material-ui",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.6835966152574917
+    },
+    {
+      "source": "microsoft/Web-Dev-For-Beginners",
+      "target": "ossu/computer-science",
+      "similarity": 0.6832109712047316
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "mui/material-ui",
+      "similarity": 0.6830697762685851
+    },
+    {
+      "source": "ultraworkers/claw-code",
+      "target": "zed-industries/zed",
+      "similarity": 0.6829278977575772
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "deepseek-ai/deepseek-harness",
+      "similarity": 0.6828119682343124
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "jaywcjlove/awesome-mac",
+      "similarity": 0.6825672510201672
+    },
+    {
+      "source": "junegunn/fzf",
+      "target": "nvbn/thefuck",
+      "similarity": 0.6824715576428051
+    },
+    {
+      "source": "microsoft/ML-For-Beginners",
+      "target": "ossu/computer-science",
+      "similarity": 0.6823840920782313
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "nvm-sh/nvm",
+      "similarity": 0.6821761580849067
+    },
+    {
+      "source": "getify/You-Dont-Know-JS",
+      "target": "storybookjs/storybook",
+      "similarity": 0.6817059590194647
+    },
+    {
+      "source": "nvbn/thefuck",
+      "target": "nvm-sh/nvm",
+      "similarity": 0.681429020875513
+    },
+    {
+      "source": "mermaid-js/mermaid",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.6804264194198861
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "immich-app/immich",
+      "similarity": 0.6796753228651845
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "google-gemini/gemini-cli",
+      "similarity": 0.6789416801659306
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "Hack-with-Github/Awesome-Hacking",
+      "similarity": 0.6785929790101016
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "getify/You-Dont-Know-JS",
+      "similarity": 0.6779803291835448
+    },
+    {
+      "source": "DopplerHQ/awesome-interview-questions",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.6779114360259024
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "twbs/bootstrap",
+      "similarity": 0.6775056010489456
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "donnemartin/system-design-primer",
+      "similarity": 0.6773008878611766
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "google-gemini/gemini-cli",
+      "similarity": 0.6772821255884048
+    },
+    {
+      "source": "infiniflow/ragflow",
+      "target": "lobehub/lobehub",
+      "similarity": 0.6771708225033016
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "Significant-Gravitas/AutoGPT",
+      "similarity": 0.6761737613451722
+    },
+    {
+      "source": "AUTOMATIC1111/stable-diffusion-webui",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.6760922693821404
+    },
+    {
+      "source": "getify/You-Dont-Know-JS",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.676056479288002
+    },
+    {
+      "source": "huggingface/transformers",
+      "target": "mlabonne/llm-course",
+      "similarity": 0.6758549723740145
+    },
+    {
+      "source": "tensorflow/tensorflow",
+      "target": "vinta/awesome-python",
+      "similarity": 0.6756382053572071
+    },
+    {
+      "source": "florinpop17/app-ideas",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.6751296272053336
+    },
+    {
+      "source": "fastapi/fastapi",
+      "target": "public-apis/public-apis",
+      "similarity": 0.674768787441068
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.6745847773490631
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "modelcontextprotocol/servers",
+      "similarity": 0.6743400598381918
+    },
+    {
+      "source": "florinpop17/app-ideas",
+      "target": "microsoft/ML-For-Beginners",
+      "similarity": 0.6743287536559585
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "anthropics/claude-code",
+      "similarity": 0.6741261401624642
+    },
+    {
+      "source": "huggingface/transformers",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.6735970213991128
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "open-webui/open-webui",
+      "similarity": 0.6733863386647927
+    },
+    {
+      "source": "jlevy/the-art-of-command-line",
+      "target": "junegunn/fzf",
+      "similarity": 0.673064206063168
+    },
+    {
+      "source": "deepseek-ai/deepseek-harness",
+      "target": "nexu-io/open-design",
+      "similarity": 0.6730458149088553
+    },
+    {
+      "source": "microsoft/playwright",
+      "target": "puppeteer/puppeteer",
+      "similarity": 0.6723498310654246
+    },
+    {
+      "source": "AUTOMATIC1111/stable-diffusion-webui",
+      "target": "ollama/ollama",
+      "similarity": 0.6723158480378729
+    },
+    {
+      "source": "karpathy/autoresearch",
+      "target": "pytorch/pytorch",
+      "similarity": 0.6717695521186098
+    },
+    {
+      "source": "pytorch/pytorch",
+      "target": "vinta/awesome-python",
+      "similarity": 0.671709936876927
+    },
+    {
+      "source": "gin-gonic/gin",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.6715614269066743
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "TauricResearch/TradingAgents",
+      "similarity": 0.6714099436365034
+    },
+    {
+      "source": "supabase/supabase",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.6713933833153923
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "rustdesk/rustdesk",
+      "similarity": 0.6711378446932537
+    },
+    {
+      "source": "karpathy/autoresearch",
+      "target": "mlabonne/llm-course",
+      "similarity": 0.6709445915553535
+    },
+    {
+      "source": "junegunn/fzf",
+      "target": "ohmyzsh/ohmyzsh",
+      "similarity": 0.6709185411404379
+    },
+    {
+      "source": "rasbt/LLMs-from-scratch",
+      "target": "vllm-project/vllm",
+      "similarity": 0.6706468427404139
+    },
+    {
+      "source": "521xueweihan/HelloGitHub",
+      "target": "TapXWorld/ChinaTextbook",
+      "similarity": 0.6703382198755342
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "tensorflow/tensorflow",
+      "similarity": 0.6699408187111138
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "langflow-ai/langflow",
+      "similarity": 0.6697936069451119
+    },
+    {
+      "source": "google-gemini/gemini-cli",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.6696744800684575
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "donnemartin/system-design-primer",
+      "similarity": 0.669530701174526
+    },
+    {
+      "source": "freeCodeCamp/freeCodeCamp",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.6695159432566105
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "modelcontextprotocol/servers",
+      "similarity": 0.6694919434853325
+    },
+    {
+      "source": "microsoft/Web-Dev-For-Beginners",
+      "target": "yangshun/tech-interview-handbook",
+      "similarity": 0.6694687804800539
+    },
+    {
+      "source": "Comfy-Org/ComfyUI",
+      "target": "ggml-org/llama.cpp",
+      "similarity": 0.6692633172075716
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "localsend/localsend",
+      "similarity": 0.6691961458103722
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "bytedance/deer-flow",
+      "similarity": 0.669173076351764
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "n8n-io/n8n",
+      "similarity": 0.6691109092737971
+    },
+    {
+      "source": "nodejs/node",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.6690412397367427
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "nexu-io/open-design",
+      "similarity": 0.6688761152648952
+    },
+    {
+      "source": "nvbn/thefuck",
+      "target": "rtk-ai/rtk",
+      "similarity": 0.6685362985469309
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "nvbn/thefuck",
+      "similarity": 0.6684713462753902
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.6681370396601926
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "louislam/uptime-kuma",
+      "similarity": 0.6680387766871292
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "n8n-io/n8n",
+      "similarity": 0.6676957748414093
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.6667980211263103
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "twbs/bootstrap",
+      "similarity": 0.6662304782954914
+    },
+    {
+      "source": "jaywcjlove/awesome-mac",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.6661016192749948
+    },
+    {
+      "source": "Significant-Gravitas/AutoGPT",
+      "target": "farion1231/cc-switch",
+      "similarity": 0.6659374138441481
+    },
+    {
+      "source": "fastapi/fastapi",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.6649455531925555
+    },
+    {
+      "source": "infiniflow/ragflow",
+      "target": "nexu-io/open-design",
+      "similarity": 0.6648647911631215
+    },
+    {
+      "source": "deepseek-ai/deepseek-harness",
+      "target": "earendil-works/pi",
+      "similarity": 0.6642228876865792
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "twbs/bootstrap",
+      "similarity": 0.6641510438580039
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "mermaid-js/mermaid",
+      "similarity": 0.6639403693887326
+    },
+    {
+      "source": "Graphify-Labs/graphify",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.6639038205892955
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "anomalyco/opencode",
+      "similarity": 0.6638122715756104
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "deepseek-ai/deepseek-harness",
+      "similarity": 0.6632644565709336
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "supabase/supabase",
+      "similarity": 0.6630866647331167
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "tensorflow/tensorflow",
+      "similarity": 0.6630786803935611
+    },
+    {
+      "source": "Comfy-Org/ComfyUI",
+      "target": "nexu-io/open-design",
+      "similarity": 0.6627316567122628
+    },
+    {
+      "source": "farion1231/cc-switch",
+      "target": "google-gemini/gemini-cli",
+      "similarity": 0.6621011058357502
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "supabase/supabase",
+      "similarity": 0.662063540135029
+    },
+    {
+      "source": "rust-lang/rust",
+      "target": "rustdesk/rustdesk",
+      "similarity": 0.6620451030218684
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "TauricResearch/TradingAgents",
+      "similarity": 0.6618075261424824
+    },
+    {
+      "source": "nilbuild/developer-roadmap",
+      "target": "supabase/supabase",
+      "similarity": 0.6615802841373338
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "modelcontextprotocol/servers",
+      "similarity": 0.6611289117073812
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "sherlock-project/sherlock",
+      "similarity": 0.6606296697123551
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.6606085808996031
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "infiniflow/ragflow",
+      "similarity": 0.6603454900939314
+    },
+    {
+      "source": "infiniflow/ragflow",
+      "target": "odysseus-dev/odysseus",
+      "similarity": 0.6597386772631216
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "modelcontextprotocol/servers",
+      "similarity": 0.6593238224776818
+    },
+    {
+      "source": "fastapi/fastapi",
+      "target": "firecrawl/firecrawl",
+      "similarity": 0.6582286130754733
+    },
+    {
+      "source": "TauricResearch/TradingAgents",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.6572453550301727
+    },
+    {
+      "source": "open-webui/open-webui",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.6566282823637163
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "multica-ai/andrej-karpathy-skills",
+      "similarity": 0.656445016618632
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-V3",
+      "target": "karpathy/autoresearch",
+      "similarity": 0.6563948269774746
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "jlevy/the-art-of-command-line",
+      "similarity": 0.6561041266024356
+    },
+    {
+      "source": "garrytan/gstack",
+      "target": "multica-ai/andrej-karpathy-skills",
+      "similarity": 0.6552405902279124
+    },
+    {
+      "source": "getify/You-Dont-Know-JS",
+      "target": "krahets/hello-algo",
+      "similarity": 0.6547086066954729
+    },
+    {
+      "source": "neovim/neovim",
+      "target": "nvm-sh/nvm",
+      "similarity": 0.6546560753296284
+    },
+    {
+      "source": "OpenHands/OpenHands",
+      "target": "awesome-selfhosted/awesome-selfhosted",
+      "similarity": 0.6542402135632938
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "Graphify-Labs/graphify",
+      "similarity": 0.6539554298023311
+    },
+    {
+      "source": "Comfy-Org/ComfyUI",
+      "target": "tensorflow/tensorflow",
+      "similarity": 0.6539463742169463
+    },
+    {
+      "source": "Graphify-Labs/graphify",
+      "target": "affaan-m/ECC",
+      "similarity": 0.6534213587986792
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "anthropics/claude-code",
+      "similarity": 0.653384773029141
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "similarity": 0.6533780505467267
+    },
+    {
+      "source": "Graphify-Labs/graphify",
+      "target": "NousResearch/hermes-agent",
+      "similarity": 0.6533211523859503
+    },
+    {
+      "source": "AUTOMATIC1111/stable-diffusion-webui",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.6531381275856311
+    },
+    {
+      "source": "3b1b/manim",
+      "target": "hacksider/Deep-Live-Cam",
+      "similarity": 0.6531048348883703
+    },
+    {
+      "source": "ggml-org/llama.cpp",
+      "target": "modelcontextprotocol/servers",
+      "similarity": 0.6522987249842366
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "anomalyco/opencode",
+      "similarity": 0.6518682468500786
+    },
+    {
+      "source": "mtdvio/every-programmer-should-know",
+      "target": "nodejs/node",
+      "similarity": 0.6518451735008464
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "immich-app/immich",
+      "similarity": 0.6518097126929715
+    },
+    {
+      "source": "n8n-io/n8n",
+      "target": "ollama/ollama",
+      "similarity": 0.6517258434326646
+    },
+    {
+      "source": "bytedance/deer-flow",
+      "target": "earendil-works/pi",
+      "similarity": 0.6515595870382986
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "n8n-io/n8n",
+      "similarity": 0.651348302576997
+    },
+    {
+      "source": "TapXWorld/ChinaTextbook",
+      "target": "justjavac/free-programming-books-zh_CN",
+      "similarity": 0.6513326349750044
+    },
+    {
+      "source": "firecrawl/firecrawl",
+      "target": "sherlock-project/sherlock",
+      "similarity": 0.6512863995162171
+    },
+    {
+      "source": "TapXWorld/ChinaTextbook",
+      "target": "fighting41love/funNLP",
+      "similarity": 0.6510377282549328
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "mermaid-js/mermaid",
+      "similarity": 0.65099473345161
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "TauricResearch/TradingAgents",
+      "similarity": 0.6506888589830342
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "multica-ai/andrej-karpathy-skills",
+      "similarity": 0.6501485996648533
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "deepseek-ai/deepseek-harness",
+      "similarity": 0.6500225058499511
+    },
+    {
+      "source": "storybookjs/storybook",
+      "target": "vitejs/vite",
+      "similarity": 0.6496979796625558
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "nodejs/node",
+      "similarity": 0.6496608870118932
+    },
+    {
+      "source": "n8n-io/n8n",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.6496460873665144
+    },
+    {
+      "source": "nodejs/node",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.6493068240331629
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "anomalyco/opencode",
+      "similarity": 0.6492039400879236
+    },
+    {
+      "source": "TauricResearch/TradingAgents",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.6489765512995751
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "OpenHands/OpenHands",
+      "similarity": 0.6487544128768253
+    },
+    {
+      "source": "freeCodeCamp/freeCodeCamp",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.6483442433469051
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "rtk-ai/rtk",
+      "similarity": 0.648285199985893
+    },
+    {
+      "source": "TapXWorld/ChinaTextbook",
+      "target": "harry0703/MoneyPrinterTurbo",
+      "similarity": 0.6476496631021832
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "golang/go",
+      "similarity": 0.6476100438399954
+    },
+    {
+      "source": "justjavac/free-programming-books-zh_CN",
+      "target": "nodejs/node",
+      "similarity": 0.6474383795651348
+    },
+    {
+      "source": "browser-use/browser-use",
+      "target": "microsoft/playwright",
+      "similarity": 0.6468794938188965
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "mermaid-js/mermaid",
+      "similarity": 0.6468187775204453
+    },
+    {
+      "source": "nvbn/thefuck",
+      "target": "ohmyzsh/ohmyzsh",
+      "similarity": 0.6465714014114291
+    },
+    {
+      "source": "Genymobile/scrcpy",
+      "target": "hacksider/Deep-Live-Cam",
+      "similarity": 0.6465099065151375
+    },
+    {
+      "source": "mermaid-js/mermaid",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.645656478742005
+    },
+    {
+      "source": "AUTOMATIC1111/stable-diffusion-webui",
+      "target": "mlabonne/llm-course",
+      "similarity": 0.6456512092175606
+    },
+    {
+      "source": "microsoft/PowerToys",
+      "target": "stablyai/orca",
+      "similarity": 0.6455212197552797
+    },
+    {
+      "source": "2dust/v2rayN",
+      "target": "jaywcjlove/awesome-mac",
+      "similarity": 0.6454486258663459
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "bregman-arie/devops-exercises",
+      "similarity": 0.6451197560428709
+    },
+    {
+      "source": "anthropics/claude-code",
+      "target": "github/spec-kit",
+      "similarity": 0.6444214300639312
+    },
+    {
+      "source": "AUTOMATIC1111/stable-diffusion-webui",
+      "target": "hacksider/Deep-Live-Cam",
+      "similarity": 0.6442330352860702
+    },
+    {
+      "source": "jlevy/the-art-of-command-line",
+      "target": "vinta/awesome-python",
+      "similarity": 0.6442276351848383
+    },
+    {
+      "source": "karpathy/autoresearch",
+      "target": "vinta/awesome-python",
+      "similarity": 0.6437723313259774
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "golang/go",
+      "similarity": 0.6427124233252525
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "similarity": 0.6421701755129859
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "zed-industries/zed",
+      "similarity": 0.6418945886729789
+    },
+    {
+      "source": "anthropics/skills",
+      "target": "msitarzewski/agency-agents",
+      "similarity": 0.6418691991877937
+    },
+    {
+      "source": "karpathy/autoresearch",
+      "target": "rasbt/LLMs-from-scratch",
+      "similarity": 0.6418460650802655
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "zed-industries/zed",
+      "similarity": 0.6412966880827345
+    },
+    {
+      "source": "browser-use/browser-use",
+      "target": "puppeteer/puppeteer",
+      "similarity": 0.6412913358826658
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "bytedance/deer-flow",
+      "similarity": 0.640632787264833
+    },
+    {
+      "source": "jlevy/the-art-of-command-line",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.6402337312072646
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "vitejs/vite",
+      "similarity": 0.6395614482824117
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "rustdesk/rustdesk",
+      "similarity": 0.6390102513869733
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "openai/codex",
+      "similarity": 0.6387801801917083
+    },
+    {
+      "source": "jaywcjlove/awesome-mac",
+      "target": "microsoft/PowerToys",
+      "similarity": 0.638720860112242
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "pytorch/pytorch",
+      "similarity": 0.6387083050208422
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "vllm-project/vllm",
+      "similarity": 0.6381375768090283
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "rustdesk/rustdesk",
+      "similarity": 0.6381195966481692
+    },
+    {
+      "source": "PaddlePaddle/PaddleOCR",
+      "target": "huggingface/transformers",
+      "similarity": 0.6376405335956301
+    },
+    {
+      "source": "ggml-org/llama.cpp",
+      "target": "vllm-project/vllm",
+      "similarity": 0.637562888238749
+    },
+    {
+      "source": "hacksider/Deep-Live-Cam",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.6370950895470631
+    },
+    {
+      "source": "f/prompts.chat",
+      "target": "immich-app/immich",
+      "similarity": 0.6362707542228548
+    },
+    {
+      "source": "langflow-ai/langflow",
+      "target": "tensorflow/tensorflow",
+      "similarity": 0.6357033295630365
+    },
+    {
+      "source": "Shubhamsaboo/awesome-llm-apps",
+      "target": "anthropics/skills",
+      "similarity": 0.6355526398068003
+    },
+    {
+      "source": "angular/angular",
+      "target": "twbs/bootstrap",
+      "similarity": 0.6352248618225648
+    },
+    {
+      "source": "freeCodeCamp/freeCodeCamp",
+      "target": "ossu/computer-science",
+      "similarity": 0.6330126310829524
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "yangshun/tech-interview-handbook",
+      "similarity": 0.6329277758575044
+    },
+    {
+      "source": "getify/You-Dont-Know-JS",
+      "target": "papers-we-love/papers-we-love",
+      "similarity": 0.6328254185750426
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "vitejs/vite",
+      "similarity": 0.6327360093671207
+    },
+    {
+      "source": "f/prompts.chat",
+      "target": "sherlock-project/sherlock",
+      "similarity": 0.6321003397566775
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "zed-industries/zed",
+      "similarity": 0.6313694302945544
+    },
+    {
+      "source": "storybookjs/storybook",
+      "target": "vercel/next.js",
+      "similarity": 0.6310517765685707
+    },
+    {
+      "source": "jlevy/the-art-of-command-line",
+      "target": "rtk-ai/rtk",
+      "similarity": 0.6306479180940057
+    },
+    {
+      "source": "PaddlePaddle/PaddleOCR",
+      "target": "deepseek-ai/DeepSeek-V3",
+      "similarity": 0.6305495552571452
+    },
+    {
+      "source": "ossu/computer-science",
+      "target": "yangshun/tech-interview-handbook",
+      "similarity": 0.6296507986448174
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "trekhleb/javascript-algorithms",
+      "similarity": 0.628927818266461
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "freeCodeCamp/freeCodeCamp",
+      "similarity": 0.628524853551768
+    },
+    {
+      "source": "langflow-ai/langflow",
+      "target": "lobehub/lobehub",
+      "similarity": 0.6279421476115586
+    },
+    {
+      "source": "langflow-ai/langflow",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.6277830128392043
+    },
+    {
+      "source": "astral-sh/uv",
+      "target": "earendil-works/pi",
+      "similarity": 0.6276263134378419
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "DopplerHQ/awesome-interview-questions",
+      "similarity": 0.6271781261205699
+    },
+    {
+      "source": "Developer-Y/cs-video-courses",
+      "target": "trekhleb/javascript-algorithms",
+      "similarity": 0.6266127999137748
+    },
+    {
+      "source": "mtdvio/every-programmer-should-know",
+      "target": "papers-we-love/papers-we-love",
+      "similarity": 0.6261561076623339
+    },
+    {
+      "source": "astral-sh/uv",
+      "target": "nvm-sh/nvm",
+      "similarity": 0.6255810745689416
+    },
+    {
+      "source": "PaddlePaddle/PaddleOCR",
+      "target": "vllm-project/vllm",
+      "similarity": 0.6250637080218979
+    },
+    {
+      "source": "freeCodeCamp/freeCodeCamp",
+      "target": "microsoft/ML-For-Beginners",
+      "similarity": 0.6248231019473057
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "rtk-ai/rtk",
+      "similarity": 0.6231507817093829
+    },
+    {
+      "source": "2dust/v2rayN",
+      "target": "ggml-org/llama.cpp",
+      "similarity": 0.6229578389439842
+    },
+    {
+      "source": "rtk-ai/rtk",
+      "target": "rustdesk/rustdesk",
+      "similarity": 0.6223127274043128
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "openai/codex",
+      "similarity": 0.6220914326572814
+    },
+    {
+      "source": "bregman-arie/devops-exercises",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.6218082197680517
+    },
+    {
+      "source": "nvm-sh/nvm",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.6215598897397736
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "home-assistant/core",
+      "similarity": 0.6204974358575004
+    },
+    {
+      "source": "jesseduffield/lazygit",
+      "target": "ohmyzsh/ohmyzsh",
+      "similarity": 0.6202232362085125
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "ruvnet/RuView",
+      "similarity": 0.6201968856435724
+    },
+    {
+      "source": "PaddlePaddle/PaddleOCR",
+      "target": "mlabonne/llm-course",
+      "similarity": 0.6199512761688131
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "similarity": 0.6194854892682955
+    },
+    {
+      "source": "angular/angular",
+      "target": "mui/material-ui",
+      "similarity": 0.6194280403953484
+    },
+    {
+      "source": "astral-sh/uv",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.6165031043517286
+    },
+    {
+      "source": "neovim/neovim",
+      "target": "thedotmack/claude-mem",
+      "similarity": 0.6161072516723443
+    },
+    {
+      "source": "2dust/v2rayN",
+      "target": "clash-verge-rev/clash-verge-rev",
+      "similarity": 0.6156131779720878
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-V3",
+      "target": "ruvnet/RuView",
+      "similarity": 0.6141331619150994
+    },
+    {
+      "source": "avelino/awesome-go",
+      "target": "bregman-arie/devops-exercises",
+      "similarity": 0.613256517737059
+    },
+    {
+      "source": "microsoft/Web-Dev-For-Beginners",
+      "target": "microsoft/playwright",
+      "similarity": 0.6131301567963527
+    },
+    {
+      "source": "3b1b/manim",
+      "target": "codecrafters-io/build-your-own-x",
+      "similarity": 0.6131284709403289
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "similarity": 0.6125276196549773
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "angular/angular",
+      "similarity": 0.6120111433508824
+    },
+    {
+      "source": "3b1b/manim",
+      "target": "Comfy-Org/ComfyUI",
+      "similarity": 0.6110757447728957
+    },
+    {
+      "source": "angular/angular",
+      "target": "ant-design/ant-design",
+      "similarity": 0.610327494062036
+    },
+    {
+      "source": "farion1231/cc-switch",
+      "target": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "similarity": 0.6102460325860989
+    },
+    {
+      "source": "anthropics/skills",
+      "target": "github/spec-kit",
+      "similarity": 0.6101899022785241
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "vuejs/vue",
+      "similarity": 0.6091106013139088
+    },
+    {
+      "source": "angular/angular",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.6090850152099941
+    },
+    {
+      "source": "home-assistant/core",
+      "target": "open-webui/open-webui",
+      "similarity": 0.6085151004011927
+    },
+    {
+      "source": "mui/material-ui",
+      "target": "vuejs/vue",
+      "similarity": 0.6073644228242856
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "louislam/uptime-kuma",
+      "similarity": 0.6072221008608751
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "louislam/uptime-kuma",
+      "similarity": 0.606799892366014
+    },
+    {
+      "source": "DopplerHQ/awesome-interview-questions",
+      "target": "jwasham/coding-interview-university",
+      "similarity": 0.6065874411222575
+    },
+    {
+      "source": "2dust/v2rayN",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.6065743293117113
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "zed-industries/zed",
+      "similarity": 0.6065632234703541
+    },
+    {
+      "source": "home-assistant/core",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.6055162019129532
+    },
+    {
+      "source": "odysseus-dev/odysseus",
+      "target": "ohmyzsh/ohmyzsh",
+      "similarity": 0.6050847792620639
+    },
+    {
+      "source": "996icu/996.ICU",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.6041518575751824
+    },
+    {
+      "source": "Chalarangelo/30-seconds-of-code",
+      "target": "getify/You-Dont-Know-JS",
+      "similarity": 0.6038343669629068
+    },
+    {
+      "source": "open-webui/open-webui",
+      "target": "openai/codex",
+      "similarity": 0.6034532719487955
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "openai/codex",
+      "similarity": 0.6033326881701603
+    },
+    {
+      "source": "rasbt/LLMs-from-scratch",
+      "target": "trekhleb/javascript-algorithms",
+      "similarity": 0.6030969362601363
+    },
+    {
+      "source": "3b1b/manim",
+      "target": "AUTOMATIC1111/stable-diffusion-webui",
+      "similarity": 0.6026009770254998
+    },
+    {
+      "source": "firecrawl/firecrawl",
+      "target": "puppeteer/puppeteer",
+      "similarity": 0.6025500499176651
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "trekhleb/javascript-algorithms",
+      "similarity": 0.6014896269690219
+    },
+    {
+      "source": "gohugoio/hugo",
+      "target": "ohmyzsh/ohmyzsh",
+      "similarity": 0.6012110280549066
+    },
+    {
+      "source": "astral-sh/uv",
+      "target": "vinta/awesome-python",
+      "similarity": 0.6009413867593849
+    },
+    {
+      "source": "nexu-io/open-design",
+      "target": "realworld-apps/realworld",
+      "similarity": 0.6008977169361348
+    },
+    {
+      "source": "NousResearch/hermes-agent",
+      "target": "astral-sh/uv",
+      "similarity": 0.6006527030455125
+    },
+    {
+      "source": "OpenCut-app/OpenCut",
+      "target": "microsoft/PowerToys",
+      "similarity": 0.6003035220990637
+    },
+    {
+      "source": "3b1b/manim",
+      "target": "vinta/awesome-python",
+      "similarity": 0.6001594241980481
+    },
+    {
+      "source": "2dust/v2rayN",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.5994081283310606
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "vercel/next.js",
+      "similarity": 0.5984701823976393
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "microsoft/PowerToys",
+      "similarity": 0.5956674496923042
+    },
+    {
+      "source": "home-assistant/core",
+      "target": "stablyai/orca",
+      "similarity": 0.5951549679026884
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "louislam/uptime-kuma",
+      "similarity": 0.5946272082241123
+    },
+    {
+      "source": "iptv-org/iptv",
+      "target": "yt-dlp/yt-dlp",
+      "similarity": 0.594452507375316
+    },
+    {
+      "source": "twbs/bootstrap",
+      "target": "vuejs/vue",
+      "similarity": 0.5939676716208205
+    },
+    {
+      "source": "ollama/ollama",
+      "target": "ruvnet/RuView",
+      "similarity": 0.5937605419823154
+    },
+    {
+      "source": "PaddlePaddle/PaddleOCR",
+      "target": "microsoft/generative-ai-for-beginners",
+      "similarity": 0.5934158582964748
+    },
+    {
+      "source": "hacksider/Deep-Live-Cam",
+      "target": "yt-dlp/yt-dlp",
+      "similarity": 0.5928732663678469
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "localsend/localsend",
+      "similarity": 0.5928024617999541
+    },
+    {
+      "source": "huggingface/transformers",
+      "target": "openai/whisper",
+      "similarity": 0.5925621525395476
+    },
+    {
+      "source": "DietrichGebert/ponytail",
+      "target": "junegunn/fzf",
+      "similarity": 0.5910353040989595
+    },
+    {
+      "source": "microsoft/TypeScript",
+      "target": "react/react",
+      "similarity": 0.5908461571749346
+    },
+    {
+      "source": "denoland/deno",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.5904124406489443
+    },
+    {
+      "source": "996icu/996.ICU",
+      "target": "nodejs/node",
+      "similarity": 0.5895385764947276
+    },
+    {
+      "source": "home-assistant/core",
+      "target": "ollama/ollama",
+      "similarity": 0.5889664190491335
+    },
+    {
+      "source": "godotengine/godot",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.5884092076399059
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "godotengine/godot",
+      "similarity": 0.5882954545781427
+    },
+    {
+      "source": "louislam/uptime-kuma",
+      "target": "stablyai/orca",
+      "similarity": 0.5882321359685091
+    },
+    {
+      "source": "realworld-apps/realworld",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.5869346185231051
+    },
+    {
+      "source": "oven-sh/bun",
+      "target": "yt-dlp/yt-dlp",
+      "similarity": 0.5863339406814025
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "junegunn/fzf",
+      "similarity": 0.5856048966232771
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "realworld-apps/realworld",
+      "similarity": 0.5855928707607108
+    },
+    {
+      "source": "iptv-org/iptv",
+      "target": "ytdl-org/youtube-dl",
+      "similarity": 0.5850289379499624
+    },
+    {
+      "source": "JuliusBrussee/caveman",
+      "target": "ruvnet/RuView",
+      "similarity": 0.584182798138429
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-R1",
+      "target": "ruvnet/RuView",
+      "similarity": 0.5840510229697466
+    },
+    {
+      "source": "localsend/localsend",
+      "target": "rustdesk/rustdesk",
+      "similarity": 0.5839889648739279
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "localsend/localsend",
+      "similarity": 0.583957142179375
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "denoland/deno",
+      "similarity": 0.5836558998645756
+    },
+    {
+      "source": "microsoft/ML-For-Beginners",
+      "target": "papers-we-love/papers-we-love",
+      "similarity": 0.5826166994358976
+    },
+    {
+      "source": "EbookFoundation/free-programming-books",
+      "target": "papers-we-love/papers-we-love",
+      "similarity": 0.5821718390684868
+    },
+    {
+      "source": "996icu/996.ICU",
+      "target": "EbookFoundation/free-programming-books",
+      "similarity": 0.582110676910904
+    },
+    {
+      "source": "mlabonne/llm-course",
+      "target": "openai/whisper",
+      "similarity": 0.5809859891404993
+    },
+    {
+      "source": "ant-design/ant-design",
+      "target": "vercel/next.js",
+      "similarity": 0.5804238189276162
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "neovim/neovim",
+      "similarity": 0.5803637065549286
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "neovim/neovim",
+      "similarity": 0.5793995749149242
+    },
+    {
+      "source": "rust-lang/rust",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.5791713880836636
+    },
+    {
+      "source": "kubernetes/kubernetes",
+      "target": "n8n-io/n8n",
+      "similarity": 0.5787473902614397
+    },
+    {
+      "source": "denoland/deno",
+      "target": "lobehub/lobehub",
+      "similarity": 0.578388804753618
+    },
+    {
+      "source": "d3/d3",
+      "target": "mrdoob/three.js",
+      "similarity": 0.5779669234609351
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "react/create-react-app",
+      "similarity": 0.5771397662722978
+    },
+    {
+      "source": "jaywcjlove/awesome-mac",
+      "target": "localsend/localsend",
+      "similarity": 0.5767113115448144
+    },
+    {
+      "source": "bitcoin/bitcoin",
+      "target": "microsoft/vscode",
+      "similarity": 0.5766290839128111
+    },
+    {
+      "source": "DopplerHQ/awesome-interview-questions",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.5763290015427592
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "microsoft/vscode",
+      "similarity": 0.5761624449189442
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "microsoft/TypeScript",
+      "similarity": 0.5756080093689426
+    },
+    {
+      "source": "Comfy-Org/ComfyUI",
+      "target": "Genymobile/scrcpy",
+      "similarity": 0.575088719605919
+    },
+    {
+      "source": "koala73/worldmonitor",
+      "target": "realworld-apps/realworld",
+      "similarity": 0.5746358643756448
+    },
+    {
+      "source": "microsoft/TypeScript",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.574583538392063
+    },
+    {
+      "source": "996icu/996.ICU",
+      "target": "mui/material-ui",
+      "similarity": 0.5745698398511239
+    },
+    {
+      "source": "firecrawl/firecrawl",
+      "target": "microsoft/playwright",
+      "similarity": 0.5742426728295268
+    },
+    {
+      "source": "godotengine/godot",
+      "target": "nexu-io/open-design",
+      "similarity": 0.5741832491038948
+    },
+    {
+      "source": "electron/electron",
+      "target": "react/create-react-app",
+      "similarity": 0.5741116885209929
+    },
+    {
+      "source": "microsoft/TypeScript",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.5737135323399212
+    },
+    {
+      "source": "denoland/deno",
+      "target": "langgenius/dify",
+      "similarity": 0.5737117599092098
+    },
+    {
+      "source": "neovim/neovim",
+      "target": "nexu-io/open-design",
+      "similarity": 0.5736055441745934
+    },
+    {
+      "source": "VoltAgent/awesome-design-md",
+      "target": "microsoft/PowerToys",
+      "similarity": 0.5732037366394505
+    },
+    {
+      "source": "twbs/bootstrap",
+      "target": "vercel/next.js",
+      "similarity": 0.5731663057592473
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "microsoft/vscode",
+      "similarity": 0.5730991959609044
+    },
+    {
+      "source": "OpenHands/OpenHands",
+      "target": "microsoft/playwright",
+      "similarity": 0.5729636636679222
+    },
+    {
+      "source": "godotengine/godot",
+      "target": "koala73/worldmonitor",
+      "similarity": 0.5728566107715791
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "microsoft/TypeScript",
+      "similarity": 0.5726116226297618
+    },
+    {
+      "source": "papers-we-love/papers-we-love",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.5709249727675555
+    },
+    {
+      "source": "Genymobile/scrcpy",
+      "target": "OpenCut-app/OpenCut",
+      "similarity": 0.5702689268293126
+    },
+    {
+      "source": "denoland/deno",
+      "target": "nilbuild/developer-roadmap",
+      "similarity": 0.5699925905977363
+    },
+    {
+      "source": "fastapi/fastapi",
+      "target": "microsoft/markitdown",
+      "similarity": 0.5694363764211509
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "react/create-react-app",
+      "similarity": 0.5682243361103412
+    },
+    {
+      "source": "Genymobile/scrcpy",
+      "target": "jaywcjlove/awesome-mac",
+      "similarity": 0.5679507283147476
+    },
+    {
+      "source": "animate-css/animate.css",
+      "target": "jesseduffield/lazygit",
+      "similarity": 0.5660878379500904
+    },
+    {
+      "source": "sveltejs/svelte",
+      "target": "vuejs/vue",
+      "similarity": 0.5653202510597006
+    },
+    {
+      "source": "ollama/ollama",
+      "target": "openai/whisper",
+      "similarity": 0.5653089056237549
+    },
+    {
+      "source": "mui/material-ui",
+      "target": "vercel/next.js",
+      "similarity": 0.5644695200608877
+    },
+    {
+      "source": "deepseek-ai/DeepSeek-V3",
+      "target": "openai/whisper",
+      "similarity": 0.5634647457075915
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "fatedier/frp",
+      "similarity": 0.5632699102898444
+    },
+    {
+      "source": "Stirling-Tools/Stirling-PDF",
+      "target": "awesome-selfhosted/awesome-selfhosted",
+      "similarity": 0.5627533041490362
+    },
+    {
+      "source": "practical-tutorials/project-based-learning",
+      "target": "realworld-apps/realworld",
+      "similarity": 0.5618044929321601
+    },
+    {
+      "source": "astral-sh/uv",
+      "target": "microsoft/markitdown",
+      "similarity": 0.5611223781183488
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "syncthing/syncthing",
+      "similarity": 0.5598949960866314
+    },
+    {
+      "source": "microsoft/Web-Dev-For-Beginners",
+      "target": "react/react",
+      "similarity": 0.5592787518842997
+    },
+    {
+      "source": "jlevy/the-art-of-command-line",
+      "target": "yt-dlp/yt-dlp",
+      "similarity": 0.5588535829633495
+    },
+    {
+      "source": "flutter/flutter",
+      "target": "jaywcjlove/awesome-mac",
+      "similarity": 0.5588076219918311
+    },
+    {
+      "source": "bitcoin/bitcoin",
+      "target": "earendil-works/pi",
+      "similarity": 0.5579646859059992
+    },
+    {
+      "source": "microsoft/markitdown",
+      "target": "vinta/awesome-python",
+      "similarity": 0.55766379172055
+    },
+    {
+      "source": "animate-css/animate.css",
+      "target": "excalidraw/excalidraw",
+      "similarity": 0.5566954675391531
+    },
+    {
+      "source": "awesome-selfhosted/awesome-selfhosted",
+      "target": "godotengine/godot",
+      "similarity": 0.5566376585842829
+    },
+    {
+      "source": "microsoft/terminal",
+      "target": "microsoft/vscode",
+      "similarity": 0.554655957138052
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "Stirling-Tools/Stirling-PDF",
+      "similarity": 0.5528431002452244
+    },
+    {
+      "source": "openai/whisper",
+      "target": "vinta/awesome-python",
+      "similarity": 0.5523916368076326
+    },
+    {
+      "source": "Graphify-Labs/graphify",
+      "target": "microsoft/markitdown",
+      "similarity": 0.5515602941857337
+    },
+    {
+      "source": "animate-css/animate.css",
+      "target": "mui/material-ui",
+      "similarity": 0.5499628601614125
+    },
+    {
+      "source": "excalidraw/excalidraw",
+      "target": "mrdoob/three.js",
+      "similarity": 0.549146253320122
+    },
+    {
+      "source": "Leonxlnx/taste-skill",
+      "target": "animate-css/animate.css",
+      "similarity": 0.5485975846047431
+    },
+    {
+      "source": "kubernetes/kubernetes",
+      "target": "louislam/uptime-kuma",
+      "similarity": 0.5484890699747677
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "fatedier/frp",
+      "similarity": 0.547841641162515
+    },
+    {
+      "source": "airbnb/javascript",
+      "target": "goldbergyoni/nodebestpractices",
+      "similarity": 0.5473129791776951
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "microsoft/markitdown",
+      "similarity": 0.5471976207578951
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "laravel/laravel",
+      "similarity": 0.5471292855273079
+    },
+    {
+      "source": "996icu/996.ICU",
+      "target": "farion1231/cc-switch",
+      "similarity": 0.5470952738095831
+    },
+    {
+      "source": "Chalarangelo/30-seconds-of-code",
+      "target": "freeCodeCamp/freeCodeCamp",
+      "similarity": 0.5443286047263571
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "puppeteer/puppeteer",
+      "similarity": 0.5443031385665186
+    },
+    {
+      "source": "flutter/flutter",
+      "target": "localsend/localsend",
+      "similarity": 0.5442595567315464
+    },
+    {
+      "source": "Genymobile/scrcpy",
+      "target": "stablyai/orca",
+      "similarity": 0.5439112485566686
+    },
+    {
+      "source": "microsoft/TypeScript",
+      "target": "microsoft/vscode",
+      "similarity": 0.543552096279255
+    },
+    {
+      "source": "codecrafters-io/build-your-own-x",
+      "target": "rust-lang/rust",
+      "similarity": 0.5433844870023694
+    },
+    {
+      "source": "gin-gonic/gin",
+      "target": "golang/go",
+      "similarity": 0.5420749907116297
+    },
+    {
+      "source": "react/react",
+      "target": "vuejs/vue",
+      "similarity": 0.541340653837858
+    },
+    {
+      "source": "Chalarangelo/30-seconds-of-code",
+      "target": "microsoft/Web-Dev-For-Beginners",
+      "similarity": 0.53998028086691
+    },
+    {
+      "source": "fatedier/frp",
+      "target": "localsend/localsend",
+      "similarity": 0.5379140947734776
+    },
+    {
+      "source": "animate-css/animate.css",
+      "target": "ant-design/ant-design",
+      "similarity": 0.5360563758500894
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "syncthing/syncthing",
+      "similarity": 0.5324204661840158
+    },
+    {
+      "source": "airbnb/javascript",
+      "target": "oven-sh/bun",
+      "similarity": 0.5320888161162721
+    },
+    {
+      "source": "github/gitignore",
+      "target": "github/spec-kit",
+      "similarity": 0.5308981948875362
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "golang/go",
+      "similarity": 0.530535891367906
+    },
+    {
+      "source": "bitcoin/bitcoin",
+      "target": "github/spec-kit",
+      "similarity": 0.5305151200599822
+    },
+    {
+      "source": "flutter/flutter",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.5300192653318818
+    },
+    {
+      "source": "2dust/v2rayN",
+      "target": "syncthing/syncthing",
+      "similarity": 0.5296342234067292
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "flutter/flutter",
+      "similarity": 0.5274933157523564
+    },
+    {
+      "source": "mrdoob/three.js",
+      "target": "storybookjs/storybook",
+      "similarity": 0.5273980825917602
+    },
+    {
+      "source": "Stirling-Tools/Stirling-PDF",
+      "target": "paperclipai/paperclip",
+      "similarity": 0.5268675873180418
+    },
+    {
+      "source": "fatedier/frp",
+      "target": "trimstray/the-book-of-secret-knowledge",
+      "similarity": 0.5251557751245811
+    },
+    {
+      "source": "mui/material-ui",
+      "target": "tailwindlabs/tailwindcss",
+      "similarity": 0.5246729460903928
+    },
+    {
+      "source": "Stirling-Tools/Stirling-PDF",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.5244982337487422
+    },
+    {
+      "source": "laravel/laravel",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.524449528474563
+    },
+    {
+      "source": "OpenHands/OpenHands",
+      "target": "fatedier/frp",
+      "similarity": 0.5240615129547017
+    },
+    {
+      "source": "github/gitignore",
+      "target": "microsoft/vscode",
+      "similarity": 0.5226643408803494
+    },
+    {
+      "source": "airbnb/javascript",
+      "target": "microsoft/TypeScript",
+      "similarity": 0.5226569926227964
+    },
+    {
+      "source": "infiniflow/ragflow",
+      "target": "syncthing/syncthing",
+      "similarity": 0.5203899197712613
+    },
+    {
+      "source": "Chalarangelo/30-seconds-of-code",
+      "target": "VoltAgent/awesome-design-md",
+      "similarity": 0.5201333487173576
+    },
+    {
+      "source": "ant-design/ant-design",
+      "target": "tailwindlabs/tailwindcss",
+      "similarity": 0.5192880820323308
+    },
+    {
+      "source": "sveltejs/svelte",
+      "target": "twbs/bootstrap",
+      "similarity": 0.5192182866939994
+    },
+    {
+      "source": "puppeteer/puppeteer",
+      "target": "unclecode/crawl4ai",
+      "similarity": 0.5185699843363603
+    },
+    {
+      "source": "airbnb/javascript",
+      "target": "axios/axios",
+      "similarity": 0.5180880300122013
+    },
+    {
+      "source": "microsoft/TypeScript",
+      "target": "sveltejs/svelte",
+      "similarity": 0.5172440451291443
+    },
+    {
+      "source": "Chalarangelo/30-seconds-of-code",
+      "target": "sveltejs/svelte",
+      "similarity": 0.5171611073646726
+    },
+    {
+      "source": "tailwindlabs/tailwindcss",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.5158681781456286
+    },
+    {
+      "source": "Stirling-Tools/Stirling-PDF",
+      "target": "nexu-io/open-design",
+      "similarity": 0.5148399864832354
+    },
+    {
+      "source": "bytedance/deer-flow",
+      "target": "syncthing/syncthing",
+      "similarity": 0.5133181910121912
+    },
+    {
+      "source": "bitcoin/bitcoin",
+      "target": "github/gitignore",
+      "similarity": 0.5122465782368261
+    },
+    {
+      "source": "mrdoob/three.js",
+      "target": "vitejs/vite",
+      "similarity": 0.5094489795203895
+    },
+    {
+      "source": "ByteByteGoHq/system-design-101",
+      "target": "kubernetes/kubernetes",
+      "similarity": 0.5093164286030848
+    },
+    {
+      "source": "sveltejs/svelte",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.5059250042668354
+    },
+    {
+      "source": "bitcoin/bitcoin",
+      "target": "garrytan/gstack",
+      "similarity": 0.5052145070811395
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "react/react-native",
+      "similarity": 0.5046607924878169
+    },
+    {
+      "source": "animate-css/animate.css",
+      "target": "mrdoob/three.js",
+      "similarity": 0.5042335656534684
+    },
+    {
+      "source": "hacksider/Deep-Live-Cam",
+      "target": "ytdl-org/youtube-dl",
+      "similarity": 0.5038748064667982
+    },
+    {
+      "source": "DigitalPlatDev/FreeDomain",
+      "target": "ripienaar/free-for-dev",
+      "similarity": 0.502600336319234
+    },
+    {
+      "source": "hacksider/Deep-Live-Cam",
+      "target": "opencv/opencv",
+      "similarity": 0.5023893338987865
+    },
+    {
+      "source": "flutter/flutter",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.5022506584707045
+    },
+    {
+      "source": "storybookjs/storybook",
+      "target": "tailwindlabs/tailwindcss",
+      "similarity": 0.5020001169841521
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "kubernetes/kubernetes",
+      "similarity": 0.4976701882780021
+    },
+    {
+      "source": "golang/go",
+      "target": "microsoft/vscode",
+      "similarity": 0.49611190569880337
+    },
+    {
+      "source": "axios/axios",
+      "target": "puppeteer/puppeteer",
+      "similarity": 0.4958611890115397
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "axios/axios",
+      "similarity": 0.49559420473085286
+    },
+    {
+      "source": "axios/axios",
+      "target": "ryanmcdermott/clean-code-javascript",
+      "similarity": 0.4943708756061857
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "laravel/laravel",
+      "similarity": 0.4938935109278708
+    },
+    {
+      "source": "axios/axios",
+      "target": "firecrawl/firecrawl",
+      "similarity": 0.49362213260761284
+    },
+    {
+      "source": "anthropics/claude-code",
+      "target": "laravel/laravel",
+      "similarity": 0.4924616300381105
+    },
+    {
+      "source": "rtk-ai/rtk",
+      "target": "torvalds/linux",
+      "similarity": 0.4916463701723011
+    },
+    {
+      "source": "d3/d3",
+      "target": "mermaid-js/mermaid",
+      "similarity": 0.4913630201207585
+    },
+    {
+      "source": "earendil-works/pi",
+      "target": "kubernetes/kubernetes",
+      "similarity": 0.49053221894559235
+    },
+    {
+      "source": "electron/electron",
+      "target": "react/react",
+      "similarity": 0.4900122808432359
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "massgravel/Microsoft-Activation-Scripts",
+      "similarity": 0.4897280802668936
+    },
+    {
+      "source": "laravel/laravel",
+      "target": "mtdvio/every-programmer-should-know",
+      "similarity": 0.48927603704366746
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "tailwindlabs/tailwindcss",
+      "similarity": 0.4871621840701996
+    },
+    {
+      "source": "github/spec-kit",
+      "target": "torvalds/linux",
+      "similarity": 0.48603817313620634
+    },
+    {
+      "source": "goldbergyoni/nodebestpractices",
+      "target": "ryanmcdermott/clean-code-javascript",
+      "similarity": 0.4856115814480454
+    },
+    {
+      "source": "d3/d3",
+      "target": "langgenius/dify",
+      "similarity": 0.4855263476347777
+    },
+    {
+      "source": "ruvnet/RuView",
+      "target": "torvalds/linux",
+      "similarity": 0.4847589057881471
+    },
+    {
+      "source": "electron/electron",
+      "target": "react/react-native",
+      "similarity": 0.4847573829415376
+    },
+    {
+      "source": "Hack-with-Github/Awesome-Hacking",
+      "target": "torvalds/linux",
+      "similarity": 0.4831276753268596
+    },
+    {
+      "source": "massgravel/Microsoft-Activation-Scripts",
+      "target": "x1xhlol/system-prompts-and-models-of-ai-tools",
+      "similarity": 0.4817747416054946
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "torvalds/linux",
+      "similarity": 0.4809355871804072
+    },
+    {
+      "source": "microsoft/terminal",
+      "target": "neovim/neovim",
+      "similarity": 0.4750419501415857
+    },
+    {
+      "source": "astral-sh/uv",
+      "target": "microsoft/terminal",
+      "similarity": 0.4745890958215701
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "electron/electron",
+      "similarity": 0.4744283295941041
+    },
+    {
+      "source": "hacksider/Deep-Live-Cam",
+      "target": "iptv-org/iptv",
+      "similarity": 0.473845555813515
+    },
+    {
+      "source": "iptv-org/iptv",
+      "target": "opencv/opencv",
+      "similarity": 0.47274337889814966
+    },
+    {
+      "source": "Egonex-AI/Understand-Anything",
+      "target": "github/gitignore",
+      "similarity": 0.47159535836266253
+    },
+    {
+      "source": "d3/d3",
+      "target": "excalidraw/excalidraw",
+      "similarity": 0.46999416985611103
+    },
+    {
+      "source": "ryanmcdermott/clean-code-javascript",
+      "target": "storybookjs/storybook",
+      "similarity": 0.4696651084912687
+    },
+    {
+      "source": "rust-lang/rust",
+      "target": "sindresorhus/awesome",
+      "similarity": 0.4696443391913207
+    },
+    {
+      "source": "react/react",
+      "target": "ryanmcdermott/clean-code-javascript",
+      "similarity": 0.46927356929494657
+    },
+    {
+      "source": "opencv/opencv",
+      "target": "practical-tutorials/project-based-learning",
+      "similarity": 0.468911782357111
+    },
+    {
+      "source": "MunGell/awesome-for-beginners",
+      "target": "rust-lang/rust",
+      "similarity": 0.4684906810893448
+    },
+    {
+      "source": "microsoft/PowerToys",
+      "target": "microsoft/terminal",
+      "similarity": 0.4676925243635394
+    },
+    {
+      "source": "d3/d3",
+      "target": "storybookjs/storybook",
+      "similarity": 0.4670288419567611
+    },
+    {
+      "source": "microsoft/TypeScript",
+      "target": "react/react-native",
+      "similarity": 0.46655554166746765
+    },
+    {
+      "source": "unclecode/crawl4ai",
+      "target": "ytdl-org/youtube-dl",
+      "similarity": 0.4657891041616986
+    },
+    {
+      "source": "massgravel/Microsoft-Activation-Scripts",
+      "target": "microsoft/PowerToys",
+      "similarity": 0.4657425414546469
+    },
+    {
+      "source": "affaan-m/ECC",
+      "target": "github/gitignore",
+      "similarity": 0.4656576188703786
+    },
+    {
+      "source": "microsoft/terminal",
+      "target": "ultraworkers/claw-code",
+      "similarity": 0.4656476714782525
+    },
+    {
+      "source": "D4Vinci/Scrapling",
+      "target": "ytdl-org/youtube-dl",
+      "similarity": 0.4612001677141531
+    },
+    {
+      "source": "ChatGPTNextWeb/NextChat",
+      "target": "iptv-org/iptv",
+      "similarity": 0.4590039394494461
+    },
+    {
+      "source": "VoltAgent/awesome-design-md",
+      "target": "shadcn-ui/ui",
+      "similarity": 0.45630804105513106
+    },
+    {
+      "source": "jaywcjlove/awesome-mac",
+      "target": "shadcn-ui/ui",
+      "similarity": 0.45233182135660127
+    },
+    {
+      "source": "996icu/996.ICU",
+      "target": "DigitalPlatDev/FreeDomain",
+      "similarity": 0.445971340802646
+    },
+    {
+      "source": "PanJiaChen/vue-element-admin",
+      "target": "electron/electron",
+      "similarity": 0.4424155380305417
+    },
+    {
+      "source": "massgravel/Microsoft-Activation-Scripts",
+      "target": "stablyai/orca",
+      "similarity": 0.43537220936994453
+    },
+    {
+      "source": "flutter/flutter",
+      "target": "shadcn-ui/ui",
+      "similarity": 0.4351911839374342
+    },
+    {
+      "source": "microsoft/generative-ai-for-beginners",
+      "target": "opencv/opencv",
+      "similarity": 0.43294223625827827
+    },
+    {
+      "source": "freeCodeCamp/freeCodeCamp",
+      "target": "opencv/opencv",
+      "similarity": 0.4319986036270365
+    },
+    {
+      "source": "shadcn-ui/ui",
+      "target": "tauri-apps/tauri",
+      "similarity": 0.42958527507050287
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "massgravel/Microsoft-Activation-Scripts",
+      "similarity": 0.42645887717526365
+    },
+    {
+      "source": "lobehub/lobehub",
+      "target": "shadcn-ui/ui",
+      "similarity": 0.41434764010585023
+    },
+    {
+      "source": "django/django",
+      "target": "vinta/awesome-python",
+      "similarity": 0.4040056266946695
+    },
+    {
+      "source": "django/django",
+      "target": "github/gitignore",
+      "similarity": 0.39146047961043917
+    },
+    {
+      "source": "DigitalPlatDev/FreeDomain",
+      "target": "farion1231/cc-switch",
+      "similarity": 0.3809917606022613
+    },
+    {
+      "source": "DigitalPlatDev/FreeDomain",
+      "target": "Hack-with-Github/Awesome-Hacking",
+      "similarity": 0.37897264817130505
+    },
+    {
+      "source": "DigitalPlatDev/FreeDomain",
+      "target": "freeCodeCamp/freeCodeCamp",
+      "similarity": 0.3788512193624624
+    },
+    {
+      "source": "django/django",
+      "target": "realworld-apps/realworld",
+      "similarity": 0.3701637409610536
+    },
+    {
+      "source": "django/django",
+      "target": "tensorflow/tensorflow",
+      "similarity": 0.3680917728084907
+    },
+    {
+      "source": "bitcoin/bitcoin",
+      "target": "django/django",
+      "similarity": 0.35416663128148657
+    }
+  ]
+}

@@ -18,7 +18,22 @@
           <p id="status" role="status"></p>
           <pre id="output"></pre>
         </section>
-        <section class="graph-panel" aria-label="Example graph">
+        <section class="graph-panel" aria-labelledby="graph-title">
+          <h2 id="graph-title">Repository similarity graph</h2>
+          <p id="graph-summary" role="status"></p>
+          <form id="repo-search-form">
+            <label for="repo-search">Find a repository</label>
+            <input
+              id="repo-search"
+              name="repository"
+              type="search"
+              list="repository-options"
+              autocomplete="off"
+            />
+            <datalist id="repository-options"></datalist>
+            <button type="submit">Find</button>
+            <span id="repo-search-status" role="status"></span>
+          </form>
           <div id="graph"></div>
         </section>
       </div>
