@@ -12,21 +12,23 @@
         <aside class="settings-panel" aria-labelledby="settings-title">
           <h2 id="settings-title">Graph settings</h2>
           <form id="graph-settings-form">
-            <label for="node-limit">Repositories to display</label>
-            <input id="node-limit" name="nodes" type="number" min="1" required />
+            <label for="node-limit">
+              Repositories to display:
+              <output id="node-limit-value" for="node-limit"></output>
+            </label>
+            <input id="node-limit" name="nodes" type="range" min="1" required />
 
             <label for="neighbor-limit">Nearest neighbors per repository</label>
             <input id="neighbor-limit" name="neighbors" type="number" min="0" required />
 
+            <label class="checkbox-setting" for="neighborhood-highlighting">
+              <input id="neighborhood-highlighting" type="checkbox" checked />
+              Highlight hovered node and its neighbors
+            </label>
+
             <button type="submit">Apply settings</button>
           </form>
           <p id="settings-status" role="status"></p>
-
-          <h2>Node highlighting</h2>
-          <label class="checkbox-setting" for="neighborhood-highlighting">
-            <input id="neighborhood-highlighting" type="checkbox" checked />
-            Highlight hovered node and its neighbors
-          </label>
 
           <h2>Find a repository</h2>
           <form id="repo-search-form">

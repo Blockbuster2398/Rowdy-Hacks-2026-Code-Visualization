@@ -4,6 +4,7 @@ import './style.css';
 const graphElement = document.getElementById('graph');
 const settingsForm = document.getElementById('graph-settings-form');
 const nodeLimitInput = document.getElementById('node-limit');
+const nodeLimitValue = document.getElementById('node-limit-value');
 const neighborLimitInput = document.getElementById('neighbor-limit');
 const settingsStatus = document.getElementById('settings-status');
 const neighborhoodHighlightingInput = document.getElementById('neighborhood-highlighting');
@@ -266,7 +267,12 @@ function applyGraphSettings() {
 
 function updateNodeLimitRange() {
   nodeLimitInput.max = String(displayedRepositoryNodes.length);
-  neighborLimitInput.max = String(Math.max(0, Number(nodeLimitInput.value) - 1));
+  nodeLimitValue.value = nodeLimitInput.value;
+  const maximumNeighbors = Math.max(0, Number(nodeLimitInput.value) - 1);
+  neighborLimitInput.max = String(maximumNeighbors);
+  if (Number(neighborLimitInput.value) > maximumNeighbors) {
+    neighborLimitInput.value = String(maximumNeighbors);
+  }
 }
 
 function parseRepositoryUrl(value) {
@@ -455,9 +461,10 @@ async function initializeGraph() {
   });
 
   nodeLimitInput.max = String(repositoryNodes.length);
-  nodeLimitInput.value = String(repositoryNodes.length);
+  nodeLimitInput.value = String(Math.min(100, repositoryNodes.length));
   neighborLimitInput.max = String(repositoryNodes.length - 1);
   neighborLimitInput.value = String(Math.min(5, repositoryNodes.length - 1));
+  updateNodeLimitRange();
   applyGraphSettings();
 
   settingsForm.addEventListener('submit', (event) => {
