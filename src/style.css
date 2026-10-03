@@ -34,6 +34,17 @@ main {
   margin: 0.35rem 0;
 }
 
+.settings-panel .checkbox-setting {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settings-panel .checkbox-setting input {
+  width: auto;
+  margin: 0;
+}
+
 .settings-panel button {
   margin-top: 0.5rem;
 }

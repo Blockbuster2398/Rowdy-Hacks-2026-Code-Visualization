@@ -7,6 +7,7 @@ const settingsForm = document.getElementById('graph-settings-form');
 const nodeLimitInput = document.getElementById('node-limit');
 const neighborLimitInput = document.getElementById('neighbor-limit');
 const settingsStatus = document.getElementById('settings-status');
+const neighborhoodHighlightingInput = document.getElementById('neighborhood-highlighting');
 const searchForm = document.getElementById('repo-search-form');
 const searchInput = document.getElementById('repo-search');
 const searchStatus = document.getElementById('repo-search-status');
@@ -17,6 +18,7 @@ let displayedNeighborsByNode = new Map();
 let hoveredNodeId;
 let firstOrderNeighborIds = new Set();
 let secondOrderNeighborIds = new Set();
+let neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
 
 function getNodeFontSize(globalScale) {
   return Math.max(4, 9 / globalScale);
@@ -35,11 +37,11 @@ const graph = new ForceGraph(graphElement)
   .nodeCanvasObject((node, context, globalScale) => {
     const fontSize = getNodeFontSize(globalScale);
     const isSelected = node.id === selectedNode?.id;
-    const fillStyle = node.id === hoveredNodeId
+    const fillStyle = neighborhoodHighlightingEnabled && node.id === hoveredNodeId
       ? '#2e7d32'
-      : firstOrderNeighborIds.has(node.id)
+      : neighborhoodHighlightingEnabled && firstOrderNeighborIds.has(node.id)
         ? '#e6a700'
-        : secondOrderNeighborIds.has(node.id)
+        : neighborhoodHighlightingEnabled && secondOrderNeighborIds.has(node.id)
           ? '#d32f2f'
           : isSelected
             ? '#d1495b'
@@ -77,10 +79,12 @@ const graph = new ForceGraph(graphElement)
       : new Set();
     secondOrderNeighborIds = new Set();
 
-    for (const neighborId of firstOrderNeighborIds) {
-      for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
-        if (secondNeighborId !== node?.id && !firstOrderNeighborIds.has(secondNeighborId)) {
-          secondOrderNeighborIds.add(secondNeighborId);
+    if (node) {
+      for (const neighborId of firstOrderNeighborIds) {
+        for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
+          if (secondNeighborId !== node.id && !firstOrderNeighborIds.has(secondNeighborId)) {
+            secondOrderNeighborIds.add(secondNeighborId);
+          }
         }
       }
     }
@@ -89,6 +93,11 @@ const graph = new ForceGraph(graphElement)
   })
   .onNodeClick((node) => window.open(node.url, '_blank', 'noopener,noreferrer'))
   .graphData({ nodes: [], links: [] });
+
+neighborhoodHighlightingInput.addEventListener('change', () => {
+  neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
+  graph.zoom(graph.zoom());
+});
 
 function applyGraphSettings() {
   const nodeLimit = Number(nodeLimitInput.value);
