@@ -3,7 +3,6 @@ import graphData from '../github-readmes/github-top-repository-links.json';
 import './style.css';
 
 const graphElement = document.getElementById('graph');
-const graphSummary = document.getElementById('graph-summary');
 const settingsForm = document.getElementById('graph-settings-form');
 const nodeLimitInput = document.getElementById('node-limit');
 const neighborLimitInput = document.getElementById('neighbor-limit');
@@ -119,8 +118,6 @@ function applyGraphSettings() {
   selectedNode = undefined;
 
   const renderedLinks = displayedLinks.length;
-  graphSummary.textContent =
-    `${displayedNodes.length} repositories · ${renderedLinks} links from the ${neighborLimit} nearest neighbors of each repository. Click a repository name to open it on GitHub.`;
   settingsStatus.textContent =
     `Showing ${displayedNodes.length} repositories with up to ${neighborLimit} nearest neighbors each (${renderedLinks} links).`;
   searchStatus.textContent = '';
