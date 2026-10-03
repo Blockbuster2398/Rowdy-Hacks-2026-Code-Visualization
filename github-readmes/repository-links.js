@@ -8,10 +8,12 @@ const INPUT_FILE = path.join(
 );
 const OUTPUT_FILE = path.join(
   DATA_DIRECTORY,
-  "github-top-repository-links.json"
+  "..",
+  "public",
+  "repository-embeddings.json"
 );
 
-function buildSimilarityGraph(repositories) {
+function buildRepositoryGraphData(repositories) {
   const embeddedRepositories = repositories
     .filter((repository) => Array.isArray(repository.vector))
     .map((repository) => {
@@ -45,51 +47,23 @@ function buildSimilarityGraph(repositories) {
   }
 
   const nodeIds = new Set();
-  const nodes = embeddedRepositories.map(({ repository }) => {
-    if (nodeIds.has(repository.fullName)) {
+  const nodes = embeddedRepositories.map(({ repository, vector }) => {
+    const canonicalId = repository.fullName.toLocaleLowerCase();
+    if (nodeIds.has(canonicalId)) {
       throw new Error(`Duplicate repository: ${repository.fullName}.`);
     }
-    nodeIds.add(repository.fullName);
+    nodeIds.add(canonicalId);
 
     return {
       id: repository.fullName,
       name: repository.name,
       fullName: repository.fullName,
       url: repository.url,
+      vector,
     };
   });
 
-  const links = [];
-
-  for (let sourceIndex = 0; sourceIndex < embeddedRepositories.length; sourceIndex++) {
-    const source = embeddedRepositories[sourceIndex];
-    for (
-      let targetIndex = sourceIndex + 1;
-      targetIndex < embeddedRepositories.length;
-      targetIndex++
-    ) {
-      const target = embeddedRepositories[targetIndex];
-      const dotProduct = source.vector.reduce(
-        (sum, value, index) => sum + value * target.vector[index],
-        0
-      );
-
-      links.push({
-        source: source.repository.fullName,
-        target: target.repository.fullName,
-        similarity: dotProduct / (source.norm * target.norm),
-      });
-    }
-  }
-
-  links.sort(
-    (a, b) =>
-      b.similarity - a.similarity ||
-      a.source.localeCompare(b.source) ||
-      a.target.localeCompare(b.target)
-  );
-
-  return { nodes, links };
+  return { nodes };
 }
 
 async function main() {
@@ -101,12 +75,13 @@ async function main() {
   const skippedCount = repositories.filter(
     (repository) => !Array.isArray(repository.vector)
   ).length;
-  const graph = buildSimilarityGraph(repositories);
+  const graphData = buildRepositoryGraphData(repositories);
 
-  await fs.writeFile(OUTPUT_FILE, `${JSON.stringify(graph, null, 2)}\n`);
+  await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
+  await fs.writeFile(OUTPUT_FILE, `${JSON.stringify(graphData, null, 2)}\n`);
 
   console.log(
-    `Saved ${graph.nodes.length} nodes and ${graph.links.length} links to ` +
+    `Saved ${graphData.nodes.length} repositories to ` +
       `${path.basename(OUTPUT_FILE)}.`
   );
   if (skippedCount > 0) {
@@ -116,9 +91,9 @@ async function main() {
 
 if (require.main === module) {
   main().catch((error) => {
-    console.error(`Could not generate repository links: ${error.message}`);
+    console.error(`Could not generate repository embeddings: ${error.message}`);
     process.exitCode = 1;
   });
 }
 
-module.exports = { buildSimilarityGraph };
+module.exports = { buildRepositoryGraphData };

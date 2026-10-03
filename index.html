@@ -42,6 +42,70 @@
             <button type="submit">Find</button>
             <span id="repo-search-status" role="status"></span>
           </form>
+          <section id="repository-links-panel" aria-labelledby="repository-links-title" hidden>
+            <h3 id="repository-links-title">Linked repositories</h3>
+            <ul id="repository-links-list"></ul>
+          </section>
+
+          <h2>Add a GitHub repository</h2>
+          <form id="add-repository-form">
+            <label for="repository-url">Public repository URL</label>
+            <input
+              id="repository-url"
+              name="repositoryUrl"
+              type="url"
+              placeholder="https://github.com/owner/repository"
+              required
+            />
+            <button id="add-repository-button" type="submit">Add repository</button>
+            <span id="add-repository-status" role="status"></span>
+          </form>
+
+          <h3>Or compare your own README</h3>
+          <form id="custom-readme-form">
+            <label for="custom-repository-title">Repository title</label>
+            <input id="custom-repository-title" name="title" type="text" required />
+
+            <fieldset>
+              <legend>README source</legend>
+              <label class="radio-setting" for="readme-source-text">
+                <input
+                  id="readme-source-text"
+                  name="readmeSource"
+                  type="radio"
+                  value="text"
+                  checked
+                />
+                Write README text
+              </label>
+              <label class="radio-setting" for="readme-source-file">
+                <input
+                  id="readme-source-file"
+                  name="readmeSource"
+                  type="radio"
+                  value="file"
+                />
+                Upload a README file
+              </label>
+            </fieldset>
+
+            <div id="readme-text-source">
+              <label for="custom-readme-text">README text</label>
+              <textarea id="custom-readme-text" name="readmeText" rows="8" required></textarea>
+            </div>
+            <div id="readme-file-source" hidden>
+              <label for="custom-readme-file">README file</label>
+              <input
+                id="custom-readme-file"
+                name="readmeFile"
+                type="file"
+                accept=".md,.markdown,.txt,text/markdown,text/plain"
+                disabled
+              />
+            </div>
+            <button id="custom-readme-button" type="submit">Compare README</button>
+            <span id="custom-readme-status" role="status"></span>
+          </form>
         </aside>
         <section class="graph-panel" aria-label="Repository connections graph">
           <div id="graph"></div>
