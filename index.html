@@ -8,14 +8,22 @@
   <body>
     <main>
       <h1>Text embedding</h1>
-      <form id="embedding-form">
-        <label for="text-input">Enter a word or text</label>
-        <input id="text-input" name="text" type="text" required />
-        <button id="submit-button" type="submit">Generate vector</button>
-      </form>
-      <p id="status" role="status"></p>
-      <pre id="output"></pre>
+      <div class="content">
+        <section class="embedding-panel">
+          <form id="embedding-form">
+            <label for="text-input">Enter a word or text</label>
+            <input id="text-input" name="text" type="text" required />
+            <button id="submit-button" type="submit">Generate vector</button>
+          </form>
+          <p id="status" role="status"></p>
+          <pre id="output"></pre>
+        </section>
+        <section class="graph-panel" aria-label="Example graph">
+          <div id="graph"></div>
+        </section>
+      </div>
     </main>
     <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/graph.js"></script>
   </body>
 </html>
