@@ -1,6 +1,33 @@
 body {
-  margin: 2rem;
+  margin: 0;
+  padding: 2rem;
   font-family: sans-serif;
+}
+
+main {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) minmax(0, 2fr);
+  gap: 2rem;
+}
+
+.embedding-panel {
+  min-width: 0;
+}
+
+.graph-panel {
+  min-width: 0;
+  height: min(75vh, 800px);
+  min-height: 400px;
+}
+
+#graph {
+  width: 100%;
+  height: 100%;
 }
 
 input {
@@ -10,4 +37,19 @@ input {
 pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 1rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .graph-panel {
+    height: 60vh;
+  }
 }
