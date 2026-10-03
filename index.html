@@ -3,26 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text Embedding</title>
+    <title>Repository Similarity Graph</title>
   </head>
   <body>
     <main>
-      <h1>Text embedding</h1>
+      <h1>Repository similarity graph</h1>
       <div class="content">
-        <section class="embedding-panel">
-          <form id="embedding-form">
-            <label for="text-input">Enter a word or text</label>
-            <input id="text-input" name="text" type="text" required />
-            <button id="submit-button" type="submit">Generate vector</button>
+        <aside class="settings-panel" aria-labelledby="settings-title">
+          <h2 id="settings-title">Graph settings</h2>
+          <form id="graph-settings-form">
+            <label for="node-limit">Repositories to display</label>
+            <input id="node-limit" name="nodes" type="number" min="1" required />
+
+            <label for="neighbor-limit">Nearest neighbors per repository</label>
+            <input id="neighbor-limit" name="neighbors" type="number" min="0" required />
+
+            <button type="submit">Apply settings</button>
           </form>
-          <p id="status" role="status"></p>
-          <pre id="output"></pre>
-        </section>
-        <section class="graph-panel" aria-labelledby="graph-title">
-          <h2 id="graph-title">Repository similarity graph</h2>
-          <p id="graph-summary" role="status"></p>
+          <p id="settings-status" role="status"></p>
+
+          <h2>Find a repository</h2>
           <form id="repo-search-form">
-            <label for="repo-search">Find a repository</label>
+            <label for="repo-search">Repository name</label>
             <input
               id="repo-search"
               name="repository"
@@ -34,11 +36,14 @@
             <button type="submit">Find</button>
             <span id="repo-search-status" role="status"></span>
           </form>
+        </aside>
+        <section class="graph-panel" aria-labelledby="graph-title">
+          <h2 id="graph-title">Repository connections</h2>
+          <p id="graph-summary" role="status"></p>
           <div id="graph"></div>
         </section>
       </div>
     </main>
-    <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/graph.js"></script>
   </body>
 </html>
