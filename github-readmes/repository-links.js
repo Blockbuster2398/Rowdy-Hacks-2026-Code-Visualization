@@ -11,11 +11,7 @@ const OUTPUT_FILE = path.join(
   "github-top-repository-links.json"
 );
 
-function buildSimilarityGraph(repositories, neighborCount) {
-  if (!Number.isInteger(neighborCount) || neighborCount < 1) {
-    throw new Error("Neighbor count must be a positive integer.");
-  }
-
+function buildSimilarityGraph(repositories) {
   const embeddedRepositories = repositories
     .filter((repository) => Array.isArray(repository.vector))
     .map((repository) => {
@@ -63,50 +59,30 @@ function buildSimilarityGraph(repositories, neighborCount) {
     };
   });
 
-  const linksByPair = new Map();
+  const links = [];
 
-  for (const source of embeddedRepositories) {
-    const nearest = embeddedRepositories
-      .filter(({ repository }) => repository.fullName !== source.repository.fullName)
-      .map((target) => {
-        const dotProduct = source.vector.reduce(
-          (sum, value, index) => sum + value * target.vector[index],
-          0
-        );
+  for (let sourceIndex = 0; sourceIndex < embeddedRepositories.length; sourceIndex++) {
+    const source = embeddedRepositories[sourceIndex];
+    for (
+      let targetIndex = sourceIndex + 1;
+      targetIndex < embeddedRepositories.length;
+      targetIndex++
+    ) {
+      const target = embeddedRepositories[targetIndex];
+      const dotProduct = source.vector.reduce(
+        (sum, value, index) => sum + value * target.vector[index],
+        0
+      );
 
-        return {
-          target,
-          similarity: dotProduct / (source.norm * target.norm),
-        };
-      })
-      .sort((a, b) => {
-        if (b.similarity !== a.similarity) {
-          return b.similarity - a.similarity;
-        }
-        return a.target.repository.fullName.localeCompare(
-          b.target.repository.fullName
-        );
-      })
-      .slice(0, neighborCount);
-
-    for (const { target, similarity } of nearest) {
-      const [sourceId, targetId] = [
-        source.repository.fullName,
-        target.repository.fullName,
-      ].sort();
-      const key = `${sourceId}\0${targetId}`;
-
-      if (!linksByPair.has(key)) {
-        linksByPair.set(key, {
-          source: sourceId,
-          target: targetId,
-          similarity,
-        });
-      }
+      links.push({
+        source: source.repository.fullName,
+        target: target.repository.fullName,
+        similarity: dotProduct / (source.norm * target.norm),
+      });
     }
   }
 
-  const links = [...linksByPair.values()].sort(
+  links.sort(
     (a, b) =>
       b.similarity - a.similarity ||
       a.source.localeCompare(b.source) ||
@@ -117,13 +93,6 @@ function buildSimilarityGraph(repositories, neighborCount) {
 }
 
 async function main() {
-  const neighborCount = Number(process.argv[2]);
-  if (!Number.isInteger(neighborCount) || neighborCount < 1) {
-    throw new Error(
-      "Usage: node github-readmes/repository-links.js <neighbors-per-repository>"
-    );
-  }
-
   const repositories = JSON.parse(await fs.readFile(INPUT_FILE, "utf8"));
   if (!Array.isArray(repositories)) {
     throw new Error(`${path.basename(INPUT_FILE)} must contain a JSON array.`);
@@ -132,7 +101,7 @@ async function main() {
   const skippedCount = repositories.filter(
     (repository) => !Array.isArray(repository.vector)
   ).length;
-  const graph = buildSimilarityGraph(repositories, neighborCount);
+  const graph = buildSimilarityGraph(repositories);
 
   await fs.writeFile(OUTPUT_FILE, `${JSON.stringify(graph, null, 2)}\n`);
 

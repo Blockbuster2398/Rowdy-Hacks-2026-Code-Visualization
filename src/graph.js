@@ -1,22 +1,27 @@
 import ForceGraph from 'force-graph';
 import graphData from '../github-readmes/github-top-repository-links.json';
+import './style.css';
 
 const graphElement = document.getElementById('graph');
-const graphSummary = document.getElementById('graph-summary');
+const settingsForm = document.getElementById('graph-settings-form');
+const nodeLimitInput = document.getElementById('node-limit');
+const neighborLimitInput = document.getElementById('neighbor-limit');
+const settingsStatus = document.getElementById('settings-status');
 const searchForm = document.getElementById('repo-search-form');
 const searchInput = document.getElementById('repo-search');
 const searchStatus = document.getElementById('repo-search-status');
 const repositoryOptions = document.getElementById('repository-options');
 let selectedNode;
+let displayedNodes = [];
 
-graphSummary.textContent =
-  `${graphData.nodes.length} repositories · ${graphData.links.length} similarity links. Click a repository name to open it on GitHub.`;
-
-for (const node of graphData.nodes) {
-  const option = document.createElement('option');
-  option.value = node.fullName;
-  repositoryOptions.append(option);
+function getNodeFontSize(globalScale) {
+  return Math.max(4, 9 / globalScale);
 }
+
+nodeLimitInput.max = String(graphData.nodes.length);
+nodeLimitInput.value = String(graphData.nodes.length);
+neighborLimitInput.max = String(graphData.nodes.length - 1);
+neighborLimitInput.value = String(Math.min(5, graphData.nodes.length - 1));
 
 const graph = new ForceGraph(graphElement)
   .width(graphElement.clientWidth)
@@ -24,28 +29,130 @@ const graph = new ForceGraph(graphElement)
   .nodeLabel(() => '')
   .nodeCanvasObjectMode(() => 'replace')
   .nodeCanvasObject((node, context, globalScale) => {
-    const fontSize = Math.max(4, 9 / globalScale);
+    const fontSize = getNodeFontSize(globalScale);
+    const isSelected = node.id === selectedNode?.id;
 
     context.save();
-    context.font = `${node === selectedNode ? 'bold ' : ''}${fontSize}px sans-serif`;
+    context.font = `${isSelected ? 'bold ' : ''}${fontSize}px sans-serif`;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillStyle = node === selectedNode ? '#d1495b' : '#222';
+    context.fillStyle = isSelected ? '#d1495b' : '#222';
     context.fillText(node.name, node.x, node.y);
     context.restore();
   })
   .nodePointerAreaPaint((node, color, context, globalScale) => {
-    context.font = `${Math.max(4, 9 / globalScale)}px sans-serif`;
+    const fontSize = getNodeFontSize(globalScale);
+    const padding = 8 / globalScale;
+
+    context.font = `${fontSize}px sans-serif`;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillStyle = color;
-    context.fillText(node.name, node.x, node.y);
+    const textWidth = context.measureText(node.name).width;
+    context.fillRect(
+      node.x - textWidth / 2 - padding,
+      node.y - fontSize / 2 - padding,
+      textWidth + padding * 2,
+      fontSize + padding * 2
+    );
   })
   .linkWidth((link) => 0.5 + 1.5 * link.similarity)
   .onNodeClick((node) => window.open(node.url, '_blank', 'noopener,noreferrer'))
-  .graphData(graphData);
+  .graphData({ nodes: [], links: [] });
 
-setTimeout(() => graph.zoomToFit(500, 40), 500);
+function applyGraphSettings() {
+  const nodeLimit = Number(nodeLimitInput.value);
+  const neighborLimit = Number(neighborLimitInput.value);
+  const maximumAllowedLinksPerNode =
+    Number.isInteger(nodeLimit) && nodeLimit >= 1 && nodeLimit <= graphData.nodes.length
+      ? nodeLimit - 1
+      : graphData.nodes.length - 1;
+
+  if (
+    !Number.isInteger(nodeLimit) ||
+    nodeLimit < 1 ||
+    nodeLimit > graphData.nodes.length ||
+    !Number.isInteger(neighborLimit) ||
+    neighborLimit < 0 ||
+    neighborLimit > maximumAllowedLinksPerNode
+  ) {
+    throw new Error(
+      `Choose 1-${graphData.nodes.length} repositories and 0-${maximumAllowedLinksPerNode} nearest neighbors.`
+    );
+  }
+
+  displayedNodes = graphData.nodes.slice(0, nodeLimit);
+  const displayedIds = new Set(displayedNodes.map(({ id }) => id));
+  const candidateLinks = graphData.links
+    .filter(({ source, target }) => displayedIds.has(source) && displayedIds.has(target))
+    .sort((a, b) => b.similarity - a.similarity);
+  const neighborsByNode = new Map(displayedNodes.map(({ id }) => [id, []]));
+
+  for (const link of candidateLinks) {
+    neighborsByNode.get(link.source).push({
+      id: link.target,
+      link,
+      similarity: link.similarity,
+    });
+    neighborsByNode.get(link.target).push({
+      id: link.source,
+      link,
+      similarity: link.similarity,
+    });
+  }
+
+  const linksByPair = new Map();
+  for (const neighbors of neighborsByNode.values()) {
+    neighbors.sort((a, b) => b.similarity - a.similarity);
+    for (const { link } of neighbors.slice(0, neighborLimit)) {
+      const pair = [link.source, link.target].sort().join('\0');
+      linksByPair.set(pair, link);
+    }
+  }
+  const displayedLinks = [...linksByPair.values()];
+
+  graph.graphData({
+    nodes: displayedNodes.map((node) => ({ ...node })),
+    links: displayedLinks.map((link) => ({ ...link })),
+  });
+  selectedNode = undefined;
+
+  const renderedLinks = displayedLinks.length;
+  settingsStatus.textContent =
+    `Showing ${displayedNodes.length} repositories with up to ${neighborLimit} nearest neighbors each (${renderedLinks} links).`;
+  searchStatus.textContent = '';
+
+  repositoryOptions.replaceChildren();
+  for (const node of displayedNodes) {
+    const option = document.createElement('option');
+    option.value = node.fullName;
+    repositoryOptions.append(option);
+  }
+
+  setTimeout(() => graph.zoomToFit(500, 40), 300);
+}
+
+settingsForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  try {
+    applyGraphSettings();
+    searchStatus.textContent = '';
+  } catch (error) {
+    settingsStatus.textContent = error.message;
+  }
+});
+
+nodeLimitInput.addEventListener('input', () => {
+  const nodeLimit = Number(nodeLimitInput.value);
+  if (Number.isInteger(nodeLimit) && nodeLimit >= 1) {
+    neighborLimitInput.max = String(nodeLimit - 1);
+    if (Number(neighborLimitInput.value) > nodeLimit - 1) {
+      neighborLimitInput.value = String(nodeLimit - 1);
+    }
+  }
+});
+
+applyGraphSettings();
 
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -55,24 +162,34 @@ searchForm.addEventListener('submit', (event) => {
     return;
   }
 
-  const node = graphData.nodes.find(
+  const node = displayedNodes.find(
     ({ name, fullName }) =>
       name.toLocaleLowerCase() === query ||
       fullName.toLocaleLowerCase() === query
-  ) ?? graphData.nodes.find(
+  ) ?? displayedNodes.find(
     ({ name, fullName }) =>
       name.toLocaleLowerCase().includes(query) ||
       fullName.toLocaleLowerCase().includes(query)
   );
 
   if (!node) {
-    searchStatus.textContent = 'No matching repository found.';
+    const exists = graphData.nodes.some(
+      ({ name, fullName }) =>
+        name.toLocaleLowerCase() === query ||
+        fullName.toLocaleLowerCase() === query ||
+        name.toLocaleLowerCase().includes(query) ||
+        fullName.toLocaleLowerCase().includes(query)
+    );
+    searchStatus.textContent = exists
+      ? 'Repository is not displayed. Increase the repository count and try again.'
+      : 'No matching repository found.';
     return;
   }
 
-  selectedNode = node;
+  const graphNode = graph.graphData().nodes.find(({ id }) => id === node.id);
+  selectedNode = graphNode;
   searchStatus.textContent = `Showing ${node.fullName}.`;
-  graph.centerAt(node.x, node.y, 500).zoom(Math.max(graph.zoom(), 3), 500);
+  graph.centerAt(graphNode.x, graphNode.y, 500).zoom(Math.max(graph.zoom(), 3), 500);
 });
 
 function resizeGraph() {
