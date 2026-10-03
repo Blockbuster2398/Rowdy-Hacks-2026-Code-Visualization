@@ -13,6 +13,10 @@ const searchStatus = document.getElementById('repo-search-status');
 const repositoryOptions = document.getElementById('repository-options');
 let selectedNode;
 let displayedNodes = [];
+let displayedNeighborsByNode = new Map();
+let hoveredNodeId;
+let firstOrderNeighborIds = new Set();
+let secondOrderNeighborIds = new Set();
 
 function getNodeFontSize(globalScale) {
   return Math.max(4, 9 / globalScale);
@@ -31,12 +35,21 @@ const graph = new ForceGraph(graphElement)
   .nodeCanvasObject((node, context, globalScale) => {
     const fontSize = getNodeFontSize(globalScale);
     const isSelected = node.id === selectedNode?.id;
+    const fillStyle = node.id === hoveredNodeId
+      ? '#2e7d32'
+      : firstOrderNeighborIds.has(node.id)
+        ? '#e6a700'
+        : secondOrderNeighborIds.has(node.id)
+          ? '#d32f2f'
+          : isSelected
+            ? '#d1495b'
+            : '#222';
 
     context.save();
-    context.font = `${isSelected ? 'bold ' : ''}${fontSize}px sans-serif`;
+    context.font = `${isSelected || node.id === hoveredNodeId ? 'bold ' : ''}${fontSize}px sans-serif`;
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillStyle = isSelected ? '#d1495b' : '#222';
+    context.fillStyle = fillStyle;
     context.fillText(node.name, node.x, node.y);
     context.restore();
   })
@@ -57,6 +70,23 @@ const graph = new ForceGraph(graphElement)
     );
   })
   .linkWidth((link) => 0.5 + 1.5 * link.similarity)
+  .onNodeHover((node) => {
+    hoveredNodeId = node?.id;
+    firstOrderNeighborIds = node
+      ? new Set(displayedNeighborsByNode.get(node.id) ?? [])
+      : new Set();
+    secondOrderNeighborIds = new Set();
+
+    for (const neighborId of firstOrderNeighborIds) {
+      for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
+        if (secondNeighborId !== node?.id && !firstOrderNeighborIds.has(secondNeighborId)) {
+          secondOrderNeighborIds.add(secondNeighborId);
+        }
+      }
+    }
+
+    graph.zoom(graph.zoom());
+  })
   .onNodeClick((node) => window.open(node.url, '_blank', 'noopener,noreferrer'))
   .graphData({ nodes: [], links: [] });
 
@@ -110,12 +140,20 @@ function applyGraphSettings() {
     }
   }
   const displayedLinks = [...linksByPair.values()];
+  displayedNeighborsByNode = new Map(displayedNodes.map(({ id }) => [id, new Set()]));
+  for (const link of displayedLinks) {
+    displayedNeighborsByNode.get(link.source).add(link.target);
+    displayedNeighborsByNode.get(link.target).add(link.source);
+  }
 
   graph.graphData({
     nodes: displayedNodes.map((node) => ({ ...node })),
     links: displayedLinks.map((link) => ({ ...link })),
   });
   selectedNode = undefined;
+  hoveredNodeId = undefined;
+  firstOrderNeighborIds = new Set();
+  secondOrderNeighborIds = new Set();
 
   const renderedLinks = displayedLinks.length;
   settingsStatus.textContent =
