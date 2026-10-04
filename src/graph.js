@@ -416,12 +416,12 @@ async function initializeGraph() {
       context.fill();
 
       context.font = `${isSelected || isHovered ? '600 ' : ''}${fontSize}px ui-sans-serif, system-ui, sans-serif`;
-      context.textAlign = 'left';
-      context.textBaseline = 'middle';
+      context.textAlign = 'center';
+      context.textBaseline = 'bottom';
       context.fillStyle = fillStyle;
       context.globalAlpha =
         isSelected || isHovered || isFirstOrderNeighbor || isSecondOrderNeighbor ? 1 : 0.82;
-      context.fillText(node.name, node.x + 6 / globalScale, node.y);
+      context.fillText(node.name, node.x, node.y - 12 / globalScale);
       context.restore();
     })
     .nodePointerAreaPaint((node, color, context, globalScale) => {
@@ -429,14 +429,14 @@ async function initializeGraph() {
       const padding = 8 / globalScale;
 
       context.font = `${fontSize}px sans-serif`;
-      context.textAlign = 'left';
-      context.textBaseline = 'middle';
+      context.textAlign = 'center';
+      context.textBaseline = 'bottom';
       context.fillStyle = color;
       const textWidth = context.measureText(node.name).width;
       context.fillRect(
-        node.x - padding,
-        node.y - fontSize / 2 - padding,
-        textWidth + padding * 2 + 6 / globalScale,
+        node.x - textWidth / 2 - padding,
+        node.y - 5 / globalScale - fontSize - padding,
+        textWidth + padding * 2,
         fontSize + padding * 2
       );
     })
