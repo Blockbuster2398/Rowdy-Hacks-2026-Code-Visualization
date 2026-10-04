@@ -48,7 +48,12 @@ async function summarizeWithRetry(readme, repositoryName) {
       const isRetryable =
         error.status === 429 || (error.status >= 500 && error.status <= 599);
       if (!isRetryable || attempt + 1 === MAX_RETRIES) {
-        throw new Error(`${repositoryName}: ${error.message}`, { cause: error });
+        const contextualError = new Error(
+          `${repositoryName}: ${error.message}`,
+          { cause: error }
+        );
+        contextualError.code = error.code;
+        throw contextualError;
       }
 
       const retryAfterSeconds = Number(error.retryAfter);
@@ -130,18 +135,33 @@ async function main() {
         );
       } else {
         console.log(`${index + 1}/${repositories.length}: ${name} (summarizing README)`);
-        const summary = await summarizeWithRetry(readme, name);
-        const vector = await embedText(summary);
-        if (
-          vector.length === 0 ||
-          !vector.every(Number.isFinite) ||
-          vector.every((value) => value === 0)
-        ) {
-          throw new Error(`Generated an invalid summary embedding for ${name}.`);
+        let summary;
+        try {
+          summary = await summarizeWithRetry(readme, name);
+        } catch (error) {
+          if (error.code !== 'EMPTY_SUMMARY') {
+            throw error;
+          }
+          console.warn(
+            `${index + 1}/${repositories.length}: ${name} (skipping README: ${error.message})`
+          );
         }
-        result = getOutputRepository(repository, summary, vector, readmeHash);
+
         if (REQUEST_DELAY_MS > 0) {
           await sleep(REQUEST_DELAY_MS);
+        }
+        if (!summary) {
+          result = getOutputRepository(repository, null, null, readmeHash);
+        } else {
+          const vector = await embedText(summary);
+          if (
+            vector.length === 0 ||
+            !vector.every(Number.isFinite) ||
+            vector.every((value) => value === 0)
+          ) {
+            throw new Error(`Generated an invalid summary embedding for ${name}.`);
+          }
+          result = getOutputRepository(repository, summary, vector, readmeHash);
         }
       }
       results.push(result);

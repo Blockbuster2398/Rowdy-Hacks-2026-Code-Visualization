@@ -18,7 +18,10 @@ The generator accepts either `API_KEY` or `GEMINI_API_KEY`.
 The vector-generation step reads `github-top-repositories.json` and writes
 `github-top-repositories-with-summary-vectors.json`. It checkpoints every ten
 repositories and reuses summaries and vectors when the source README has not
-changed, so it can be rerun after interruptions. Gemini requests are made one
+changed, so it can be rerun after interruptions. If Gemini returns no summary
+for an individual README, that repository is logged, saved without a vector,
+and skipped so generation can continue; rerunning the script retries it. Other
+API errors stop generation after saving progress. Gemini requests are made one
 at a time with a default 250 ms delay; set `GEMINI_REQUEST_DELAY_MS` to change it.
 The graph-generation step writes
 `public/repository-summary-embeddings.json` and verifies that its repository

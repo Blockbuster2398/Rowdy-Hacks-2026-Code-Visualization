@@ -64,7 +64,16 @@ export async function summarizeReadme(readmeText, apiKey) {
     .join('\n')
     .trim();
   if (!summary) {
-    throw new Error('Gemini did not return a README summary. Check the README and try again.');
+    const reason =
+      data?.promptFeedback?.blockReason ??
+      data?.candidates?.[0]?.finishReason;
+    const error = new Error(
+      reason
+        ? `Gemini did not return a README summary (${reason}).`
+        : 'Gemini did not return a README summary. Check the README and try again.'
+    );
+    error.code = 'EMPTY_SUMMARY';
+    throw error;
   }
 
   return summary;
