@@ -6,6 +6,7 @@ const tabs = document.querySelectorAll('[role="tab"]');
 const form = document.getElementById('file-graph-form');
 const repositoryUrlInput = document.getElementById('file-graph-repository-url');
 const submitButton = document.getElementById('file-graph-submit');
+const showFoldersInput = document.getElementById('file-graph-show-folders');
 const status = document.getElementById('file-graph-status');
 const results = document.getElementById('file-graph-results');
 const repositoryName = document.getElementById('file-graph-repository-name');
@@ -44,6 +45,7 @@ const languageColors = {
   python: '#ffd080',
   go: '#83d8ff',
   rust: '#c3a5ff',
+  folder: '#f28fb9',
 };
 
 let graph;
@@ -388,24 +390,38 @@ function getLanguageName(language) {
 }
 
 function getFileGraphData() {
+  const nodes = showFoldersInput.checked
+    ? currentNodes
+    : currentNodes.filter((node) => node.type !== 'folder');
+  const visibleNodeIds = new Set(nodes.map((node) => node.id));
+  const links = currentLinks.filter((link) =>
+    (showFoldersInput.checked || link.type !== 'contains') &&
+    visibleNodeIds.has(link.source) &&
+    visibleNodeIds.has(link.target)
+  );
+
   return {
-    nodes: currentNodes.map((node) => ({ ...node })),
-    links: currentLinks.map((link) => ({ ...link })),
+    nodes: nodes.map((node) => ({ ...node })),
+    links: links.map((link) => ({ ...link })),
   };
 }
 
 function createFileGraph2D(element) {
   return new ForceGraph2D(element)
-    .nodeLabel((node) => node.path)
+    .nodeLabel((node) => node.label)
     .nodeCanvasObjectMode(() => 'replace')
     .nodeCanvasObject((node, context, globalScale) => {
       const fontSize = Math.max(5, 8 / globalScale);
-      const color = languageColors[node.language];
+      const color = languageColors[node.language] ?? '#91a4bf';
       context.save();
-      context.beginPath();
-      context.arc(node.x, node.y, 2.5, 0, 2 * Math.PI);
       context.fillStyle = color;
-      context.fill();
+      if (node.type === 'folder') {
+        context.fillRect(node.x - 3, node.y - 3, 6, 6);
+      } else {
+        context.beginPath();
+        context.arc(node.x, node.y, 2.5, 0, 2 * Math.PI);
+        context.fill();
+      }
       context.font = `${fontSize}px ui-sans-serif, system-ui, sans-serif`;
       context.textAlign = 'center';
       context.textBaseline = 'bottom';
@@ -431,7 +447,7 @@ function createFileGraph2D(element) {
         fontSize + 10 / globalScale
       );
     })
-    .nodeColor((node) => languageColors[node.language])
+    .nodeColor((node) => languageColors[node.language] ?? '#91a4bf')
     .linkColor(() => '#7286a6')
     .linkWidth(1)
     .linkDirectionalArrowLength(4)
@@ -454,16 +470,21 @@ async function createFileGraph3D(element) {
     import('three'),
   ]);
   const graphInstance = new ForceGraph3D(element, { controlType: 'orbit' })
-    .nodeLabel((node) => node.path)
+    .nodeLabel((node) => node.label)
     .showNavInfo(false)
-    .nodeColor((node) => languageColors[node.language])
+    .nodeColor((node) => languageColors[node.language] ?? '#91a4bf')
     .nodeThreeObject((node) => {
       const group = new THREE.Group();
       const sphere = new THREE.Mesh(
-        new THREE.SphereGeometry(2.5, 16, 12),
-        new THREE.MeshBasicMaterial({ color: languageColors[node.language] })
+        node.type === 'folder'
+          ? new THREE.BoxGeometry(4, 4, 4)
+          : new THREE.SphereGeometry(2.5, 16, 12),
+        new THREE.MeshBasicMaterial({
+          color: languageColors[node.language] ?? '#91a4bf',
+        })
       );
-      const label = new SpriteText(node.label, 2.4, languageColors[node.language]);
+      const color = languageColors[node.language] ?? '#91a4bf';
+      const label = new SpriteText(node.label, 2.4, color);
       label.fontFace = 'Inter, ui-sans-serif, system-ui, sans-serif';
       label.fontSize = 64;
       label.strokeWidth = 0.25;
@@ -498,10 +519,12 @@ async function createFileGraph3D(element) {
 }
 
 function openFileFromGraph(node) {
-  const path = node.path.split('/').map(encodeURIComponent).join('/');
+  const path = node.path.split('/').filter(Boolean).map(encodeURIComponent).join('/');
   const branchPath = activeBranch.split('/').map(encodeURIComponent).join('/');
+  const route = node.type === 'folder' ? 'tree' : 'blob';
+  const pathSuffix = path ? `/${path}` : '';
   window.open(
-    `${activeRepositoryInfo.html_url}/blob/${branchPath}/${path}`,
+    `${activeRepositoryInfo.html_url}/${route}/${branchPath}${pathSuffix}`,
     '_blank',
     'noopener,noreferrer'
   );
@@ -613,6 +636,48 @@ function resizeGraph() {
   }
 }
 
+function buildFolderTree(files, repositoryName) {
+  const folders = new Map();
+  const folderLinks = new Map();
+  const rootId = 'folder:.';
+  folders.set(rootId, {
+    id: rootId,
+    path: '',
+    label: repositoryName,
+    language: 'folder',
+    type: 'folder',
+  });
+
+  for (const file of files) {
+    let parentId = rootId;
+    let folderPath = '';
+    const segments = file.path.split('/');
+
+    for (const segment of segments.slice(0, -1)) {
+      folderPath = folderPath ? `${folderPath}/${segment}` : segment;
+      const folderId = `folder:${folderPath}`;
+      if (!folders.has(folderId)) {
+        folders.set(folderId, {
+          id: folderId,
+          path: folderPath,
+          label: `${folderPath}/`,
+          language: 'folder',
+          type: 'folder',
+        });
+      }
+
+      const key = `${parentId}\0${folderId}`;
+      folderLinks.set(key, { source: parentId, target: folderId, type: 'contains' });
+      parentId = folderId;
+    }
+
+    const key = `${parentId}\0${file.path}`;
+    folderLinks.set(key, { source: parentId, target: file.path, type: 'contains' });
+  }
+
+  return { folders: [...folders.values()], folderLinks: [...folderLinks.values()] };
+}
+
 async function buildFileGraph(value) {
   const { owner, repository } = parseRepositoryUrl(value);
   const apiBase = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repository)}`;
@@ -686,13 +751,20 @@ async function buildFileGraph(value) {
     }
   }
 
-  const nodes = files.map((file) => ({
+  const fileNodes = files.map((file) => ({
     id: file.path,
     path: file.path,
     label: file.path,
     language: file.language,
+    type: 'file',
   }));
-  const links = [...linksByPair.values()];
+  const { folders, folderLinks } = buildFolderTree(files, repositoryInfo.name);
+  const importLinks = [...linksByPair.values()].map((link) => ({
+    ...link,
+    type: 'import',
+  }));
+  const nodes = [...folders, ...fileNodes];
+  const links = [...folderLinks, ...importLinks];
   results.hidden = false;
   activeRepositoryInfo = repositoryInfo;
   activeBranch = repositoryInfo.default_branch;
@@ -712,7 +784,9 @@ async function buildFileGraph(value) {
   }
   const languageCount = new Set(files.map((file) => file.language)).size;
   status.textContent =
-    `Mapped ${files.length} files and ${links.length} in-repository import${links.length === 1 ? '' : 's'} across ` +
+    `Mapped ${files.length} files and ${folders.length} folders with ${importLinks.length} ` +
+    `in-repository import${importLinks.length === 1 ? '' : 's'} and ${folderLinks.length} ` +
+    `folder-content link${folderLinks.length === 1 ? '' : 's'} across ` +
     `${languageCount} language${languageCount === 1 ? '' : 's'}.` +
     (notices.length ? ` ${notices.join(' ')}` : '');
 }
@@ -735,3 +809,16 @@ form.addEventListener('submit', async (event) => {
 
 new ResizeObserver(resizeGraph).observe(graphElement);
 window.addEventListener('resize', resizeGraph);
+
+showFoldersInput.addEventListener('change', () => {
+  const graphData = getFileGraphData();
+  graph2D?.graphData(graphData);
+  graph3D?.graphData(graphData);
+
+  if (graphDimension === '2d') {
+    scheduleGraphFit(250);
+  } else if (!fileGraph3DWasInteractedWith) {
+    fileGraph3DFitPending = true;
+    scheduleGraphFit(250);
+  }
+});
