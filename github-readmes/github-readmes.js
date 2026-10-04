@@ -12,6 +12,7 @@ const fs = require("node:fs/promises");
 
 const GITHUB_API = "https://api.github.com";
 const OUTPUT_FILE = "github-top-repositories.json";
+const MAX_SEARCH_RESULTS = 1000;
 
 // Conservative pacing to reduce the chance of GitHub secondary rate limits.
 // 2500 ms = about 24 requests/minute.
@@ -19,16 +20,19 @@ const DELAY_BETWEEN_READMES_MS = 200;
 
 // Maximum number of times to retry a secondary rate-limit response.
 const MAX_RATE_LIMIT_RETRIES = 6;
+const SUCCESSFUL_REQUESTS_TO_RESET_BACKOFF = 100;
+let secondaryRateLimitStreak = 0;
+let successfulRequestsSinceSecondaryLimit = 0;
 
 // ------------------------------------------------------------
 // Command-line input
 // ------------------------------------------------------------
 
-const n = Number.parseInt(process.argv[2], 10);
+const n = Number(process.argv[2]);
 
-if (!Number.isInteger(n) || n < 1 || n > 1000) {
-  console.error("Usage: node github-readmes.js <number>");
-  console.error("Example: node github-readmes.js 100");
+if (!Number.isSafeInteger(n) || n < 1) {
+  console.error("Usage: node github-readmes.js <positive total number of repositories>");
+  console.error("Example: node github-readmes.js 2000");
   process.exit(1);
 }
 
@@ -109,6 +113,16 @@ async function githubFetch(url, options = {}) {
 
     // Successful response.
     if (response.ok) {
+      if (secondaryRateLimitStreak > 0) {
+        successfulRequestsSinceSecondaryLimit++;
+        if (
+          successfulRequestsSinceSecondaryLimit >=
+          SUCCESSFUL_REQUESTS_TO_RESET_BACKOFF
+        ) {
+          secondaryRateLimitStreak = 0;
+          successfulRequestsSinceSecondaryLimit = 0;
+        }
+      }
       return response;
     }
 
@@ -146,24 +160,25 @@ async function githubFetch(url, options = {}) {
         );
       }
 
-      let waitMs;
-
-      if (rate.retryAfter > 0) {
-        waitMs = rate.retryAfter * 1000;
-      } else {
-        // Exponential backoff:
-        // 60s, 120s, 240s, 480s, ...
-        waitMs = 60_000 * 2 ** secondaryRetries;
-      }
+      successfulRequestsSinceSecondaryLimit = 0;
+      const backoffAttempt = Math.min(
+        Math.max(secondaryRetries, secondaryRateLimitStreak),
+        MAX_RATE_LIMIT_RETRIES - 1
+      );
+      const exponentialWaitMs = 60_000 * 2 ** backoffAttempt;
+      const retryAfterWaitMs = rate.retryAfter * 1000;
+      const waitMs = Math.max(exponentialWaitMs, retryAfterWaitMs);
 
       secondaryRetries++;
+      secondaryRateLimitStreak++;
 
       console.log(
         `\nGitHub secondary rate limit detected.`
       );
       console.log(
         `Waiting ${formatWait(waitMs)} before retry ` +
-        `${secondaryRetries}/${MAX_RATE_LIMIT_RETRIES}...\n`
+        `${secondaryRetries}/${MAX_RATE_LIMIT_RETRIES} for this request ` +
+        `(backoff streak ${secondaryRateLimitStreak})...\n`
       );
 
       await sleep(waitMs);
@@ -183,21 +198,26 @@ async function githubFetch(url, options = {}) {
 // Search for the top N public repositories by stars
 // ------------------------------------------------------------
 
-async function getTopRepositories(count) {
+async function searchRepositories(count, starFilter = "") {
   const repositories = [];
+  const requestedCount = Math.min(count, MAX_SEARCH_RESULTS);
   let page = 1;
+  let totalCount = 0;
 
-  while (repositories.length < count) {
+  while (repositories.length < requestedCount) {
     const perPage = Math.min(
       100,
-      count - repositories.length
+      requestedCount - repositories.length
     );
 
     const url = new URL(
       `${GITHUB_API}/search/repositories`
     );
 
-    url.searchParams.set("q", "is:public");
+    url.searchParams.set(
+      "q",
+      starFilter ? `is:public ${starFilter}` : "is:public"
+    );
     url.searchParams.set("sort", "stars");
     url.searchParams.set("order", "desc");
     url.searchParams.set("per_page", perPage);
@@ -206,6 +226,7 @@ async function getTopRepositories(count) {
     const response = await githubFetch(url);
     const data = await response.json();
 
+    totalCount = data.total_count;
     repositories.push(...data.items);
 
     if (data.items.length < perPage) {
@@ -215,7 +236,67 @@ async function getTopRepositories(count) {
     page++;
   }
 
-  return repositories.slice(0, count);
+  return { repositories, totalCount };
+}
+
+async function getNextRepositoryBatch(targetCount, existingResults) {
+  const startRank = existingResults.length;
+  const requestedCount = Math.min(
+    MAX_SEARCH_RESULTS,
+    targetCount - startRank
+  );
+
+  if (startRank === 0) {
+    const firstBatch = await searchRepositories(requestedCount);
+    return firstBatch.repositories;
+  }
+
+  const boundaryStars = Number(existingResults[startRank - 1]?.stars);
+  if (!Number.isFinite(boundaryStars)) {
+    throw new Error(
+      `Cannot continue after rank ${startRank}: the saved entry has no valid star count.`
+    );
+  }
+
+  const savedNames = new Set(
+    existingResults.map((repository) => repository.fullName).filter(Boolean)
+  );
+  const boundary = await searchRepositories(
+    MAX_SEARCH_RESULTS,
+    `stars:${boundaryStars}`
+  );
+  const nextRepositories = boundary.repositories
+    .filter((repository) => !savedNames.has(repository.full_name))
+    .slice(0, requestedCount);
+
+  if (nextRepositories.length < requestedCount) {
+    if (
+      boundary.totalCount > MAX_SEARCH_RESULTS &&
+      boundary.repositories.length === MAX_SEARCH_RESULTS
+    ) {
+      throw new Error(
+        `More than ${MAX_SEARCH_RESULTS} repositories share the ${boundaryStars}-star ` +
+        "boundary, so GitHub Search cannot safely determine the next rank."
+      );
+    }
+
+    const remainingCount = requestedCount - nextRepositories.length;
+    const belowBoundary = await searchRepositories(
+      remainingCount,
+      `stars:<${boundaryStars}`
+    );
+    const includedNames = new Set([
+      ...savedNames,
+      ...nextRepositories.map((repository) => repository.full_name),
+    ]);
+    nextRepositories.push(
+      ...belowBoundary.repositories
+        .filter((repository) => !includedNames.has(repository.full_name))
+        .slice(0, remainingCount)
+    );
+  }
+
+  return nextRepositories;
 }
 
 // ------------------------------------------------------------
@@ -261,16 +342,6 @@ async function saveResults(results) {
 // ------------------------------------------------------------
 
 async function main() {
-  console.log(
-    `Finding the top ${n} public repositories by stars...`
-  );
-
-  const repositories = await getTopRepositories(n);
-
-  console.log(
-    `Found ${repositories.length} repositories.\n`
-  );
-
   // Load previous progress if it exists.
   let existingResults = [];
 
@@ -289,88 +360,109 @@ async function main() {
     // File doesn't exist yet.
   }
 
+  existingResults = existingResults
+    .filter((item) => item && item.fullName)
+    .sort((a, b) => a.rank - b.rank);
+
+  if (existingResults.length > n) {
+    console.log(
+      `Keeping ${existingResults.length} saved repositories; requested total is ${n}.`
+    );
+  }
+
   const existingByRepo = new Map(
-    existingResults
-      .filter((item) => item && item.fullName)
-      .map((item) => [item.fullName, item])
+    existingResults.map((item) => [item.fullName, item])
   );
 
-  const results = [];
+  const results = [...existingResults];
 
-  for (let i = 0; i < repositories.length; i++) {
-    const repo = repositories[i];
-
-    const existing = existingByRepo.get(
-      repo.full_name
+  while (results.length < n) {
+    const startRank = results.length;
+    const batchLimit = Math.min(MAX_SEARCH_RESULTS, n - startRank);
+    console.log(
+      `Finding repositories ${startRank + 1}-${startRank + batchLimit} by stars...`
     );
+    const repositories = await getNextRepositoryBatch(n, results);
+    console.log(`Found ${repositories.length} additional repositories.\n`);
 
-    // Resume instead of downloading an existing README.
-    if (existing && existing.readme !== undefined) {
-      const updated = {
-        ...existing,
-        rank: i + 1,
-        stars: repo.stargazers_count,
-        description: repo.description,
-        language: repo.language,
-      };
+    if (repositories.length === 0) {
+      break;
+    }
 
-      results.push(updated);
+    for (let i = 0; i < repositories.length; i++) {
+      const repo = repositories[i];
+      const rank = startRank + i + 1;
+
+      const existing = existingByRepo.get(repo.full_name);
+
+      // Resume instead of downloading an existing README.
+      if (existing && existing.readme !== undefined) {
+        const updated = {
+          ...existing,
+          rank,
+          stars: repo.stargazers_count,
+          description: repo.description,
+          language: repo.language,
+        };
+
+        results.push(updated);
+
+        console.log(
+          `${rank}/${n}: ${repo.full_name} — already downloaded`
+        );
+
+        continue;
+      }
+
+      // Wait between README requests.
+      if (results.length > 0) {
+        await sleep(DELAY_BETWEEN_READMES_MS);
+      }
 
       console.log(
-        `${i + 1}/${repositories.length}: ` +
-        `${repo.full_name} — already downloaded`
+        `${rank}/${n}: ${repo.full_name} ` +
+        `(${repo.stargazers_count.toLocaleString()} stars)`
       );
 
-      continue;
-    }
+      let readme = null;
+      let error = null;
 
-    // Wait between README requests.
-    if (results.length > 0) {
-      await sleep(DELAY_BETWEEN_READMES_MS);
-    }
+      try {
+        readme = await getReadme(
+          repo.owner.login,
+          repo.name
+        );
+      } catch (err) {
+        error = err.message;
 
-    console.log(
-      `${i + 1}/${repositories.length}: ` +
-      `${repo.full_name} ` +
-      `(${repo.stargazers_count.toLocaleString()} stars)`
-    );
+        console.error(
+          `  README error: ${error}`
+        );
+      }
 
-    let readme = null;
-    let error = null;
+      const result = {
+        rank,
+        name: repo.name,
+        fullName: repo.full_name,
+        owner: repo.owner.login,
+        stars: repo.stargazers_count,
+        url: repo.html_url,
+        description: repo.description,
+        language: repo.language,
+        readme,
+        error,
+      };
+      results.push(result);
+      existingByRepo.set(repo.full_name, result);
 
-    try {
-      readme = await getReadme(
-        repo.owner.login,
-        repo.name
-      );
-    } catch (err) {
-      error = err.message;
+      // Save after EVERY repository.
+      await saveResults(results);
 
-      console.error(
-        `  README error: ${error}`
-      );
-    }
-
-    results.push({
-      rank: i + 1,
-      name: repo.name,
-      fullName: repo.full_name,
-      owner: repo.owner.login,
-      stars: repo.stargazers_count,
-      url: repo.html_url,
-      description: repo.description,
-      language: repo.language,
-      readme,
-      error,
-    });
-
-    // Save after EVERY repository.
-    await saveResults(results);
-
-    if (readme === null) {
-      console.log("  No README found.");
-    } else {
-      console.log("  README saved.");
+      if (readme === null) {
+        console.log("  No README found.");
+      } else {
+        console.log("  README saved.");
+      }
     }
   }
 

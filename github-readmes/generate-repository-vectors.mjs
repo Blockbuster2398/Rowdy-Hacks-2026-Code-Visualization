@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { embedText } from '../embeddings/word2vec.js';
+import { embedTexts } from '../embeddings/word2vec.js';
 
 const SCRIPT_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
 const INPUT_FILE = path.resolve(
@@ -13,6 +13,8 @@ const OUTPUT_FILE = path.resolve(
   'github-top-repositories-with-vectors.json'
 );
 const CHUNK_LENGTH = 1500;
+const EMBEDDING_BATCH_SIZE = 8;
+const CHECKPOINT_INTERVAL = 25;
 
 function splitText(text) {
   const chunks = [];
@@ -62,11 +64,12 @@ async function createVector(readme, repositoryName) {
   const chunks = splitText(readme);
   const chunkVectors = [];
 
-  for (let index = 0; index < chunks.length; index++) {
+  for (let index = 0; index < chunks.length; index += EMBEDDING_BATCH_SIZE) {
+    const batch = chunks.slice(index, index + EMBEDDING_BATCH_SIZE);
     console.log(
-      `  ${repositoryName}: embedding chunk ${index + 1}/${chunks.length}`
+      `  ${repositoryName}: embedding chunks ${index + 1}-${index + batch.length}/${chunks.length}`
     );
-    chunkVectors.push(await embedText(chunks[index]));
+    chunkVectors.push(...await embedTexts(batch));
   }
 
   const meanVector = chunkVectors[0].map((_, dimension) =>
@@ -114,7 +117,12 @@ async function main() {
     }
 
     results.push({ ...repository, vector });
-    await fs.writeFile(OUTPUT_FILE, JSON.stringify(results, null, 2), 'utf8');
+    const isCheckpoint = (index + 1) % CHECKPOINT_INTERVAL === 0;
+    const isFinalRepository = index + 1 === repositories.length;
+    if (isCheckpoint || isFinalRepository) {
+      await fs.writeFile(OUTPUT_FILE, JSON.stringify(results, null, 2), 'utf8');
+      console.log(`Checkpoint saved: ${results.length}/${repositories.length}`);
+    }
   }
 
   console.log(`Saved ${results.length} repositories to ${OUTPUT_FILE}`);

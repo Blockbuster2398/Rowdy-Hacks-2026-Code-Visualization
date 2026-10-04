@@ -14,30 +14,50 @@ const OUTPUT_FILE = path.join(
 );
 
 function buildRepositoryGraphData(repositories) {
-  const embeddedRepositories = repositories
-    .filter((repository) => Array.isArray(repository.vector))
-    .map((repository) => {
-      if (!repository.fullName || !repository.name) {
-        throw new Error("Every embedded repository needs a name and fullName.");
-      }
+  const embeddedRepositories = [];
+  const repositoriesByName = new Map();
 
-      const vector = repository.vector;
-      if (
-        vector.length === 0 ||
-        !vector.every((value) => Number.isFinite(value))
-      ) {
-        throw new Error(`Invalid embedding vector for ${repository.fullName}.`);
-      }
+  for (const repository of repositories) {
+    if (!Array.isArray(repository.vector)) {
+      continue;
+    }
+    if (!repository.fullName || !repository.name) {
+      throw new Error("Every embedded repository needs a name and fullName.");
+    }
 
-      const norm = Math.sqrt(
-        vector.reduce((sum, value) => sum + value * value, 0)
-      );
-      if (norm === 0) {
-        throw new Error(`Embedding vector for ${repository.fullName} is zero.`);
-      }
+    const vector = repository.vector;
+    if (
+      vector.length === 0 ||
+      !vector.every((value) => Number.isFinite(value))
+    ) {
+      throw new Error(`Invalid embedding vector for ${repository.fullName}.`);
+    }
 
-      return { repository, vector, norm };
-    });
+    const norm = Math.sqrt(
+      vector.reduce((sum, value) => sum + value * value, 0)
+    );
+    if (norm === 0) {
+      throw new Error(`Embedding vector for ${repository.fullName} is zero.`);
+    }
+
+    const canonicalId = repository.fullName.toLocaleLowerCase();
+    const previous = repositoriesByName.get(canonicalId);
+    if (previous) {
+      const vectorsMatch =
+        previous.vector.length === vector.length &&
+        previous.vector.every((value, index) => value === vector[index]);
+      if (!vectorsMatch) {
+        throw new Error(
+          `Duplicate repository ${repository.fullName} has conflicting vectors.`
+        );
+      }
+      continue;
+    }
+
+    const embeddedRepository = { repository, vector, norm };
+    repositoriesByName.set(canonicalId, embeddedRepository);
+    embeddedRepositories.push(embeddedRepository);
+  }
 
   const dimensions = new Set(
     embeddedRepositories.map(({ vector }) => vector.length)
@@ -46,14 +66,7 @@ function buildRepositoryGraphData(repositories) {
     throw new Error("Repository embedding vectors must all have the same length.");
   }
 
-  const nodeIds = new Set();
   const nodes = embeddedRepositories.map(({ repository, vector }) => {
-    const canonicalId = repository.fullName.toLocaleLowerCase();
-    if (nodeIds.has(canonicalId)) {
-      throw new Error(`Duplicate repository: ${repository.fullName}.`);
-    }
-    nodeIds.add(canonicalId);
-
     return {
       id: repository.fullName,
       name: repository.name,
@@ -86,6 +99,11 @@ async function main() {
   );
   if (skippedCount > 0) {
     console.log(`Skipped ${skippedCount} repositories without vectors.`);
+  }
+  const duplicateCount =
+    repositories.length - skippedCount - graphData.nodes.length;
+  if (duplicateCount > 0) {
+    console.log(`Skipped ${duplicateCount} duplicate repository entries.`);
   }
 }
 
