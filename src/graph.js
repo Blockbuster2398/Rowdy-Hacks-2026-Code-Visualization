@@ -1,10 +1,14 @@
 import ForceGraph2D from 'force-graph';
+import { summarizeReadme } from '../embeddings/gemini.js';
 import { fetchGitHubJson, parseRepositoryUrl } from './github.js';
 import './style.css';
 
 const graphElement = document.getElementById('graph');
 const graphInteractionHelp = document.getElementById('graph-interaction-help');
 const settingsForm = document.getElementById('graph-settings-form');
+const readmeEmbeddingModeInputs = document.querySelectorAll('input[name="readmeEmbeddingMode"]');
+const geminiApiKeySetting = document.getElementById('gemini-api-key-setting');
+const geminiApiKeyInput = document.getElementById('gemini-api-key');
 const nodeLimitInput = document.getElementById('node-limit');
 const nodeLimitNumberInput = document.getElementById('node-limit-number');
 const neighborLimitInput = document.getElementById('neighbor-limit');
@@ -46,8 +50,10 @@ let firstOrderNeighborIds = new Set();
 let secondOrderNeighborIds = new Set();
 let neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
 let repositoryNodes = [];
+let originalRepositoryCount = 0;
 let userRepositories = [];
 let displayedRepositoryNodes = [];
+let activeReadmeEmbeddingMode = 'original';
 let graph;
 let graph2D;
 let graph3D;
@@ -69,6 +75,27 @@ window.addEventListener('beforeunload', (event) => {
 
 function canonicalId(fullName) {
   return fullName.toLocaleLowerCase('en-US');
+}
+
+async function embedReadme(readmeText, mode, onStatus, existingSummary) {
+  let textToEmbed = readmeText;
+  let summary = existingSummary;
+
+  if (mode === 'gemini-summary') {
+    if (!summary) {
+      const apiKey = geminiApiKeyInput.value.trim();
+      if (!apiKey) {
+        throw new Error('Enter a Gemini API key in the Repository Comparison Mode settings.');
+      }
+      onStatus('Summarizing README with Gemini…');
+      summary = await summarizeReadme(readmeText, apiKey);
+    }
+    textToEmbed = summary;
+  }
+
+  onStatus('Embedding README. The model may need to download first…');
+  const { embedText } = await import('../embeddings/word2vec.js');
+  return { vector: await embedText(textToEmbed), summary };
 }
 
 function prepareNode(node, dimensions) {
@@ -472,6 +499,54 @@ function updateNodeLimitRange() {
   }
 }
 
+async function loadRepositoryNodes(mode) {
+  const fileName = mode === 'gemini-summary'
+    ? 'repository-summary-embeddings.json'
+    : 'repository-embeddings.json';
+  const response = await fetch(`${import.meta.env.BASE_URL}${fileName}`);
+  if (!response.ok) {
+    if (mode === 'gemini-summary' && response.status === 404) {
+      throw new Error(
+        'The Gemini summary dataset has not been built yet. Run npm run build:summary-vectors ' +
+        'with GEMINI_API_KEY set, then npm run build:summary-graph.'
+      );
+    }
+    throw new Error(`Could not load ${fileName} (HTTP ${response.status}).`);
+  }
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    if (mode === 'gemini-summary') {
+      throw new Error(
+        'The Gemini summary dataset has not been built yet. Run npm run build:summary-vectors ' +
+        'with GEMINI_API_KEY set, then npm run build:summary-graph.'
+      );
+    }
+    throw new Error(`${fileName} is not valid JSON.`);
+  }
+  if (!Array.isArray(data.nodes) || data.nodes.length === 0) {
+    throw new Error(`${fileName} does not contain any repositories.`);
+  }
+
+  const dimensions = data.nodes[0].vector?.length;
+  if (!Number.isInteger(dimensions) || dimensions < 1) {
+    throw new Error(`${fileName} contains an invalid vector.`);
+  }
+  const knownIds = new Set();
+  const nodes = data.nodes.map((node) => {
+    const preparedNode = prepareNode(node, dimensions);
+    const id = canonicalId(preparedNode.fullName);
+    if (knownIds.has(id)) {
+      throw new Error(`Duplicate repository in ${fileName}: ${preparedNode.fullName}.`);
+    }
+    knownIds.add(id);
+    return preparedNode;
+  });
+
+  return nodes;
+}
+
 async function getRepositoryReadme(owner, repository) {
   const apiPath = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repository)}`;
   const repositoryInfo = await fetchGitHubJson(apiPath, 'Repository');
@@ -704,29 +779,8 @@ graphElement.textContent = 'Loading repository embeddings…';
 settingsStatus.textContent = 'Loading repository embeddings…';
 
 async function initializeGraph() {
-  const response = await fetch(`${import.meta.env.BASE_URL}repository-embeddings.json`);
-  if (!response.ok) {
-    throw new Error(`Could not load repository embeddings (HTTP ${response.status}).`);
-  }
-  const data = await response.json();
-  if (!Array.isArray(data.nodes) || data.nodes.length === 0) {
-    throw new Error('Repository embeddings file does not contain any repositories.');
-  }
-
-  const dimensions = data.nodes[0].vector?.length;
-  if (!Number.isInteger(dimensions) || dimensions < 1) {
-    throw new Error('Repository embeddings file contains an invalid vector.');
-  }
-  const knownIds = new Set();
-  repositoryNodes = data.nodes.map((node) => {
-    const preparedNode = prepareNode(node, dimensions);
-    const id = canonicalId(preparedNode.fullName);
-    if (knownIds.has(id)) {
-      throw new Error(`Duplicate repository in graph data: ${preparedNode.fullName}.`);
-    }
-    knownIds.add(id);
-    return preparedNode;
-  });
+  repositoryNodes = await loadRepositoryNodes('original');
+  originalRepositoryCount = repositoryNodes.length;
   displayedRepositoryNodes = repositoryNodes;
 
   graphElement.replaceChildren();
@@ -744,6 +798,87 @@ async function initializeGraph() {
     neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
     refreshGraphStyle();
   });
+
+  async function updateReadmeEmbeddingSettings() {
+    const useGeminiSummary =
+      document.querySelector('input[name="readmeEmbeddingMode"]:checked').value === 'gemini-summary';
+    geminiApiKeySetting.hidden = !useGeminiSummary;
+
+    const requestedMode = useGeminiSummary ? 'gemini-summary' : 'original';
+    if (requestedMode === activeReadmeEmbeddingMode) {
+      return;
+    }
+
+    readmeEmbeddingModeInputs.forEach((input) => {
+      input.disabled = true;
+    });
+    settingsStatus.textContent = `Loading ${useGeminiSummary ? 'Gemini summary' : 'original README'} comparisons…`;
+    try {
+      const nextRepositoryNodes = await loadRepositoryNodes(requestedMode);
+      if (nextRepositoryNodes[0].vector.length !== repositoryNodes[0].vector.length) {
+        throw new Error('The selected repository dataset uses an incompatible embedding size.');
+      }
+      if (
+        requestedMode === 'gemini-summary' &&
+        nextRepositoryNodes.some((node) =>
+          !repositoryNodes.some((originalNode) => canonicalId(originalNode.id) === canonicalId(node.id))
+        )
+      ) {
+        throw new Error('The summary dataset contains repositories missing from the original graph.');
+      }
+
+      const nextUserRepositories = [];
+      for (let index = 0; index < userRepositories.length; index += 1) {
+        const node = userRepositories[index];
+        const { vector, summary } = await embedReadme(
+          node.readmeText,
+          requestedMode,
+          (message) => {
+            settingsStatus.textContent =
+              `Re-embedding added repositories (${index + 1}/${userRepositories.length}): ${message}`;
+          },
+          node.readmeSummary
+        );
+        nextUserRepositories.push(prepareNode(
+          { ...node, vector, readmeSummary: summary },
+          nextRepositoryNodes[0].vector.length
+        ));
+      }
+
+      repositoryNodes = nextRepositoryNodes;
+      userRepositories = nextUserRepositories;
+      displayedRepositoryNodes = [...userRepositories, ...repositoryNodes];
+      activeReadmeEmbeddingMode = requestedMode;
+      nodeLimitInput.max = String(displayedRepositoryNodes.length);
+      nodeLimitInput.value = String(Math.min(
+        displayedRepositoryNodes.length,
+        Number(nodeLimitInput.value)
+      ));
+      updateNodeLimitRange();
+      applyGraphSettings();
+      settingsStatus.textContent =
+        useGeminiSummary
+          ? `Switched to Gemini summary comparisons. ${nextRepositoryNodes.length} of ` +
+            `${originalRepositoryCount} repositories have summaries; showing ${displayedNodes.length}.`
+          : `Switched to original README comparisons. Showing ${displayedNodes.length} repositories.`;
+    } catch (error) {
+      readmeEmbeddingModeInputs.forEach((input) => {
+        input.checked = input.value === activeReadmeEmbeddingMode;
+      });
+      geminiApiKeySetting.hidden = activeReadmeEmbeddingMode !== 'gemini-summary';
+      settingsStatus.textContent =
+        error instanceof Error ? error.message : 'Could not switch repository comparison mode.';
+    } finally {
+      readmeEmbeddingModeInputs.forEach((input) => {
+        input.disabled = false;
+      });
+    }
+  }
+
+  readmeEmbeddingModeInputs.forEach((input) => {
+    input.addEventListener('change', updateReadmeEmbeddingSettings);
+  });
+  updateReadmeEmbeddingSettings();
 
   for (const input of graphDimensionInputs) {
     input.addEventListener('change', async () => {
@@ -875,9 +1010,9 @@ async function initializeGraph() {
         return;
       }
 
-      addRepositoryStatus.textContent = 'Embedding README. The model may need to download first…';
-      const { embedText } = await import('../embeddings/word2vec.js');
-      const vector = await embedText(readmeText);
+      const { vector, summary } = await embedReadme(readmeText, activeReadmeEmbeddingMode, (message) => {
+        addRepositoryStatus.textContent = message;
+      });
       const newNode = prepareNode(
         {
           id: fullName,
@@ -885,6 +1020,8 @@ async function initializeGraph() {
           fullName,
           url: repositoryInfo.html_url,
           vector,
+          readmeText,
+          readmeSummary: summary,
           isUserProvided: true,
         },
         repositoryNodes[0].vector.length
@@ -947,9 +1084,9 @@ async function initializeGraph() {
         throw new Error('README content cannot be empty.');
       }
 
-      customReadmeStatus.textContent = 'Embedding README. The model may need to download first…';
-      const { embedText } = await import('../embeddings/word2vec.js');
-      const vector = await embedText(readmeText);
+      const { vector, summary } = await embedReadme(readmeText, activeReadmeEmbeddingMode, (message) => {
+        customReadmeStatus.textContent = message;
+      });
       const id = `custom:${crypto.randomUUID()}`;
       const customNode = prepareNode(
         {
@@ -958,6 +1095,8 @@ async function initializeGraph() {
           fullName: title,
           url: '',
           vector,
+          readmeText,
+          readmeSummary: summary,
           isUserProvided: true,
         },
         repositoryNodes[0].vector.length

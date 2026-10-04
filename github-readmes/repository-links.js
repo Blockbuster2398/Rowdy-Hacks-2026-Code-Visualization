@@ -2,11 +2,18 @@ const fs = require("node:fs/promises");
 const path = require("node:path");
 
 const DATA_DIRECTORY = __dirname;
-const INPUT_FILE = path.join(
-  DATA_DIRECTORY,
-  "github-top-repositories-with-vectors.json"
-);
-const OUTPUT_FILE = path.join(
+const MODE = process.argv[2] ?? "original";
+if (!["original", "summary"].includes(MODE)) {
+  throw new Error("Usage: node repository-links.js [original|summary]");
+}
+const INPUT_FILE = path.join(DATA_DIRECTORY, MODE === "summary"
+  ? "github-top-repositories-with-summary-vectors.json"
+  : "github-top-repositories-with-vectors.json");
+const OUTPUT_FILE = path.join(DATA_DIRECTORY, "..", "public",
+  MODE === "summary"
+    ? "repository-summary-embeddings.json"
+    : "repository-embeddings.json");
+const ORIGINAL_OUTPUT_FILE = path.join(
   DATA_DIRECTORY,
   "..",
   "public",
@@ -65,6 +72,9 @@ function buildRepositoryGraphData(repositories) {
   if (dimensions.size > 1) {
     throw new Error("Repository embedding vectors must all have the same length.");
   }
+  if (embeddedRepositories.length === 0) {
+    throw new Error("No repositories have valid vectors.");
+  }
 
   const nodes = embeddedRepositories.map(({ repository, vector }) => {
     return {
@@ -90,15 +100,40 @@ async function main() {
   ).length;
   const graphData = buildRepositoryGraphData(repositories);
 
+  if (MODE === "summary") {
+    const originalData = JSON.parse(await fs.readFile(ORIGINAL_OUTPUT_FILE, "utf8"));
+    if (!Array.isArray(originalData.nodes)) {
+      throw new Error("The original graph dataset does not contain a nodes array.");
+    }
+    const originalIds = new Set(
+      originalData.nodes.map(({ id }) => id.toLocaleLowerCase())
+    );
+    const unmatchedRepository = graphData.nodes.find(
+      ({ id }) => !originalIds.has(id.toLocaleLowerCase())
+    );
+    if (unmatchedRepository) {
+      throw new Error(
+        `Summary repository ${unmatchedRepository.id} is not present in the original graph.`
+      );
+    }
+  }
+
   await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
   await fs.writeFile(OUTPUT_FILE, `${JSON.stringify(graphData, null, 2)}\n`);
 
   console.log(
-    `Saved ${graphData.nodes.length} repositories to ` +
+    `Saved ${graphData.nodes.length} ${MODE} repositories to ` +
       `${path.basename(OUTPUT_FILE)}.`
   );
   if (skippedCount > 0) {
     console.log(`Skipped ${skippedCount} repositories without vectors.`);
+  }
+  if (MODE === "summary") {
+    console.log(
+      `Summary coverage: ${graphData.nodes.length}/${JSON.parse(
+        await fs.readFile(ORIGINAL_OUTPUT_FILE, "utf8")
+      ).nodes.length} repositories.`
+    );
   }
   const duplicateCount =
     repositories.length - skippedCount - graphData.nodes.length;

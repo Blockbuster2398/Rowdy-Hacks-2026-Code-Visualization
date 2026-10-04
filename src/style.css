@@ -878,6 +878,21 @@ main {
   cursor: pointer;
 }
 
+.settings-panel .readme-embedding-setting .radio-setting {
+  cursor: pointer;
+}
+
+.settings-panel .readme-embedding-setting > div {
+  margin-top: 0.85rem;
+}
+
+.settings-panel .setting-note {
+  margin: -0.45rem 0 0;
+  color: #8996ad;
+  font-size: 0.68rem;
+  line-height: 1.5;
+}
+
 .graph-renderer {
   position: absolute;
   inset: 0;

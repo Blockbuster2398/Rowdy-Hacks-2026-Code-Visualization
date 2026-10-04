@@ -2,7 +2,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:summary-vectors": "node github-readmes/generate-summary-vectors.mjs",
+    "build:summary-graph": "node github-readmes/repository-links.js summary"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.0",

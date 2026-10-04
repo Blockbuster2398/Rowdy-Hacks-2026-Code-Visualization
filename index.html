@@ -88,6 +88,44 @@
                   3D
                 </label>
               </fieldset>
+              <fieldset class="readme-embedding-setting">
+                <legend>Repository Comparison Mode</legend>
+                <label class="radio-setting" for="readme-embedding-original">
+                  <input
+                    id="readme-embedding-original"
+                    name="readmeEmbeddingMode"
+                    type="radio"
+                    value="original"
+                    checked
+                  />
+                  Compare original READMEs
+                </label>
+                <label class="radio-setting" for="readme-embedding-gemini">
+                  <input
+                    id="readme-embedding-gemini"
+                    name="readmeEmbeddingMode"
+                    type="radio"
+                    value="gemini-summary"
+                  />
+                  Compare Gemini README summaries
+                </label>
+                <div id="gemini-api-key-setting" hidden>
+                  <label for="gemini-api-key">Gemini API key</label>
+                  <input
+                    id="gemini-api-key"
+                    type="password"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="Enter your Gemini API key"
+                    aria-describedby="gemini-api-key-note"
+                  />
+                  <p id="gemini-api-key-note" class="setting-note">
+                    The map compares repositories with completed summaries; coverage grows as the
+                    dataset is generated. This key is only used for summaries you add or compare,
+                    and is not saved.
+                  </p>
+                </div>
+              </fieldset>
               <label for="node-limit">
                 <span>Repositories To Display</span>
               </label>
