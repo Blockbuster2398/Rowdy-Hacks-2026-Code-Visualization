@@ -172,14 +172,26 @@ function refreshGraphStyle() {
     graph2D.zoom(graph2D.zoom());
   }
   if (graph3D) {
-    for (const [id, label] of repositoryNodeLabels) {
-      const node = graph3D.graphData().nodes.find((graphNode) => graphNode.id === id);
-      if (!node) {
+    for (const node of graph3D.graphData().nodes) {
+      const label = repositoryNodeLabels.get(node.id);
+      if (!label) {
         continue;
       }
-      label.color = getRepositoryNodeLabelColor(node);
-      label.fontWeight = node.id === selectedNode?.id || node.id === hoveredNodeId ? 'bold' : 'normal';
-      label.material.opacity = getRepositoryNodeLabelOpacity(node);
+
+      const color = getRepositoryNodeLabelColor(node);
+      const fontWeight =
+        node.id === selectedNode?.id || node.id === hoveredNodeId ? 'bold' : 'normal';
+      const opacity = getRepositoryNodeLabelOpacity(node);
+
+      if (label.color !== color) {
+        label.color = color;
+      }
+      if (label.fontWeight !== fontWeight) {
+        label.fontWeight = fontWeight;
+      }
+      if (label.material.opacity !== opacity) {
+        label.material.opacity = opacity;
+      }
     }
     graph3D.nodeColor(getRepositoryNodeColor);
     graph3D.linkColor(getRepositoryLinkColor);
