@@ -16,8 +16,13 @@ function getExtractor() {
   return extractorPromise;
 }
 
-export async function embedText(text) {
+export async function embedTexts(texts) {
   const extractor = await getExtractor();
-  const output = await extractor(text, { pooling: 'mean', normalize: true });
-  return output.tolist()[0];
+  const output = await extractor(texts, { pooling: 'mean', normalize: true });
+  return output.tolist();
+}
+
+export async function embedText(text) {
+  const [vector] = await embedTexts([text]);
+  return vector;
 }
