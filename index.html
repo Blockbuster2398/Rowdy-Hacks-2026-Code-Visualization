@@ -39,11 +39,11 @@
           <section class="control-section" aria-labelledby="settings-title">
             <div class="section-heading">
               <span class="section-icon" aria-hidden="true">✳</span>
-              <h2 id="settings-title">Tune your map</h2>
+              <h2 id="settings-title">Tune Your Map</h2>
             </div>
             <form id="graph-settings-form">
               <label for="node-limit">
-                <span>Repositories to display</span>
+                <span>Repositories To Display</span>
               </label>
               <div class="node-limit-control">
                 <input id="node-limit" name="nodes" type="range" min="1" required />
@@ -57,21 +57,21 @@
                 />
               </div>
 
-              <label for="neighbor-limit">Nearest neighbors per repository</label>
+              <label for="neighbor-limit">Nearest Neighbors Per Repository</label>
               <input id="neighbor-limit" name="neighbors" type="number" min="0" required />
 
               <label class="range-setting" for="link-opacity">
-                <span>Link opacity</span>
+                <span>Link Opacity</span>
                 <output id="link-opacity-value" for="link-opacity"></output>
               </label>
               <input id="link-opacity" name="linkOpacity" type="range" min="0" max="100" value="20" />
 
               <label class="checkbox-setting" for="neighborhood-highlighting">
                 <input id="neighborhood-highlighting" type="checkbox" checked />
-                Highlight a node's neighborhood
+                Highlight A Node's Neighborhood
               </label>
 
-              <button type="submit">Update graph <span aria-hidden="true">↗</span></button>
+              <button type="submit">Update Graph <span aria-hidden="true">↗</span></button>
             </form>
             <p id="settings-status" role="status"></p>
           </section>
@@ -79,10 +79,10 @@
           <section class="control-section" aria-labelledby="search-title">
             <div class="section-heading">
               <span class="section-icon" aria-hidden="true">⌕</span>
-              <h2 id="search-title">Find a repository</h2>
+              <h2 id="search-title">Find A Repository</h2>
             </div>
             <form id="repo-search-form">
-              <label for="repo-search">Repository name</label>
+              <label for="repo-search">Repository Name</label>
               <div class="inline-form">
                 <input
                   id="repo-search"
@@ -98,7 +98,7 @@
               <span id="repo-search-status" role="status"></span>
             </form>
             <section id="repository-links-panel" aria-labelledby="repository-links-title" hidden>
-              <h3 id="repository-links-title">Linked repositories</h3>
+              <h3 id="repository-links-title">Linked Repositories</h3>
               <ul id="repository-links-list"></ul>
             </section>
           </section>
@@ -106,13 +106,13 @@
           <section class="control-section" aria-labelledby="add-title">
             <div class="section-heading">
               <span class="section-icon" aria-hidden="true">＋</span>
-              <h2 id="add-title">Bring a project in</h2>
+              <h2 id="add-title">Add A Github Repository</h2>
             </div>
             <p id="unsaved-repositories-notice">
               Added projects are temporary and will be cleared when you reload.
             </p>
             <form id="add-repository-form">
-              <label for="repository-url">Public GitHub repository URL</label>
+              <label for="repository-url">Public GitHub Repository URL</label>
               <input
                 id="repository-url"
                 name="repositoryUrl"
@@ -120,18 +120,18 @@
                 placeholder="https://github.com/owner/repository"
                 required
               />
-              <button id="add-repository-button" type="submit">Add repository <span aria-hidden="true">＋</span></button>
+              <button id="add-repository-button" type="submit">Add Repository <span aria-hidden="true">＋</span></button>
               <span id="add-repository-status" role="status"></span>
             </form>
 
             <div class="custom-readme">
-              <h3>Or compare a README</h3>
+              <h3>Or Compare A README</h3>
               <form id="custom-readme-form">
-                <label for="custom-repository-title">Project name</label>
+                <label for="custom-repository-title">Project Name</label>
                 <input id="custom-repository-title" name="title" type="text" placeholder="My next big idea" required />
 
                 <fieldset>
-                  <legend>README source</legend>
+                  <legend>README Source</legend>
                   <label class="radio-setting" for="readme-source-text">
                     <input
                       id="readme-source-text"
@@ -140,7 +140,7 @@
                       value="text"
                       checked
                     />
-                    Write README text
+                    Write README Text
                   </label>
                   <label class="radio-setting" for="readme-source-file">
                     <input
@@ -149,16 +149,16 @@
                       type="radio"
                       value="file"
                     />
-                    Upload a README file
+                    Upload README File
                   </label>
                 </fieldset>
 
                 <div id="readme-text-source">
-                  <label for="custom-readme-text">README text</label>
+                  <label for="custom-readme-text">README Text</label>
                   <textarea id="custom-readme-text" name="readmeText" rows="6" placeholder="What does your project do?" required></textarea>
                 </div>
                 <div id="readme-file-source" hidden>
-                  <label for="custom-readme-file">README file</label>
+                  <label for="custom-readme-file">README File</label>
                   <input
                     id="custom-readme-file"
                     name="readmeFile"
@@ -177,7 +177,7 @@
           <div class="graph-header">
             <div>
               <span class="graph-eyebrow">SIMILARITY MAP</span>
-              <h2>Repository connections</h2>
+              <h2>Repository Connections</h2>
               <p>Hover a node to trace nearby ideas · Scroll to zoom · Drag to explore</p>
             </div>
             <span class="graph-live"><span class="live-dot"></span> LIVE GRAPH</span>
