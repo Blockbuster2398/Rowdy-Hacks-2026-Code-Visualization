@@ -40,6 +40,8 @@ let displayedNodes = [];
 let displayedLinks = [];
 let displayedNeighborsByNode = new Map();
 let hoveredNodeId;
+let selectedFirstOrderNeighborIds = new Set();
+let selectedSecondOrderNeighborIds = new Set();
 let firstOrderNeighborIds = new Set();
 let secondOrderNeighborIds = new Set();
 let neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
@@ -133,7 +135,7 @@ function getRepositoryNodeLabelColor(node) {
 function isUnrelatedNode(node) {
   return (
     neighborhoodHighlightingEnabled &&
-    hoveredNodeId &&
+    (hoveredNodeId || selectedNode?.id) &&
     node.id !== selectedNode?.id &&
     node.id !== hoveredNodeId &&
     !firstOrderNeighborIds.has(node.id) &&
@@ -150,8 +152,12 @@ function getRepositoryLinkColor(link) {
   const opacity = Number(linkOpacityInput.value) / 100;
   const sourceId = getGraphEndpointId(link.source);
   const targetId = getGraphEndpointId(link.target);
-  if (neighborhoodHighlightingEnabled && hoveredNodeId) {
-    const isFirstOrderLink = sourceId === hoveredNodeId || targetId === hoveredNodeId;
+  if (neighborhoodHighlightingEnabled && (hoveredNodeId || selectedNode?.id)) {
+    const isFirstOrderLink =
+      sourceId === hoveredNodeId ||
+      targetId === hoveredNodeId ||
+      sourceId === selectedNode?.id ||
+      targetId === selectedNode?.id;
     const isSecondOrderLink =
       (firstOrderNeighborIds.has(sourceId) && secondOrderNeighborIds.has(targetId)) ||
       (firstOrderNeighborIds.has(targetId) && secondOrderNeighborIds.has(sourceId));
@@ -200,20 +206,32 @@ function refreshGraphStyle() {
 
 function updateNeighborhood(node) {
   hoveredNodeId = node?.id;
-  firstOrderNeighborIds = node
+  const hoveredFirstOrderNeighborIds = node
     ? new Set(displayedNeighborsByNode.get(node.id) ?? [])
     : new Set();
-  secondOrderNeighborIds = new Set();
+  const hoveredSecondOrderNeighborIds = new Set();
 
   if (node) {
-    for (const neighborId of firstOrderNeighborIds) {
+    for (const neighborId of hoveredFirstOrderNeighborIds) {
       for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
-        if (secondNeighborId !== node.id && !firstOrderNeighborIds.has(secondNeighborId)) {
-          secondOrderNeighborIds.add(secondNeighborId);
+        if (
+          secondNeighborId !== node.id &&
+          !hoveredFirstOrderNeighborIds.has(secondNeighborId)
+        ) {
+          hoveredSecondOrderNeighborIds.add(secondNeighborId);
         }
       }
     }
   }
+
+  firstOrderNeighborIds = new Set([
+    ...selectedFirstOrderNeighborIds,
+    ...hoveredFirstOrderNeighborIds,
+  ]);
+  secondOrderNeighborIds = new Set([
+    ...selectedSecondOrderNeighborIds,
+    ...hoveredSecondOrderNeighborIds,
+  ]);
   refreshGraphStyle();
 }
 
@@ -247,7 +265,25 @@ function showRepository(node) {
   }
 
   selectedNode = graphNode;
-  refreshGraphStyle();
+  selectedFirstOrderNeighborIds = new Set(
+    displayedNeighborsByNode.get(graphNode.id) ?? []
+  );
+  selectedSecondOrderNeighborIds = new Set();
+  for (const neighborId of selectedFirstOrderNeighborIds) {
+    for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
+      if (
+        secondNeighborId !== graphNode.id &&
+        !selectedFirstOrderNeighborIds.has(secondNeighborId)
+      ) {
+        selectedSecondOrderNeighborIds.add(secondNeighborId);
+      }
+    }
+  }
+  updateNeighborhood(
+    hoveredNodeId
+      ? graph.graphData().nodes.find(({ id }) => id === hoveredNodeId)
+      : undefined
+  );
   searchStatus.textContent = `Showing ${node.fullName}.`;
   const linkedRepositories = displayedLinks
     .filter((link) => link.source === node.id || link.target === node.id)
@@ -404,6 +440,8 @@ function applyGraphSettings() {
   }
   selectedNode = undefined;
   hoveredNodeId = undefined;
+  selectedFirstOrderNeighborIds = new Set();
+  selectedSecondOrderNeighborIds = new Set();
   firstOrderNeighborIds = new Set();
   secondOrderNeighborIds = new Set();
   clearRepositoryLinks();
@@ -769,6 +807,20 @@ async function initializeGraph() {
 
     nodeLimitInput.value = String(nodeLimit);
     updateNodeLimitRange();
+  });
+
+  searchInput.addEventListener('input', () => {
+    if (searchInput.value.trim()) {
+      return;
+    }
+
+    selectedNode = undefined;
+    selectedFirstOrderNeighborIds = new Set();
+    selectedSecondOrderNeighborIds = new Set();
+    searchStatus.textContent = '';
+    clearRepositoryLinks();
+    updateNeighborhood(undefined);
+    graph.zoomToFit(500, 40);
   });
 
   searchForm.addEventListener('submit', (event) => {
