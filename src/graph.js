@@ -4,7 +4,7 @@ import './style.css';
 const graphElement = document.getElementById('graph');
 const settingsForm = document.getElementById('graph-settings-form');
 const nodeLimitInput = document.getElementById('node-limit');
-const nodeLimitValue = document.getElementById('node-limit-value');
+const nodeLimitNumberInput = document.getElementById('node-limit-number');
 const neighborLimitInput = document.getElementById('neighbor-limit');
 const linkOpacityInput = document.getElementById('link-opacity');
 const linkOpacityValue = document.getElementById('link-opacity-value');
@@ -85,6 +85,10 @@ function prepareNode(node, dimensions) {
 
 function getNodeFontSize(globalScale) {
   return Math.max(5, 8 / globalScale);
+}
+
+function getGraphEndpointId(endpoint) {
+  return typeof endpoint === 'object' ? endpoint.id : endpoint;
 }
 
 function clearRepositoryLinks() {
@@ -269,7 +273,8 @@ function applyGraphSettings() {
 
 function updateNodeLimitRange() {
   nodeLimitInput.max = String(displayedRepositoryNodes.length);
-  nodeLimitValue.value = nodeLimitInput.value;
+  nodeLimitNumberInput.max = String(displayedRepositoryNodes.length);
+  nodeLimitNumberInput.value = nodeLimitInput.value;
   const maximumNeighbors = Math.max(0, Number(nodeLimitInput.value) - 1);
   neighborLimitInput.max = String(maximumNeighbors);
   if (Number(neighborLimitInput.value) > maximumNeighbors) {
@@ -396,8 +401,17 @@ async function initializeGraph() {
       const fontSize = getNodeFontSize(globalScale);
       const isSelected = node.id === selectedNode?.id;
       const isHovered = node.id === hoveredNodeId;
-      const isFirstOrderNeighbor = firstOrderNeighborIds.has(node.id);
-      const isSecondOrderNeighbor = secondOrderNeighborIds.has(node.id);
+      const isFirstOrderNeighbor =
+        neighborhoodHighlightingEnabled && firstOrderNeighborIds.has(node.id);
+      const isSecondOrderNeighbor =
+        neighborhoodHighlightingEnabled && secondOrderNeighborIds.has(node.id);
+      const isNeighborhoodActive = neighborhoodHighlightingEnabled && hoveredNodeId;
+      const isUnrelatedNode =
+        isNeighborhoodActive &&
+        !isSelected &&
+        !isHovered &&
+        !isFirstOrderNeighbor &&
+        !isSecondOrderNeighbor;
       const fillStyle = isSelected
         ? '#f2f7ff'
         : isHovered
@@ -410,18 +424,19 @@ async function initializeGraph() {
                 ? '#f28fb9'
                 : '#91a4bf';
       context.save();
-      context.beginPath();
-      context.arc(node.x, node.y, isSelected || isHovered ? 3.8 : 2.4, 0, 2 * Math.PI);
-      context.fillStyle = fillStyle;
-      context.fill();
+      context.globalAlpha = isUnrelatedNode ? 0.2 : 1;
 
-      context.font = `${isSelected || isHovered ? '600 ' : ''}${fontSize}px ui-sans-serif, system-ui, sans-serif`;
+      const hasHighlight = isSelected || isHovered || isFirstOrderNeighbor || isSecondOrderNeighbor;
+      const fontWeight = isHovered || isSelected || isFirstOrderNeighbor ? '700 ' : '';
+      context.font = `${fontWeight}${fontSize}px ui-sans-serif, system-ui, sans-serif`;
       context.textAlign = 'center';
-      context.textBaseline = 'bottom';
+      context.textBaseline = 'middle';
       context.fillStyle = fillStyle;
-      context.globalAlpha =
-        isSelected || isHovered || isFirstOrderNeighbor || isSecondOrderNeighbor ? 1 : 0.82;
-      context.fillText(node.name, node.x, node.y - 12 / globalScale);
+      context.lineJoin = 'round';
+      context.lineWidth = (hasHighlight ? 3 : 2) / globalScale;
+      context.strokeStyle = '#0a1120';
+      context.strokeText(node.name, node.x, node.y);
+      context.fillText(node.name, node.x, node.y);
       context.restore();
     })
     .nodePointerAreaPaint((node, color, context, globalScale) => {
@@ -430,18 +445,41 @@ async function initializeGraph() {
 
       context.font = `${fontSize}px sans-serif`;
       context.textAlign = 'center';
-      context.textBaseline = 'bottom';
+      context.textBaseline = 'middle';
       context.fillStyle = color;
       const textWidth = context.measureText(node.name).width;
       context.fillRect(
         node.x - textWidth / 2 - padding,
-        node.y - 5 / globalScale - fontSize - padding,
+        node.y - fontSize / 2 - padding,
         textWidth + padding * 2,
         fontSize + padding * 2
       );
     })
     .backgroundColor('#0a1120')
-    .linkColor(() => `rgba(82, 101, 130, ${Number(linkOpacityInput.value) / 100})`)
+    .linkColor((link) => {
+      const opacity = Number(linkOpacityInput.value) / 100;
+      const sourceId = getGraphEndpointId(link.source);
+      const targetId = getGraphEndpointId(link.target);
+
+      if (neighborhoodHighlightingEnabled && hoveredNodeId) {
+        const isFirstOrderLink =
+          sourceId === hoveredNodeId || targetId === hoveredNodeId;
+        const isSecondOrderLink =
+          (firstOrderNeighborIds.has(sourceId) && secondOrderNeighborIds.has(targetId)) ||
+          (firstOrderNeighborIds.has(targetId) && secondOrderNeighborIds.has(sourceId));
+        const highlightOpacity = Math.min(1, opacity * 2.4);
+
+        if (isFirstOrderLink) {
+          return `rgba(255, 208, 128, ${highlightOpacity})`;
+        }
+        if (isSecondOrderLink) {
+          return `rgba(195, 165, 255, ${highlightOpacity})`;
+        }
+        return `rgba(82, 101, 130, ${Math.min(opacity, 0.08)})`;
+      }
+
+      return `rgba(82, 101, 130, ${opacity})`;
+    })
     .linkWidth((link) => Math.max(0.35, 0.35 + 1.15 * link.similarity))
     .onNodeHover((node) => {
       hoveredNodeId = node?.id;
@@ -467,6 +505,13 @@ async function initializeGraph() {
       }
     })
     .graphData({ nodes: [], links: [] });
+
+  graphElement.addEventListener('mouseleave', () => {
+    hoveredNodeId = undefined;
+    firstOrderNeighborIds = new Set();
+    secondOrderNeighborIds = new Set();
+    graph.zoom(graph.zoom());
+  });
 
   neighborhoodHighlightingInput.addEventListener('change', () => {
     neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
@@ -497,6 +542,19 @@ async function initializeGraph() {
   });
 
   nodeLimitInput.addEventListener('input', updateNodeLimitRange);
+  nodeLimitNumberInput.addEventListener('input', () => {
+    const nodeLimit = nodeLimitNumberInput.valueAsNumber;
+    if (
+      !Number.isInteger(nodeLimit) ||
+      nodeLimit < 1 ||
+      nodeLimit > displayedRepositoryNodes.length
+    ) {
+      return;
+    }
+
+    nodeLimitInput.value = String(nodeLimit);
+    updateNodeLimitRange();
+  });
 
   searchForm.addEventListener('submit', (event) => {
     event.preventDefault();

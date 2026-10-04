@@ -191,19 +191,6 @@ main {
   margin-top: 0.15rem;
 }
 
-#node-limit-value {
-  display: inline-grid;
-  min-width: 2.1rem;
-  height: 1.55rem;
-  place-items: center;
-  border: 1px solid rgba(120, 229, 192, 0.18);
-  border-radius: 0.45rem;
-  background: rgba(120, 229, 192, 0.08);
-  color: var(--accent);
-  font-size: 0.73rem;
-  font-weight: 700;
-}
-
 #link-opacity-value {
   color: var(--accent);
   font-size: 0.73rem;
@@ -246,6 +233,26 @@ main {
   margin: 0.6rem 0 1rem;
   accent-color: var(--accent-strong);
   cursor: pointer;
+}
+
+.node-limit-control {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.25rem;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.node-limit-control input[type="range"],
+.node-limit-control input[type="number"] {
+  min-width: 0;
+  margin: 0.6rem 0 1rem;
+}
+
+.node-limit-control input[type="number"] {
+  min-height: 2.35rem;
+  padding: 0.45rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 #graph-settings-form > label[for="neighbor-limit"] {

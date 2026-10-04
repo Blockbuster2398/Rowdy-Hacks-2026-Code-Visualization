@@ -44,9 +44,18 @@
             <form id="graph-settings-form">
               <label for="node-limit">
                 <span>Repositories to display</span>
-                <output id="node-limit-value" for="node-limit"></output>
               </label>
-              <input id="node-limit" name="nodes" type="range" min="1" required />
+              <div class="node-limit-control">
+                <input id="node-limit" name="nodes" type="range" min="1" required />
+                <input
+                  id="node-limit-number"
+                  type="number"
+                  min="1"
+                  step="1"
+                  required
+                  aria-label="Repositories to display"
+                />
+              </div>
 
               <label for="neighbor-limit">Nearest neighbors per repository</label>
               <input id="neighbor-limit" name="neighbors" type="number" min="0" required />
@@ -55,7 +64,7 @@
                 <span>Link opacity</span>
                 <output id="link-opacity-value" for="link-opacity"></output>
               </label>
-              <input id="link-opacity" name="linkOpacity" type="range" min="0" max="100" value="35" />
+              <input id="link-opacity" name="linkOpacity" type="range" min="0" max="100" value="20" />
 
               <label class="checkbox-setting" for="neighborhood-highlighting">
                 <input id="neighborhood-highlighting" type="checkbox" checked />
