@@ -112,6 +112,53 @@ main {
   line-height: 1.65;
 }
 
+.mode-tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  padding: 0.3rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: #0d1422;
+}
+
+.mode-tab {
+  min-height: 2.5rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #98a7bd;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.mode-tab:hover {
+  color: var(--text);
+}
+
+.mode-tab.is-active {
+  border-color: rgba(120, 229, 192, 0.17);
+  background: #182437;
+  color: var(--accent);
+}
+
+.mode-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.explorer-results[hidden],
+.empty-group[hidden] {
+  display: none;
+}
+
 .content {
   display: grid;
   grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.85fr);
@@ -191,7 +238,8 @@ main {
   margin-top: 0.15rem;
 }
 
-#link-opacity-value {
+#link-opacity-value,
+#text-opacity-value {
   color: var(--accent);
   font-size: 0.73rem;
   font-weight: 700;
@@ -347,6 +395,416 @@ main {
   overflow-wrap: anywhere;
 }
 
+#explorer-status,
+#explorer-results-note {
+  margin: 0.7rem 0 0;
+  color: #9cacc3;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.repository-view {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.explorer-intro {
+  max-width: 48rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.explorer-intro h2 {
+  margin: 0.4rem 0;
+  color: #f3f6fc;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.045em;
+}
+
+.explorer-intro p,
+.explorer-repository-header p {
+  margin: 0;
+  color: #9aa8bd;
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.explorer-card,
+.repository-group {
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: var(--surface);
+  box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.14);
+}
+
+.explorer-card {
+  padding: 1.2rem;
+}
+
+.explorer-card h3 {
+  margin: 0 0 1rem;
+  color: #edf2fc;
+  font-size: 0.95rem;
+}
+
+.explorer-card label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #c1cada;
+  font-size: 0.77rem;
+  font-weight: 550;
+}
+
+.explorer-input-row {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.explorer-input-row input {
+  min-width: 0;
+  min-height: 2.75rem;
+  flex: 1;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(150, 170, 205, 0.18);
+  border-radius: 0.55rem;
+  outline: none;
+  background: var(--surface-input);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.explorer-input-row input:focus {
+  border-color: rgba(120, 229, 192, 0.7);
+  box-shadow: 0 0 0 3px rgba(120, 229, 192, 0.1);
+}
+
+.explorer-input-row input::placeholder {
+  color: #63718a;
+}
+
+.explorer-input-row button {
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(120, 229, 192, 0.35);
+  border-radius: 0.55rem;
+  background: linear-gradient(135deg, #79e7c1, #49cda5);
+  color: #062016;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 720;
+  cursor: pointer;
+}
+
+.explorer-input-row button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+.explorer-results {
+  margin-top: 1.15rem;
+}
+
+.file-graph-results[hidden] {
+  display: none;
+}
+
+.file-graph-results {
+  margin-top: 1.15rem;
+}
+
+.file-graph-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem 0.9rem 0 0;
+  background: #101a2a;
+}
+
+.file-graph-header h3 {
+  margin: 0.35rem 0 0.25rem;
+  color: #edf2fc;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.file-graph-header p {
+  margin: 0;
+  color: #9aa8bd;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.file-graph-header a {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.file-graph-header a:hover {
+  text-decoration: underline;
+}
+
+.file-graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-right: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: #111929;
+  color: #aab6ca;
+  font-size: 0.72rem;
+}
+
+.file-graph-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.language-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+
+.language-javascript {
+  background: #78e5c0;
+}
+
+.language-python {
+  background: #ffd080;
+}
+
+.language-go {
+  background: #83d8ff;
+}
+
+.language-rust {
+  background: #c3a5ff;
+}
+
+#file-graph-canvas {
+  position: relative;
+  width: 100%;
+  height: min(68vh, 760px);
+  min-height: 26rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 0.9rem 0.9rem;
+  background: #0a1120;
+}
+
+#file-graph-canvas canvas {
+  display: block;
+}
+
+.repository-view > #file-graph-status {
+  margin-top: 0.7rem;
+}
+
+.explorer-repository-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  background: #101a2a;
+}
+
+.explorer-repository-header h3 {
+  margin: 0.35rem 0 0.25rem;
+  color: #edf2fc;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.explorer-repository-header a {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.explorer-repository-header a:hover {
+  text-decoration: underline;
+}
+
+.explorer-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 1.1rem 0;
+  color: #aab6ca;
+  font-size: 0.75rem;
+}
+
+.explorer-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+}
+
+.readme-dot {
+  background: #78e5c0;
+}
+
+.source-dot {
+  background: #c3a5ff;
+}
+
+.repository-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.repository-group {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.repository-group > header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.group-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 0.6rem;
+  background: rgba(120, 229, 192, 0.1);
+  color: #78e5c0;
+}
+
+.source-group .group-icon {
+  background: rgba(195, 165, 255, 0.1);
+  color: #c3a5ff;
+}
+
+.repository-group > header > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.repository-group h3 {
+  margin: 0;
+  color: #edf2fc;
+  font-size: 0.86rem;
+}
+
+.repository-group header p {
+  margin: 0.2rem 0 0;
+  color: #8795ab;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.repository-group header output {
+  display: grid;
+  min-width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border-radius: 99px;
+  background: rgba(120, 229, 192, 0.1);
+  color: #78e5c0;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.source-group header output {
+  background: rgba(195, 165, 255, 0.1);
+  color: #c3a5ff;
+}
+
+.repository-group ul {
+  display: grid;
+  gap: 0.5rem;
+  max-height: 32rem;
+  margin: 0;
+  overflow: auto;
+  padding: 0.8rem;
+  list-style: none;
+}
+
+.repository-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.65rem;
+  border: 1px solid rgba(120, 229, 192, 0.12);
+  border-radius: 0.55rem;
+  background: rgba(120, 229, 192, 0.035);
+}
+
+.source-group .repository-entry {
+  border-color: rgba(195, 165, 255, 0.12);
+  background: rgba(195, 165, 255, 0.035);
+}
+
+.repository-entry > span {
+  min-width: 0;
+  flex: 1;
+}
+
+.repository-entry a {
+  color: #8ce8c7;
+  font-size: 0.77rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.source-group .repository-entry a {
+  color: #cfbaff;
+}
+
+.repository-entry a:hover {
+  text-decoration: underline;
+}
+
+.repository-entry small {
+  display: block;
+  margin-top: 0.2rem;
+  color: #8996ad;
+  font-size: 0.66rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.empty-group {
+  margin: 0;
+  padding: 1rem;
+  color: #8996ad;
+  font-size: 0.74rem;
+}
+
+.explorer-results-note {
+  margin: 0.8rem 0 0;
+}
+
 #unsaved-repositories-notice {
   margin: -0.35rem 0 1rem;
   color: #8996ad;
@@ -385,6 +843,29 @@ main {
 
 .settings-panel .radio-setting + .radio-setting {
   margin-top: 0.55rem;
+}
+
+.settings-panel .graph-dimension-setting {
+  display: flex;
+  gap: 1.1rem;
+  margin-bottom: 0.9rem;
+}
+
+.settings-panel .graph-dimension-setting .radio-setting {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  cursor: pointer;
+}
+
+.graph-renderer {
+  position: absolute;
+  inset: 0;
+}
+
+.graph-renderer[hidden] {
+  display: none;
 }
 
 #custom-readme-form textarea {
@@ -529,6 +1010,10 @@ main {
   .settings-panel {
     grid-row: 2;
   }
+
+  .repository-groups {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -552,6 +1037,23 @@ main {
   .graph-live {
     padding: 0.35rem;
     font-size: 0;
+  }
+
+  .mode-tab {
+    flex: 1;
+    padding: 0.6rem 0.45rem;
+    font-size: 0.7rem;
+  }
+
+  .explorer-input-row,
+  .explorer-repository-header,
+  .file-graph-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #file-graph-canvas {
+    min-height: 22rem;
   }
 }
 

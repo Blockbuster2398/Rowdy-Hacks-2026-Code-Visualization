@@ -1,15 +1,20 @@
-import ForceGraph from 'force-graph';
+import ForceGraph2D from 'force-graph';
+import { fetchGitHubJson, parseRepositoryUrl } from './github.js';
 import './style.css';
 
 const graphElement = document.getElementById('graph');
+const graphInteractionHelp = document.getElementById('graph-interaction-help');
 const settingsForm = document.getElementById('graph-settings-form');
 const nodeLimitInput = document.getElementById('node-limit');
 const nodeLimitNumberInput = document.getElementById('node-limit-number');
 const neighborLimitInput = document.getElementById('neighbor-limit');
 const linkOpacityInput = document.getElementById('link-opacity');
 const linkOpacityValue = document.getElementById('link-opacity-value');
+const textOpacityInput = document.getElementById('text-opacity');
+const textOpacityValue = document.getElementById('text-opacity-value');
 const settingsStatus = document.getElementById('settings-status');
 const neighborhoodHighlightingInput = document.getElementById('neighborhood-highlighting');
+const graphDimensionInputs = document.querySelectorAll('input[name="graphDimension"]');
 const searchForm = document.getElementById('repo-search-form');
 const searchInput = document.getElementById('repo-search');
 const searchStatus = document.getElementById('repo-search-status');
@@ -42,6 +47,16 @@ let repositoryNodes = [];
 let userRepositories = [];
 let displayedRepositoryNodes = [];
 let graph;
+let graph2D;
+let graph3D;
+let graph2DElement;
+let graph3DElement;
+let graphDimension = '2d';
+let graphDimensionRequest = 0;
+let graph3DInitialization;
+let repositoryGraph3DHasFit = false;
+let repositoryGraph3DWasInteractedWith = false;
+let repositoryNodeLabels = new Map();
 
 window.addEventListener('beforeunload', (event) => {
   if (userRepositories.length > 0) {
@@ -87,6 +102,109 @@ function getNodeFontSize(globalScale) {
   return Math.max(5, 8 / globalScale);
 }
 
+function getRepositoryNodeColor(node) {
+  if (node.id === selectedNode?.id) {
+    return '#f2f7ff';
+  }
+  if (node.id === hoveredNodeId) {
+    return '#78e5c0';
+  }
+  if (neighborhoodHighlightingEnabled && firstOrderNeighborIds.has(node.id)) {
+    return '#ffd080';
+  }
+  if (neighborhoodHighlightingEnabled && secondOrderNeighborIds.has(node.id)) {
+    return '#c3a5ff';
+  }
+  return node.isUserProvided ? '#f28fb9' : '#91a4bf';
+}
+
+function getRepositoryNodeLabelColor(node) {
+  const color = getRepositoryNodeColor(node).slice(1);
+  return `#${[0, 2, 4]
+    .map((offset) => {
+      const channel = Number.parseInt(color.slice(offset, offset + 2), 16);
+      return Math.round(channel + (255 - channel) * 0.35)
+        .toString(16)
+        .padStart(2, '0');
+    })
+    .join('')}`;
+}
+
+function isUnrelatedNode(node) {
+  return (
+    neighborhoodHighlightingEnabled &&
+    hoveredNodeId &&
+    node.id !== selectedNode?.id &&
+    node.id !== hoveredNodeId &&
+    !firstOrderNeighborIds.has(node.id) &&
+    !secondOrderNeighborIds.has(node.id)
+  );
+}
+
+function getRepositoryNodeLabelOpacity(node) {
+  const opacity = Number(textOpacityInput.value) / 100;
+  return opacity * (isUnrelatedNode(node) ? 0.2 : 1);
+}
+
+function getRepositoryLinkColor(link) {
+  const opacity = Number(linkOpacityInput.value) / 100;
+  const sourceId = getGraphEndpointId(link.source);
+  const targetId = getGraphEndpointId(link.target);
+  if (neighborhoodHighlightingEnabled && hoveredNodeId) {
+    const isFirstOrderLink = sourceId === hoveredNodeId || targetId === hoveredNodeId;
+    const isSecondOrderLink =
+      (firstOrderNeighborIds.has(sourceId) && secondOrderNeighborIds.has(targetId)) ||
+      (firstOrderNeighborIds.has(targetId) && secondOrderNeighborIds.has(sourceId));
+    const highlightOpacity = Math.min(1, opacity * 2.4);
+    if (isFirstOrderLink) {
+      return `rgba(255, 208, 128, ${highlightOpacity})`;
+    }
+    if (isSecondOrderLink) {
+      return `rgba(195, 165, 255, ${highlightOpacity})`;
+    }
+    return `rgba(82, 101, 130, ${Math.min(opacity, 0.08)})`;
+  }
+  return `rgba(82, 101, 130, ${opacity})`;
+}
+
+function refreshGraphStyle() {
+  if (graph2D && graphDimension === '2d') {
+    graph2D.zoom(graph2D.zoom());
+  }
+  if (graph3D) {
+    for (const [id, label] of repositoryNodeLabels) {
+      const node = graph3D.graphData().nodes.find((graphNode) => graphNode.id === id);
+      if (!node) {
+        continue;
+      }
+      label.color = getRepositoryNodeLabelColor(node);
+      label.fontWeight = node.id === selectedNode?.id || node.id === hoveredNodeId ? 'bold' : 'normal';
+      label.material.opacity = getRepositoryNodeLabelOpacity(node);
+    }
+    graph3D.nodeColor(getRepositoryNodeColor);
+    graph3D.linkColor(getRepositoryLinkColor);
+  }
+}
+
+function updateNeighborhood(node) {
+  hoveredNodeId = node?.id;
+  firstOrderNeighborIds = node
+    ? new Set(displayedNeighborsByNode.get(node.id) ?? [])
+    : new Set();
+  secondOrderNeighborIds = new Set();
+
+  if (node) {
+    for (const neighborId of firstOrderNeighborIds) {
+      for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
+        if (secondNeighborId !== node.id && !firstOrderNeighborIds.has(secondNeighborId)) {
+          secondOrderNeighborIds.add(secondNeighborId);
+        }
+      }
+    }
+  }
+  refreshGraphStyle();
+}
+
 function getGraphEndpointId(endpoint) {
   return typeof endpoint === 'object' ? endpoint.id : endpoint;
 }
@@ -117,6 +235,7 @@ function showRepository(node) {
   }
 
   selectedNode = graphNode;
+  refreshGraphStyle();
   searchStatus.textContent = `Showing ${node.fullName}.`;
   const linkedRepositories = displayedLinks
     .filter((link) => link.source === node.id || link.target === node.id)
@@ -150,7 +269,18 @@ function showRepository(node) {
   }
   repositoryLinksPanel.hidden = false;
 
-  if (Number.isFinite(graphNode.x) && Number.isFinite(graphNode.y)) {
+  if (
+    graphDimension === '3d' &&
+    Number.isFinite(graphNode.x) &&
+    Number.isFinite(graphNode.y) &&
+    Number.isFinite(graphNode.z)
+  ) {
+    graph.cameraPosition(
+      { x: graphNode.x, y: graphNode.y, z: graphNode.z + 60 },
+      { x: graphNode.x, y: graphNode.y, z: graphNode.z },
+      500
+    );
+  } else if (Number.isFinite(graphNode.x) && Number.isFinite(graphNode.y)) {
     graph.centerAt(graphNode.x, graphNode.y, 500).zoom(Math.max(graph.zoom(), 3), 500);
   } else {
     graph.zoomToFit(500, 40);
@@ -212,6 +342,19 @@ function getNearestNeighborLinks(nodes, neighborLimit) {
   return [...selectedLinks.values()];
 }
 
+function getDisplayedGraphData() {
+  return {
+    nodes: displayedNodes.map(({ id, name, fullName, url, isUserProvided }) => ({
+      id,
+      name,
+      fullName,
+      url,
+      isUserProvided,
+    })),
+    links: displayedLinks.map((link) => ({ ...link })),
+  };
+}
+
 function applyGraphSettings() {
   const nodeLimit = Number(nodeLimitInput.value);
   const neighborLimit = Number(neighborLimitInput.value);
@@ -242,16 +385,11 @@ function applyGraphSettings() {
     displayedNeighborsByNode.get(link.target).add(link.source);
   }
 
-  graph.graphData({
-    nodes: displayedNodes.map(({ id, name, fullName, url, isUserProvided }) => ({
-      id,
-      name,
-      fullName,
-      url,
-      isUserProvided,
-    })),
-    links: displayedLinks.map((link) => ({ ...link })),
-  });
+  graph2D.graphData(getDisplayedGraphData());
+  repositoryNodeLabels.clear();
+  if (graph3D) {
+    graph3D.graphData(getDisplayedGraphData());
+  }
   selectedNode = undefined;
   hoveredNodeId = undefined;
   firstOrderNeighborIds = new Set();
@@ -268,7 +406,9 @@ function applyGraphSettings() {
     repositoryOptions.append(option);
   }
 
-  setTimeout(() => graph.zoomToFit(500, 40), 300);
+  if (graphDimension === '2d') {
+    setTimeout(() => graph.zoomToFit(500, 40), 300);
+  }
 }
 
 function updateNodeLimitRange() {
@@ -280,54 +420,6 @@ function updateNodeLimitRange() {
   if (Number(neighborLimitInput.value) > maximumNeighbors) {
     neighborLimitInput.value = String(maximumNeighbors);
   }
-}
-
-function parseRepositoryUrl(value) {
-  let url;
-  try {
-    url = new URL(value);
-  } catch {
-    throw new Error('Enter a valid GitHub repository URL.');
-  }
-
-  if (url.protocol !== 'https:' || url.hostname.toLocaleLowerCase() !== 'github.com') {
-    throw new Error('Use a public repository URL from https://github.com.');
-  }
-
-  const pathParts = url.pathname.split('/').filter(Boolean);
-  if (pathParts.length !== 2) {
-    throw new Error('Use a repository URL in the form https://github.com/owner/repository.');
-  }
-
-  const [owner, rawRepository] = pathParts.map(decodeURIComponent);
-  const repository = rawRepository.replace(/\.git$/i, '');
-  if (
-    !/^[A-Za-z0-9_.-]+$/.test(owner) ||
-    !/^[A-Za-z0-9_.-]+$/.test(repository) ||
-    owner === '.' ||
-    owner === '..' ||
-    repository === '.' ||
-    repository === '..'
-  ) {
-    throw new Error('The repository URL contains an invalid owner or repository name.');
-  }
-  return { owner, repository };
-}
-
-async function fetchGitHubJson(url, resourceDescription) {
-  const response = await fetch(url, {
-    headers: { Accept: 'application/vnd.github+json' },
-  });
-  if (!response.ok) {
-    if (response.status === 403 || response.status === 429) {
-      throw new Error('GitHub API rate limit reached. Please wait before trying again.');
-    }
-    if (response.status === 404) {
-      throw new Error(`${resourceDescription} was not found or is not public.`);
-    }
-    throw new Error(`Could not fetch ${resourceDescription} (GitHub returned ${response.status}).`);
-  }
-  return response.json();
 }
 
 async function getRepositoryReadme(owner, repository) {
@@ -362,6 +454,202 @@ function focusExistingRepository(node, totalIndex) {
   showRepository(node);
 }
 
+function createRepositoryGraph2D(element) {
+  return new ForceGraph2D(element)
+    .width(graphElement.clientWidth)
+    .height(graphElement.clientHeight)
+    .nodeLabel(() => '')
+    .nodeCanvasObjectMode(() => 'replace')
+    .nodeCanvasObject((node, context, globalScale) => {
+      const fontSize = getNodeFontSize(globalScale);
+      const fillStyle = getRepositoryNodeColor(node);
+      const isHighlighted =
+        node.id === selectedNode?.id ||
+        node.id === hoveredNodeId ||
+        (neighborhoodHighlightingEnabled &&
+          (firstOrderNeighborIds.has(node.id) || secondOrderNeighborIds.has(node.id)));
+      context.save();
+      context.globalAlpha = getRepositoryNodeLabelOpacity(node);
+      context.font = `${isHighlighted ? '700 ' : ''}${fontSize}px ui-sans-serif, system-ui, sans-serif`;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillStyle = fillStyle;
+      context.lineJoin = 'round';
+      context.lineWidth = (isHighlighted ? 3 : 2) / globalScale;
+      context.strokeStyle = '#0a1120';
+      context.strokeText(node.name, node.x, node.y);
+      context.fillText(node.name, node.x, node.y);
+      context.restore();
+    })
+    .nodePointerAreaPaint((node, color, context, globalScale) => {
+      const fontSize = getNodeFontSize(globalScale);
+      const padding = 8 / globalScale;
+      context.font = `${fontSize}px sans-serif`;
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      context.fillStyle = color;
+      const textWidth = context.measureText(node.name).width;
+      context.fillRect(
+        node.x - textWidth / 2 - padding,
+        node.y - fontSize / 2 - padding,
+        textWidth + padding * 2,
+        fontSize + padding * 2
+      );
+    })
+    .backgroundColor('#0a1120')
+    .linkColor(getRepositoryLinkColor)
+    .linkWidth((link) => Math.max(0.35, 0.35 + 1.15 * link.similarity))
+    .onNodeHover(updateNeighborhood)
+    .onNodeClick((node) => {
+      if (node.url) {
+        window.open(node.url, '_blank', 'noopener,noreferrer');
+      }
+    })
+    .graphData({ nodes: [], links: [] });
+}
+
+function fitRepositoryGraph3D() {
+  if (
+    !graph3D ||
+    graphDimension !== '3d' ||
+    repositoryGraph3DHasFit ||
+    repositoryGraph3DWasInteractedWith
+  ) {
+    return;
+  }
+  graph3D.zoomToFit(0, 10);
+  const cameraPosition = graph3D.cameraPosition();
+  const target = graph3D.controls().target;
+  const zoomFactor = 0.65;
+  graph3D.cameraPosition(
+    {
+      x: target.x + (cameraPosition.x - target.x) * zoomFactor,
+      y: target.y + (cameraPosition.y - target.y) * zoomFactor,
+      z: target.z + (cameraPosition.z - target.z) * zoomFactor,
+    },
+    { x: target.x, y: target.y, z: target.z }
+  );
+  repositoryGraph3DHasFit = true;
+}
+
+async function createRepositoryGraph3D(element) {
+  const [{ default: ForceGraph3D }, { default: SpriteText }] = await Promise.all([
+    import('3d-force-graph'),
+    import('three-spritetext'),
+  ]);
+  const graphInstance = new ForceGraph3D(element, { controlType: 'orbit' })
+    .width(graphElement.clientWidth)
+    .height(graphElement.clientHeight)
+    .showNavInfo(false)
+    .backgroundColor('#0a1120')
+    .nodeLabel(() => '')
+    .nodeColor(getRepositoryNodeColor)
+    .nodeThreeObject((node) => {
+      const label = new SpriteText(node.name, 3.5, getRepositoryNodeLabelColor(node));
+      label.fontFace = 'Inter, ui-sans-serif, system-ui, sans-serif';
+      label.fontSize = 100;
+      label.fontWeight = 'normal';
+      label.strokeWidth = 0.3;
+      label.strokeColor = '#0a1120';
+      label.material.transparent = true;
+      label.material.opacity = getRepositoryNodeLabelOpacity(node);
+      repositoryNodeLabels.set(node.id, label);
+      return label;
+    })
+    .linkColor(getRepositoryLinkColor)
+    .linkOpacity(1)
+    .linkWidth((link) => 1.15 * link.similarity)//Math.max(0.2, 0.4 + 1.15 * link.similarity))
+    .enableNodeDrag(false)
+    .enableNavigationControls(true)
+    .cooldownTicks(300)
+    .onEngineStop(fitRepositoryGraph3D)
+    .onNodeHover(updateNeighborhood)
+    .onNodeClick((node) => {
+      if (node.url) {
+        window.open(node.url, '_blank', 'noopener,noreferrer');
+      }
+    })
+    .graphData({ nodes: [], links: [] });
+  graphInstance.controls().addEventListener('start', () => {
+    repositoryGraph3DWasInteractedWith = true;
+  });
+  return graphInstance;
+}
+
+async function setGraphDimension(dimension, broadcast = true) {
+  const request = ++graphDimensionRequest;
+  const nextDimension = dimension === '3d' ? '3d' : '2d';
+  if (nextDimension === '3d') {
+    if (!graph3D && !graph3DInitialization) {
+      graph3DElement = document.createElement('div');
+      graph3DElement.className = 'graph-renderer';
+      graph3DElement.hidden = true;
+      graphElement.append(graph3DElement);
+      graph3DInitialization = createRepositoryGraph3D(graph3DElement)
+        .then((nextGraph) => {
+          nextGraph.graphData(getDisplayedGraphData());
+          graph3D = nextGraph;
+        })
+        .catch((error) => {
+          graph3DElement.remove();
+          graph3DElement = undefined;
+          graph3DInitialization = undefined;
+          throw error;
+        });
+    }
+    if (graph3DInitialization) {
+      await graph3DInitialization;
+    }
+    if (request !== graphDimensionRequest) {
+      return;
+    }
+  }
+
+  graphDimension = nextDimension;
+  graphInteractionHelp.textContent =
+    graphDimension === '3d'
+      ? 'Left-drag to rotate · Scroll to zoom · Right-drag to pan'
+      : 'Hover a node to trace nearby ideas · Scroll to zoom · Drag to explore';
+  for (const input of graphDimensionInputs) {
+    input.checked = input.value === graphDimension;
+  }
+
+  if (graphDimension === '3d') {
+    graph2D.pauseAnimation();
+    graph2DElement.hidden = true;
+    graph3DElement.hidden = false;
+    graph = graph3D;
+    graph3D
+      .width(graphElement.clientWidth)
+      .height(graphElement.clientHeight)
+      .enableNavigationControls(true)
+      .resumeAnimation();
+    requestAnimationFrame(() => {
+      requestAnimationFrame(fitRepositoryGraph3D);
+    });
+  } else {
+    if (graph3D) {
+      graph3D.pauseAnimation();
+      graph3DElement.hidden = true;
+    }
+    graph2DElement.hidden = false;
+    graph = graph2D;
+    graph2D
+      .width(graphElement.clientWidth)
+      .height(graphElement.clientHeight)
+      .resumeAnimation();
+  }
+
+  if (graphDimension === '2d') {
+    setTimeout(() => graph.zoomToFit(500, 40), 100);
+  }
+  if (broadcast) {
+    window.dispatchEvent(
+      new CustomEvent('graph-dimension-change', { detail: { dimension: graphDimension } })
+    );
+  }
+}
+
 graphElement.textContent = 'Loading repository embeddings…';
 settingsStatus.textContent = 'Loading repository embeddings…';
 
@@ -392,136 +680,51 @@ async function initializeGraph() {
   displayedRepositoryNodes = repositoryNodes;
 
   graphElement.replaceChildren();
-  graph = new ForceGraph(graphElement)
-    .width(graphElement.clientWidth)
-    .height(graphElement.clientHeight)
-    .nodeLabel(() => '')
-    .nodeCanvasObjectMode(() => 'replace')
-    .nodeCanvasObject((node, context, globalScale) => {
-      const fontSize = getNodeFontSize(globalScale);
-      const isSelected = node.id === selectedNode?.id;
-      const isHovered = node.id === hoveredNodeId;
-      const isFirstOrderNeighbor =
-        neighborhoodHighlightingEnabled && firstOrderNeighborIds.has(node.id);
-      const isSecondOrderNeighbor =
-        neighborhoodHighlightingEnabled && secondOrderNeighborIds.has(node.id);
-      const isNeighborhoodActive = neighborhoodHighlightingEnabled && hoveredNodeId;
-      const isUnrelatedNode =
-        isNeighborhoodActive &&
-        !isSelected &&
-        !isHovered &&
-        !isFirstOrderNeighbor &&
-        !isSecondOrderNeighbor;
-      const fillStyle = isSelected
-        ? '#f2f7ff'
-        : isHovered
-          ? '#78e5c0'
-          : isFirstOrderNeighbor
-            ? '#ffd080'
-            : isSecondOrderNeighbor
-              ? '#c3a5ff'
-              : node.isUserProvided
-                ? '#f28fb9'
-                : '#91a4bf';
-      context.save();
-      context.globalAlpha = isUnrelatedNode ? 0.2 : 1;
-
-      const hasHighlight = isSelected || isHovered || isFirstOrderNeighbor || isSecondOrderNeighbor;
-      const fontWeight = isHovered || isSelected || isFirstOrderNeighbor ? '700 ' : '';
-      context.font = `${fontWeight}${fontSize}px ui-sans-serif, system-ui, sans-serif`;
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.fillStyle = fillStyle;
-      context.lineJoin = 'round';
-      context.lineWidth = (hasHighlight ? 3 : 2) / globalScale;
-      context.strokeStyle = '#0a1120';
-      context.strokeText(node.name, node.x, node.y);
-      context.fillText(node.name, node.x, node.y);
-      context.restore();
-    })
-    .nodePointerAreaPaint((node, color, context, globalScale) => {
-      const fontSize = getNodeFontSize(globalScale);
-      const padding = 8 / globalScale;
-
-      context.font = `${fontSize}px sans-serif`;
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.fillStyle = color;
-      const textWidth = context.measureText(node.name).width;
-      context.fillRect(
-        node.x - textWidth / 2 - padding,
-        node.y - fontSize / 2 - padding,
-        textWidth + padding * 2,
-        fontSize + padding * 2
-      );
-    })
-    .backgroundColor('#0a1120')
-    .linkColor((link) => {
-      const opacity = Number(linkOpacityInput.value) / 100;
-      const sourceId = getGraphEndpointId(link.source);
-      const targetId = getGraphEndpointId(link.target);
-
-      if (neighborhoodHighlightingEnabled && hoveredNodeId) {
-        const isFirstOrderLink =
-          sourceId === hoveredNodeId || targetId === hoveredNodeId;
-        const isSecondOrderLink =
-          (firstOrderNeighborIds.has(sourceId) && secondOrderNeighborIds.has(targetId)) ||
-          (firstOrderNeighborIds.has(targetId) && secondOrderNeighborIds.has(sourceId));
-        const highlightOpacity = Math.min(1, opacity * 2.4);
-
-        if (isFirstOrderLink) {
-          return `rgba(255, 208, 128, ${highlightOpacity})`;
-        }
-        if (isSecondOrderLink) {
-          return `rgba(195, 165, 255, ${highlightOpacity})`;
-        }
-        return `rgba(82, 101, 130, ${Math.min(opacity, 0.08)})`;
-      }
-
-      return `rgba(82, 101, 130, ${opacity})`;
-    })
-    .linkWidth((link) => Math.max(0.35, 0.35 + 1.15 * link.similarity))
-    .onNodeHover((node) => {
-      hoveredNodeId = node?.id;
-      firstOrderNeighborIds = node
-        ? new Set(displayedNeighborsByNode.get(node.id) ?? [])
-        : new Set();
-      secondOrderNeighborIds = new Set();
-
-      if (node) {
-        for (const neighborId of firstOrderNeighborIds) {
-          for (const secondNeighborId of displayedNeighborsByNode.get(neighborId) ?? []) {
-            if (secondNeighborId !== node.id && !firstOrderNeighborIds.has(secondNeighborId)) {
-              secondOrderNeighborIds.add(secondNeighborId);
-            }
-          }
-        }
-      }
-      graph.zoom(graph.zoom());
-    })
-    .onNodeClick((node) => {
-      if (node.url) {
-        window.open(node.url, '_blank', 'noopener,noreferrer');
-      }
-    })
-    .graphData({ nodes: [], links: [] });
+  graph2DElement = document.createElement('div');
+  graph2DElement.className = 'graph-renderer';
+  graphElement.append(graph2DElement);
+  graph2D = createRepositoryGraph2D(graph2DElement);
+  graph = graph2D;
 
   graphElement.addEventListener('mouseleave', () => {
-    hoveredNodeId = undefined;
-    firstOrderNeighborIds = new Set();
-    secondOrderNeighborIds = new Set();
-    graph.zoom(graph.zoom());
+    updateNeighborhood(undefined);
   });
 
   neighborhoodHighlightingInput.addEventListener('change', () => {
     neighborhoodHighlightingEnabled = neighborhoodHighlightingInput.checked;
-    graph.zoom(graph.zoom());
+    refreshGraphStyle();
   });
+
+  for (const input of graphDimensionInputs) {
+    input.addEventListener('change', async () => {
+      if (!input.checked) {
+        return;
+      }
+      try {
+        await setGraphDimension(input.value);
+      } catch (error) {
+        settingsStatus.textContent =
+          error instanceof Error ? error.message : 'Could not switch graph dimensions.';
+        graphDimensionInputs.forEach((dimensionInput) => {
+          dimensionInput.checked = dimensionInput.value === graphDimension;
+        });
+      }
+    });
+  }
 
   linkOpacityValue.value = `${linkOpacityInput.value}%`;
   linkOpacityInput.addEventListener('input', () => {
     linkOpacityValue.value = `${linkOpacityInput.value}%`;
-    graph.zoom(graph.zoom());
+    refreshGraphStyle();
+  });
+
+  textOpacityValue.value = `${textOpacityInput.value}%`;
+  textOpacityInput.addEventListener('input', () => {
+    textOpacityValue.value = `${textOpacityInput.value}%`;
+    if (graphDimension === '2d' && graph2D) {
+      graph2D.zoom(graph2D.zoom());
+    }
+    refreshGraphStyle();
   });
 
   nodeLimitInput.max = String(repositoryNodes.length);

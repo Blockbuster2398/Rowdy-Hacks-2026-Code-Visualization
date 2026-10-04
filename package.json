@@ -6,7 +6,10 @@
   },
   "dependencies": {
     "@huggingface/transformers": "^4.3.0",
-    "force-graph": "^1.52.0"
+    "3d-force-graph": "^1.80.1",
+    "force-graph": "^1.52.0",
+    "three": "^0.186.1",
+    "three-spritetext": "^1.10.0"
   },
   "devDependencies": {
     "vite": "^6.0.0"

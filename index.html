@@ -9,9 +9,9 @@
     />
     <meta
       name="description"
-      content="Explore open-source projects through a graph of semantic connections between their repositories."
+      content="Explore connections between open-source repositories, README links, package dependencies, and source files."
     />
-    <title>Repository Atlas — Similarity Graph</title>
+    <title>Repository Atlas — Explore GitHub</title>
   </head>
   <body>
     <main>
@@ -29,11 +29,46 @@
           <span>repository<span class="brand-accent">atlas</span></span>
         </a>
         <span class="header-tag"><span class="live-dot"></span> OPEN SOURCE, CONNECTED</span>
-        <h1>Explore the shape of open source.</h1>
+        <h1>Explore how open source connects.</h1>
         <p class="page-intro">
-          Discover projects that think alike. Every node is a repository; every connection is a shared idea.
+          Map repository similarities, follow project links, and see which files use one another.
         </p>
       </header>
+      <nav class="mode-tabs" role="tablist" aria-label="Repository exploration modes">
+        <button
+          id="similarity-tab"
+          class="mode-tab is-active"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="similarity-view"
+        >
+          Similarity Map
+        </button>
+        <button
+          id="repository-tab"
+          class="mode-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="repository-view"
+          tabindex="-1"
+        >
+          Explore A Repository
+        </button>
+        <button
+          id="file-graph-tab"
+          class="mode-tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="file-graph-view"
+          tabindex="-1"
+        >
+          File Dependencies
+        </button>
+      </nav>
+      <section id="similarity-view" class="tab-panel" role="tabpanel" aria-labelledby="similarity-tab">
       <div class="content">
         <aside class="settings-panel" aria-labelledby="settings-title">
           <section class="control-section" aria-labelledby="settings-title">
@@ -42,6 +77,17 @@
               <h2 id="settings-title">Tune Your Map</h2>
             </div>
             <form id="graph-settings-form">
+              <fieldset class="graph-dimension-setting">
+                <legend>Graph Dimension</legend>
+                <label class="radio-setting" for="graph-dimension-2d">
+                  <input id="graph-dimension-2d" name="graphDimension" type="radio" value="2d" checked />
+                  2D
+                </label>
+                <label class="radio-setting" for="graph-dimension-3d">
+                  <input id="graph-dimension-3d" name="graphDimension" type="radio" value="3d" />
+                  3D
+                </label>
+              </fieldset>
               <label for="node-limit">
                 <span>Repositories To Display</span>
               </label>
@@ -65,6 +111,12 @@
                 <output id="link-opacity-value" for="link-opacity"></output>
               </label>
               <input id="link-opacity" name="linkOpacity" type="range" min="0" max="100" value="20" />
+
+              <label class="range-setting" for="text-opacity">
+                <span>Text Opacity</span>
+                <output id="text-opacity-value" for="text-opacity"></output>
+              </label>
+              <input id="text-opacity" name="textOpacity" type="range" min="0" max="100" value="100" />
 
               <label class="checkbox-setting" for="neighborhood-highlighting">
                 <input id="neighborhood-highlighting" type="checkbox" checked />
@@ -178,14 +230,143 @@
             <div>
               <span class="graph-eyebrow">SIMILARITY MAP</span>
               <h2>Repository Connections</h2>
-              <p>Hover a node to trace nearby ideas · Scroll to zoom · Drag to explore</p>
+              <p id="graph-interaction-help">
+                Hover a node to trace nearby ideas · Scroll to zoom · Drag to explore
+              </p>
             </div>
             <span class="graph-live"><span class="live-dot"></span> LIVE GRAPH</span>
           </div>
           <div id="graph"></div>
         </section>
       </div>
+      </section>
+      <section
+        id="file-graph-view"
+        class="tab-panel repository-view"
+        role="tabpanel"
+        aria-labelledby="file-graph-tab"
+        hidden
+      >
+        <div class="explorer-intro">
+          <span class="graph-eyebrow">CODE RELATIONSHIP MAP</span>
+          <h2>See how the files fit together.</h2>
+          <p>
+            Explore in-repository imports and module references in JavaScript, TypeScript, Python, Go,
+            and Rust projects.
+          </p>
+        </div>
+        <section class="explorer-card" aria-labelledby="file-graph-form-title">
+          <h3 id="file-graph-form-title">Map a repository's files</h3>
+          <form id="file-graph-form">
+            <label for="file-graph-repository-url">Public GitHub repository URL</label>
+            <div class="explorer-input-row">
+              <input
+                id="file-graph-repository-url"
+                name="repositoryUrl"
+                type="url"
+                placeholder="https://github.com/owner/repository"
+                required
+              />
+              <button id="file-graph-submit" type="submit">Build File Graph <span aria-hidden="true">↗</span></button>
+            </div>
+          </form>
+          <p id="file-graph-status" role="status"></p>
+        </section>
+        <section id="file-graph-results" class="file-graph-results" aria-live="polite" hidden>
+          <header class="file-graph-header">
+            <div>
+              <span class="graph-eyebrow">FILE DEPENDENCIES</span>
+              <h3 id="file-graph-repository-name"></h3>
+              <p>Arrows point from a file to the local file or module it imports.</p>
+            </div>
+            <a id="file-graph-repository-link" target="_blank" rel="noopener noreferrer">View Repository ↗</a>
+          </header>
+          <div class="file-graph-legend" aria-label="File language colors">
+            <span><i class="language-dot language-javascript"></i> JavaScript / TypeScript</span>
+            <span><i class="language-dot language-python"></i> Python</span>
+            <span><i class="language-dot language-go"></i> Go</span>
+            <span><i class="language-dot language-rust"></i> Rust</span>
+          </div>
+          <div id="file-graph-canvas" aria-label="Force graph of file imports"></div>
+        </section>
+      </section>
+      <section
+        id="repository-view"
+        class="tab-panel repository-view"
+        role="tabpanel"
+        aria-labelledby="repository-tab"
+        hidden
+      >
+        <div class="explorer-intro">
+          <span class="graph-eyebrow">REPOSITORY EXPLORER</span>
+          <h2>Follow the links between projects.</h2>
+          <p>
+            Enter a public GitHub repository to find projects linked from its README and GitHub-hosted
+            repositories for dependencies declared in supported npm, Python, Cargo, and Go manifests.
+          </p>
+        </div>
+        <section class="explorer-card" aria-labelledby="explorer-form-title">
+          <h3 id="explorer-form-title">Start with a repository</h3>
+          <form id="repository-explorer-form">
+            <label for="explorer-repository-url">Public GitHub repository URL</label>
+            <div class="explorer-input-row">
+              <input
+                id="explorer-repository-url"
+                name="repositoryUrl"
+                type="url"
+                placeholder="https://github.com/owner/repository"
+                required
+              />
+              <button id="explorer-submit" type="submit">Explore Repository <span aria-hidden="true">↗</span></button>
+            </div>
+          </form>
+          <p id="explorer-status" role="status"></p>
+        </section>
+        <section id="explorer-results" class="explorer-results" aria-live="polite" hidden>
+          <header class="explorer-repository-header">
+            <div>
+              <span class="graph-eyebrow">ANALYZING REPOSITORY</span>
+              <h3 id="explorer-repository-name"></h3>
+              <p id="explorer-repository-description"></p>
+            </div>
+            <a id="explorer-repository-link" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a>
+          </header>
+          <div class="explorer-legend" aria-label="Repository link categories">
+            <span><i class="legend-dot readme-dot"></i> Linked from README</span>
+            <span><i class="legend-dot source-dot"></i> Used as a dependency</span>
+          </div>
+          <div class="repository-groups">
+            <section class="repository-group readme-group" aria-labelledby="readme-repositories-title">
+              <header>
+                <span class="group-icon">↗</span>
+                <div>
+                  <h3 id="readme-repositories-title">README links</h3>
+                  <p>Repositories linked in the project README</p>
+                </div>
+                <output id="readme-repository-count">0</output>
+              </header>
+              <ul id="readme-repositories-list"></ul>
+              <p class="empty-group" id="readme-repositories-empty" hidden>No GitHub repository links found in the README.</p>
+            </section>
+            <section class="repository-group source-group" aria-labelledby="source-repositories-title">
+              <header>
+                <span class="group-icon">⌘</span>
+                <div>
+                  <h3 id="source-repositories-title">Source dependencies</h3>
+                  <p>Declared packages with GitHub repository metadata</p>
+                </div>
+                <output id="source-repository-count">0</output>
+              </header>
+              <ul id="source-repositories-list"></ul>
+              <p class="empty-group" id="source-repositories-empty" hidden>No GitHub repositories were found for declared dependencies.</p>
+            </section>
+          </div>
+          <p id="explorer-results-note" class="explorer-results-note" hidden></p>
+        </section>
+      </section>
     </main>
     <script type="module" src="/src/graph.js"></script>
+    <script type="module" src="/src/repository-explorer.js"></script>
+    <script type="module" src="/src/file-graph.js"></script>
   </body>
 </html>
